@@ -1,0 +1,6 @@
+framework module Pods_ScrimIT {
+  umbrella header "Pods-ScrimIT-umbrella.h"
+
+  export *
+  module * { export * }
+}

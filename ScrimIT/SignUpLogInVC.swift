@@ -26,6 +26,8 @@ class SignUpLogInVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor.white
+        
         formStackView.axis = .vertical
         formStackView.alignment = .fill
         formStackView.distribution = .fillProportionally
@@ -55,7 +57,7 @@ class SignUpLogInVC: UIViewController {
         
         let appLogoImageView = UIImageView(image: UIImage(named: "Icon")!)
         appLogoImageView.translatesAutoresizingMaskIntoConstraints = false
-        
+        appLogoImageView.makeRound()
         appLogoImageView.addConstraint(
             NSLayoutConstraint(item: appLogoImageView, attribute: .width, relatedBy: .equal, toItem: appLogoImageView, attribute: .height, multiplier: 1, constant: 0)
         )
@@ -64,16 +66,12 @@ class SignUpLogInVC: UIViewController {
         let appNameLabel = UILabel()
         appNameLabel.numberOfLines = 0
         appNameLabel.textAlignment = .center
+        appNameLabel.font = UIFont(name: "HelviticaNeue-Medium", size: 20)
         appNameLabel.text = "Welcome To Scrimit"
+        appNameLabel.setSpacing(space: 2.0)
         logoStackView.addArrangedSubview(appNameLabel)
         
         headerStackView.addArrangedSubview(logoStackView)
-        
-        signInLabel = UILabel()
-        signInLabel.numberOfLines = 0
-        signInLabel.textAlignment = .center
-        signInLabel.text = "Please sign in below using your username and password"
-        headerStackView.addArrangedSubview(signInLabel)
         
         recoverLabel = UILabel()
         recoverLabel.numberOfLines = 0

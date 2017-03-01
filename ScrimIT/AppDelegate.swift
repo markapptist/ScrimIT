@@ -8,6 +8,9 @@
 
 import UIKit
 
+let screenWidth = UIScreen.main.bounds.width
+let screenHeight = UIScreen.main.bounds.width
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -19,13 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow.init(frame: UIScreen.main.bounds)
         
-        let initialView = SignUpLogInVC()
+        let initialView = NavController()
         
         window?.rootViewController = initialView
         
         window?.makeKeyAndVisible()
 
-        
         return true
     }
 

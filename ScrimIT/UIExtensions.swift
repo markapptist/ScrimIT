@@ -31,3 +31,13 @@ extension UILabel {
     }
     
 }
+
+extension UIImageView {
+    
+    func makeRound() {
+        let radius = self.frame.width/2
+        self.layer.cornerRadius = radius
+        self.clipsToBounds = true
+    }
+    
+}

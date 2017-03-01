@@ -10,8 +10,8 @@ import UIKit
 
 class ProfileVC: TabsVC {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
 
         // Do any additional setup after loading the view.
         

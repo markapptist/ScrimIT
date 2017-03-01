@@ -32,12 +32,38 @@ extension UILabel {
     
 }
 
-extension UIImageView {
+extension UIView {
     
     func makeRound() {
         let radius = self.frame.width/2
         self.layer.cornerRadius = radius
         self.clipsToBounds = true
+    }
+    
+    func animateViewToCoordinates(newX: CGFloat, newY: CGFloat) {
+        
+        let height = self.frame.height
+        let width = self.frame.width
+        
+        UIView.animate(withDuration: 1.0, delay: 0.2, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.5, options: UIViewAnimationOptions.curveEaseIn, animations: {
+            self.frame = CGRect(x: newX, y: newY, width: width, height: height)
+        }, completion: { (complete: Bool) in
+        })
+        
+    }
+    
+    func rotateView(duration: CFTimeInterval) {
+        let rotateAnim = CABasicAnimation(keyPath: "transform.rotation")
+        rotateAnim.fromValue = 0.0
+        rotateAnim.toValue = CGFloat(M_PI * 2.0)
+        rotateAnim.duration = duration
+        rotateAnim.repeatCount = Float.infinity
+        self.layer.add(rotateAnim, forKey: nil)
+        
+    }
+    
+    func stopAnimations() {
+        self.layer.removeAllAnimations()
     }
     
 }

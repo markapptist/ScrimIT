@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6613EB7B1E675146004AB944 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6613EB7A1E675146004AB944 /* NavController.swift */; };
-		6613EB7D1E675423004AB944 /* Tiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6613EB7C1E675423004AB944 /* Tiles.swift */; };
+		6613EB7D1E675423004AB944 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6613EB7C1E675423004AB944 /* Tile.swift */; };
+		6613EB7F1E678AAA004AB944 /* soccerball.png in Resources */ = {isa = PBXBuildFile; fileRef = 6613EB7E1E678AAA004AB944 /* soccerball.png */; };
 		6617ED401E5E52790063A7C4 /* SignUpLogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6617ED3F1E5E52790063A7C4 /* SignUpLogInVC.swift */; };
 		6617ED421E5E536C0063A7C4 /* LabelCustomSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6617ED411E5E536C0063A7C4 /* LabelCustomSpacing.swift */; };
 		6617ED441E5E56060063A7C4 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6617ED431E5E56060063A7C4 /* UIExtensions.swift */; };
@@ -88,7 +89,8 @@
 /* Begin PBXFileReference section */
 		2DB31DA83197192239AC1F40 /* Pods_ScrimIT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScrimIT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6613EB7A1E675146004AB944 /* NavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
-		6613EB7C1E675423004AB944 /* Tiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tiles.swift; sourceTree = "<group>"; };
+		6613EB7C1E675423004AB944 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		6613EB7E1E678AAA004AB944 /* soccerball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soccerball.png; sourceTree = "<group>"; };
 		6617ED3F1E5E52790063A7C4 /* SignUpLogInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpLogInVC.swift; sourceTree = "<group>"; };
 		6617ED411E5E536C0063A7C4 /* LabelCustomSpacing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelCustomSpacing.swift; sourceTree = "<group>"; };
 		6617ED431E5E56060063A7C4 /* UIExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				6617ED5C1E5E57580063A7C4 /* ico-play.png */,
 				6617ED5D1E5E57580063A7C4 /* ico-play2.png */,
 				6617ED5E1E5E57580063A7C4 /* ico-search.png */,
+				6613EB7E1E678AAA004AB944 /* soccerball.png */,
 				6617ED5F1E5E57580063A7C4 /* ico-share.png */,
 				6617ED601E5E57580063A7C4 /* ico-teams.png */,
 				6617ED611E5E57580063A7C4 /* ico-training.png */,
@@ -293,7 +296,7 @@
 				6643D1AC1E60AA49000C3501 /* ChallengesVC.swift */,
 				6643D1AE1E60AA57000C3501 /* ProfileVC.swift */,
 				6613EB7A1E675146004AB944 /* NavController.swift */,
-				6613EB7C1E675423004AB944 /* Tiles.swift */,
+				6613EB7C1E675423004AB944 /* Tile.swift */,
 			);
 			path = ScrimIT;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				6617ED891E5E57580063A7C4 /* Default-568h@2x.png in Resources */,
 				6617ED8F1E5E57580063A7C4 /* ico-check.png in Resources */,
 				6617ED901E5E57580063A7C4 /* ico-comment.png in Resources */,
+				6613EB7F1E678AAA004AB944 /* soccerball.png in Resources */,
 				6617EDBA1E5E57580063A7C4 /* Spotlight.png in Resources */,
 				6617EDAC1E5E57580063A7C4 /* Icon@2x.png in Resources */,
 				6617EDAF1E5E57580063A7C4 /* off.png in Resources */,
@@ -501,7 +505,7 @@
 				6643D1A71E60A43F000C3501 /* TabsVC.swift in Sources */,
 				6617ED401E5E52790063A7C4 /* SignUpLogInVC.swift in Sources */,
 				6643D1AD1E60AA49000C3501 /* ChallengesVC.swift in Sources */,
-				6613EB7D1E675423004AB944 /* Tiles.swift in Sources */,
+				6613EB7D1E675423004AB944 /* Tile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

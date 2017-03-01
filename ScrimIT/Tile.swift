@@ -8,23 +8,21 @@
 
 import UIKit
 
-class Tiles: UIView {
+class Tile: UIView {
     
-    var width: CGFloat!
+    var width = screenWidth
     
-    var height: CGFloat!
+    var height = screenHeight/4
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.width = screenWidth
-        self.height = screenHeight/10
-        
-        self.frame = CGRect(x: 0.0, y: 0.0, width: self.width, height: self.height)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
+
     }
     
     func setColour(colour: UIColor) {

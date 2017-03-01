@@ -8,6 +8,8 @@
 
 import UIKit
 
+var navBarDelegate: tabPressed?
+
 class MyDashboardVC: UITabBarController, UITabBarControllerDelegate{
     
     override func viewDidLoad() {
@@ -21,10 +23,14 @@ class MyDashboardVC: UITabBarController, UITabBarControllerDelegate{
         
         self.tabBar.barTintColor = barTint
         
+        tabBarController?.delegate = self
+                
         self.viewControllers = [homeTab, trainingTab, challengesTab, profileTab]
         
         
+        
     }
+ 
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -33,6 +39,8 @@ class MyDashboardVC: UITabBarController, UITabBarControllerDelegate{
     
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        
+     
         
     }
     

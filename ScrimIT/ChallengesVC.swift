@@ -10,9 +10,9 @@ import UIKit
 
 class ChallengesVC: TabsVC {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        
         // Do any additional setup after loading the view.
         
         self.tabItem = UITabBarItem(title: "Challenges", image: UIImage(named: "ico-challenge"), selectedImage: UIImage(named: "ico-challenge"))

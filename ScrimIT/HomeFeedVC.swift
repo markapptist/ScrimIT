@@ -12,8 +12,8 @@ class HomeFeedVC: TabsVC {
     
     var collectionView: UICollectionView!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
 
         // Do any additional setup after loading the view.
         

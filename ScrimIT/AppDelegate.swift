@@ -7,25 +7,48 @@
 //
 
 import UIKit
+import Firebase
 
 let screenWidth = UIScreen.main.bounds.width
 let screenHeight = UIScreen.main.bounds.width
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        FIRApp.configure()
         window = UIWindow.init(frame: UIScreen.main.bounds)
         
-        let initialView = NavController()
+        let homeFeedIcon = UIImage(named: "ico-teams")
+        let trainingIcon = UIImage(named: "ico-training")
+        let pathIcon = UIImage(named: "ico-share")
+        let userIcon = UIImage(named: "ico-user")
         
-        window?.rootViewController = initialView
+        let homeFeed = HomeFeedVC()
+        homeFeed.tabBarItem = UITabBarItem(title: "Home", image: homeFeedIcon, tag: 0)
         
+        let trainingTab = TrainingVC()
+        trainingTab.tabBarItem = UITabBarItem(title: "Training", image: trainingIcon, tag: 1)
+        
+        let challengesTab = ChallengesVC()
+        challengesTab.tabBarItem = UITabBarItem(title: "Path", image: pathIcon, tag: 2)
+        
+        let profileTab = ProfileVC()
+        profileTab.tabBarItem = UITabBarItem(title: "Profile", image: userIcon, tag: 3)
+        
+        let homeFeedNavController = NavController(rootViewController: homeFeed)
+        let dashboard = MyDashboardVC()
+        
+        let viewControllers = [homeFeedNavController, challengesTab, trainingTab, profileTab]
+        
+        dashboard.viewControllers = viewControllers
+        dashboard.tabBar.barTintColor = barTint
+        
+        window?.rootViewController = dashboard
         window?.makeKeyAndVisible()
 
         return true

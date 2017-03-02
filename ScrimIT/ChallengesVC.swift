@@ -8,28 +8,11 @@
 
 import UIKit
 
-class ChallengesVC: TabsVC {
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(false)
-        
-        // Do any additional setup after loading the view.
-        
-        self.tabItem = UITabBarItem(title: "Challenges", image: UIImage(named: "ico-challenge"), selectedImage: UIImage(named: "ico-challenge"))
-        self.tabBarItem = self.tabItem
-
-    }
-
+class ChallengesVC: UIViewController {
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
     }
-    */
 
 }

@@ -10,26 +10,15 @@ import UIKit
 
 class HomeFeedVC: TabsVC {
     
-    var collectionView: UICollectionView!
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(false)
-
-        // Do any additional setup after loading the view.
+    var tableView: UITableView?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        self.tabItem = UITabBarItem(title: "Home", image: UIImage(named: "ico-teams"), selectedImage: UIImage(named: "ico-teams"))
-        self.tabBarItem = self.tabItem
+        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - (self.tabBarController?.tabBar.frame.height)!))
+        
+        view.backgroundColor = UIColor.white
+        
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

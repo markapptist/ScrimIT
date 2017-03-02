@@ -10,7 +10,6 @@ import UIKit
 
 class SignUpLogInVC: UIViewController {
     
-
     let formStackView = UIStackView()
     let headerStackView = UIStackView()
     let logoStackView = UIStackView()

@@ -8,26 +8,17 @@
 
 import UIKit
 
-class ProfileVC: TabsVC {
+class ProfileVC: UIViewController {
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(false)
-
-        // Do any additional setup after loading the view.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+        let registration = SignUpLogInVC()
         
-        self.tabItem = UITabBarItem(title: "Profile", image: UIImage(named: "ico-friends"), selectedImage: UIImage(named: "ico-friends"))
-        self.tabBarItem = self.tabItem
-
+        registration.view.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - (self.tabBarController?.tabBar.frame.height)!)
+        
+        self.view.addSubview(registration.view)
+        
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

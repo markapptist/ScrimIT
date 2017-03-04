@@ -63,4 +63,13 @@ class TabsVC: UIViewController {
         }
         
     }
+    
+    func showActivityIndicator() {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    
+    
+    func hideActivityIndicator() {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
 }

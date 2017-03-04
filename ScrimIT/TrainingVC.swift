@@ -13,6 +13,7 @@ class TrainingVC: TabsVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
     }
 
 }

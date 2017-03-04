@@ -18,7 +18,9 @@ class NavController: UINavigationController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      //  self.navigationBar.isHidden = true
+
+        self.navigationBar.isHidden = true
+
         
         let titleImgWidth = self.navigationBar.frame.width/9
         let titleImgHeight = self.navigationBar.frame.height * 0.6

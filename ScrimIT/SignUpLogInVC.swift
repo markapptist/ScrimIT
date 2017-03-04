@@ -8,12 +8,17 @@
 
 import UIKit
 
+protocol SignedIn {
+    func displayAlert()
+}
+
 class SignUpLogInVC: UIViewController {
     
     let formStackView = UIStackView()
     let headerStackView = UIStackView()
     let logoStackView = UIStackView()
     
+    var emailField: UITextField!
     var passwordField: UITextField!
     var signInButton: UIButton!
     var signInLabel: UILabel!
@@ -25,6 +30,8 @@ class SignUpLogInVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.frame = CGRect(x: 0, y: 20, width: view.frame.width, height: view.frame.height - (self.tabBarController?.tabBar.frame.height)!)
+        
         self.view.backgroundColor = UIColor.white
         
         formStackView.axis = .vertical
@@ -32,6 +39,8 @@ class SignUpLogInVC: UIViewController {
         formStackView.distribution = .fillProportionally
         formStackView.spacing = 8
         formStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        AuthService.instance.tempDelegate = self
         
         view.addSubview(formStackView)
         
@@ -80,7 +89,7 @@ class SignUpLogInVC: UIViewController {
         
         formStackView.addArrangedSubview(headerStackView)
         
-        let emailField = UITextField()
+        emailField = UITextField()
         emailField.translatesAutoresizingMaskIntoConstraints = false
         emailField.borderStyle = .roundedRect
         emailField.placeholder = "Email Address"
@@ -132,6 +141,8 @@ class SignUpLogInVC: UIViewController {
         signInButton.addConstraints(
             NSLayoutConstraint.constraints(withVisualFormat: "V:[signInButton(<=44)]", options: .alignAllCenterY, metrics: nil, views: ["signInButton": signInButton])
         )
+        
+        signInButton.addTarget(self, action: #selector(signInPressed), for: .touchUpInside)
         
         forgotButton = UIButton(type: .system)
         forgotButton.translatesAutoresizingMaskIntoConstraints = false
@@ -188,4 +199,36 @@ class SignUpLogInVC: UIViewController {
         recoverLabel.isHidden = true
         backToSignIn.isHidden = true
     }
+    
+    func signInPressed() {
+        if emailField.text == nil || emailField.text == "" || passwordField.text == nil || passwordField.text == "" {
+            self.displayEmptyField()
+        }
+        else {
+            AuthService.instance.login(email: emailField.text!, password: passwordField.text!, onComplete: nil)
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        emailField.resignFirstResponder()
+        passwordField.resignFirstResponder()
+    }
+    
+    func displayEmptyField() {
+        let alert = UIAlertController(title: "Enter email and password", message: "", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(alertAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension SignUpLogInVC: SignedIn {
+    internal func displayAlert() {
+        let alert = UIAlertController(title: "Signed In", message: "Press the plus button in Home feed to add a challenge", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(alertAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    
 }

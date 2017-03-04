@@ -6,6 +6,12 @@
 //  Copyright © 2017 Anthony Ma. All rights reserved.
 //
 
+
+/*
+ Set constants for navigation bar height and tab bar height
+ 
+ */
+
 import UIKit
 import Firebase
 
@@ -37,10 +43,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let challengesTab = ChallengesVC()
         challengesTab.tabBarItem = UITabBarItem(title: "Path", image: pathIcon, tag: 2)
         
-        let profileTab = ProfileVC()
+        let profileTab = SignUpLogInVC()
         profileTab.tabBarItem = UITabBarItem(title: "Profile", image: userIcon, tag: 3)
         
         let homeFeedNavController = NavController(rootViewController: homeFeed)
+        
         let dashboard = MyDashboardVC()
         
         let viewControllers = [homeFeedNavController, challengesTab, trainingTab, profileTab]

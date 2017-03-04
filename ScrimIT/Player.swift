@@ -10,8 +10,14 @@ import Foundation
 
 class Player: NSObject {
     
-    var id: String?
+    var email: String?
+    var uid: String?
     var name: String?
+    
+    init(uid: String?, email: String?) {
+        self.uid = uid
+        self.email = email
+    }
     
     
 }

@@ -10,8 +10,11 @@ import Foundation
 
 class ChallengeVideo: NSObject {
     
-    var postedBy: String?
-    var timestamp: String?
+    var url: String?
     var title: String?
     
+    init(url: String?, title: String?) {
+        self.url = url
+        self.title = title
+    }
 }

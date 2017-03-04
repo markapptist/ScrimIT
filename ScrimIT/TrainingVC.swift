@@ -13,6 +13,7 @@ class TrainingVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
     }
 
 }

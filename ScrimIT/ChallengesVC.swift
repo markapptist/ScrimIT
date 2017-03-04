@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChallengesVC: UIViewController {
+class ChallengesVC: TabsVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()

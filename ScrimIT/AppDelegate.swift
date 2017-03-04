@@ -41,9 +41,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         profileTab.tabBarItem = UITabBarItem(title: "Profile", image: userIcon, tag: 3)
         
         let homeFeedNavController = NavController(rootViewController: homeFeed)
+        let trainingNavController = NavController(rootViewController: trainingTab)
+        let pathNavController = NavController(rootViewController: challengesTab)
+        let profileNavController = NavController(rootViewController: profileTab)
+        
         let dashboard = MyDashboardVC()
         
-        let viewControllers = [homeFeedNavController, challengesTab, trainingTab, profileTab]
+        let viewControllers = [homeFeedNavController, trainingNavController, pathNavController, profileNavController]
         
         dashboard.viewControllers = viewControllers
         dashboard.tabBar.barTintColor = barTint

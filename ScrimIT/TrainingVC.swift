@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TrainingVC: UIViewController {
+class TrainingVC: TabsVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()

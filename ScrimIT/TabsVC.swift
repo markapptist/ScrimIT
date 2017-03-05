@@ -15,7 +15,7 @@ class TabsVC: UIViewController {
         
         self.view.backgroundColor = UIColor.white
         
-        /*
+        
         let lightGreen = Tile(frame: CGRect(x: 0.0, y: self.view.frame.maxY - screenHeight/6, width: screenWidth, height: screenHeight/6))
         
         lightGreen.setColour(colour: UIColor.init(red: 87/255, green: 123/255, blue: 54/255, alpha: 0.8))
@@ -61,7 +61,7 @@ class TabsVC: UIViewController {
         for tile in tiles {
             view.addSubview(tile)
         }
-         */
+        
     }
     
     func showActivityIndicator() {

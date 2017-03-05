@@ -39,6 +39,7 @@ class HomeFeedVC: TabsVC, UITableViewDataSource, UITableViewDelegate {
         
         tableView = UITableView(frame: CGRect(x: 0, y: (addButton?.frame.maxY)!, width: view.frame.width, height: view.frame.height - (self.tabBarController?.tabBar.frame.height)! - (self.navigationController?.navigationBar.frame.height)! - 20 - 80))
         tableView?.register(VideoCell.self, forCellReuseIdentifier: "videoCell")
+        tableView?.isUserInteractionEnabled = false
         
         tableView?.dataSource = self
         tableView?.delegate = self

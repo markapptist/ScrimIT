@@ -38,9 +38,9 @@ extension DataService {
                 print(error?.localizedDescription ?? "")
             }
             else {
-                let profile: [String:Any] = ["respondedBy": userEmail]
+                let profile: [String:Any] = ["respondedBy": userEmail, "URL": meta!.downloadURL()!.absoluteString]
                 
-                self.challengesRef.child(name).child("responses").child((meta?.downloadURL()?.absoluteString)!).setValue(profile)
+                self.challengesRef.child(name).child("responses").child("1").setValue(profile)
                 
                 print("done")
             }

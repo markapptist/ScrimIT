@@ -43,8 +43,12 @@ class ResponseVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         playerLayer?.videoGravity = AVLayerVideoGravityResizeAspect
         playerLayer?.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.height)!, width: view.frame.width, height: videosContainer.frame.height/2)
         
+        
         tableView = UITableView(frame: CGRect(x: 0, y: (playerLayer?.frame.maxY)!, width: view.frame.width, height: videosContainer.frame.height/2))
         tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        tableView?.dataSource = self
+        tableView?.delegate = self
         
         let hiddenTabBar = UIView(frame: CGRect(x: 0, y: (tableView?.frame.maxY)!, width: view.frame.height, height: (self.tabBarController?.tabBar.frame.height)!))
         hiddenTabBar.backgroundColor = UIColor.white

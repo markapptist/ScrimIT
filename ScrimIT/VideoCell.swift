@@ -32,7 +32,7 @@ class VideoCell: UITableViewCell {
         
         contentView.layer.addSublayer(playerLayer!)
         
-        self.player?.play()
+//        self.player?.play()
         
     }
 }

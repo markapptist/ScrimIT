@@ -39,10 +39,10 @@ extension HomeFeedVC {
                         let responseProfile = response as! FIRDataSnapshot
                         let responseData = responseProfile.value as? NSDictionary
                         
-                        let responseVideoURLString = responseProfile.key
+                        let responseVideoURL = responseData?["URL"] as? String
                         let responseUserEmail = responseData?["respondedBy"] as? String
                         
-                        let responseVideo = ChallengeVideo(url: responseVideoURLString, title: responseUserEmail)
+                        let responseVideo = ChallengeVideo(url: responseVideoURL, title: responseUserEmail)
                         
                         responsesArray.append(responseVideo)
                     }
@@ -56,6 +56,7 @@ extension HomeFeedVC {
             }
             
             self.tableView?.reloadData()
+            self.tableView?.isUserInteractionEnabled = true
             self.hideActivityIndicator()
             
         }, withCancel: { (error) in

@@ -732,7 +732,7 @@
 				DEVELOPMENT_TEAM = VDQS4882Z8;
 				INFOPLIST_FILE = ScrimIT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = AM.ScrimIT;
+				PRODUCT_BUNDLE_IDENTIFIER = Apptist.ScrimIT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -746,7 +746,7 @@
 				DEVELOPMENT_TEAM = VDQS4882Z8;
 				INFOPLIST_FILE = ScrimIT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = AM.ScrimIT;
+				PRODUCT_BUNDLE_IDENTIFIER = Apptist.ScrimIT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

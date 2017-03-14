@@ -51,6 +51,7 @@ class SignUpLogInVC: TabsVC {
         titleLbl.shadowColor = UIColor.white
         
         let fadeView = UIImageView(image: fadePhoto)
+        fadeView.alpha = 0.5
         fadeView.translatesAutoresizingMaskIntoConstraints = false
         titleView.addSubview(fadeView)
         
@@ -73,6 +74,7 @@ class SignUpLogInVC: TabsVC {
         joinBtn.titleLabel?.font = UIFont(name: "MyriadPro-BoldCond", size: 76)
         
         let fadeView2 = UIImageView(image: fadePhoto)
+        fadeView2.alpha = 0.5
         fadeView2.translatesAutoresizingMaskIntoConstraints = false
         joinBtn.addSubview(fadeView2)
         
@@ -95,6 +97,7 @@ class SignUpLogInVC: TabsVC {
         logInBtn.titleLabel?.font = UIFont(name: "MyriadPro-BoldCond", size: 76)
         
         let fadeView3 = UIImageView(image: fadePhoto)
+        fadeView3.alpha = 0.5
         fadeView3.translatesAutoresizingMaskIntoConstraints = false
         logInBtn.addSubview(fadeView3)
         

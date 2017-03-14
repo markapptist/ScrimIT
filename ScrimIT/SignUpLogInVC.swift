@@ -12,223 +12,96 @@ protocol SignedIn {
     func displayAlert()
 }
 
-class SignUpLogInVC: UIViewController {
+class SignUpLogInVC: TabsVC {
     
-    let formStackView = UIStackView()
-    let headerStackView = UIStackView()
-    let logoStackView = UIStackView()
-    
-    var emailField: UITextField!
-    var passwordField: UITextField!
-    var signInButton: UIButton!
-    var signInLabel: UILabel!
-    var forgotButton: UIButton!
-    var backToSignIn: UIButton!
-    var recoverLabel: UILabel!
-    var recoverButton: UIButton!
+    let fadePhoto = #imageLiteral(resourceName: "fadePhotoBottom")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.frame = CGRect(x: 0, y: 20, width: view.frame.width, height: view.frame.height - (self.tabBarController?.tabBar.frame.height)!)
+        let titleView = UIView()
+        let titleLbl = UILabel()
+        let joinBtn = UIButton()
+        let logInBtn = UIButton()
         
-        self.view.backgroundColor = UIColor.white
+        self.view.addSubview(titleView)
         
-        formStackView.axis = .vertical
-        formStackView.alignment = .fill
-        formStackView.distribution = .fillProportionally
-        formStackView.spacing = 8
-        formStackView.translatesAutoresizingMaskIntoConstraints = false
+        titleView.translatesAutoresizingMaskIntoConstraints = false
+        joinBtn.translatesAutoresizingMaskIntoConstraints = false
+        logInBtn.translatesAutoresizingMaskIntoConstraints = false
         
-        AuthService.instance.tempDelegate = self
+        titleView.layer.borderWidth = 4.0
+        titleView.layer.borderColor = UIColor.white.cgColor
+        titleView.backgroundColor = UIColor.clear
+        titleView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 10).isActive = true
+        titleView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: -10).isActive = true
+        titleView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
+        titleView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.33).isActive = true
         
-        view.addSubview(formStackView)
+        titleView.addSubview(titleLbl)
         
-        view.addConstraints(
-            NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[formStackView]-20-|", options: [.alignAllRight,.alignAllLeft], metrics: nil, views: ["formStackView": formStackView])
-        )
-        view.addConstraints(
-            NSLayoutConstraint.constraints(withVisualFormat: "V:|-20-[formStackView]-8-|", options: [.alignAllTop,.alignAllBottom], metrics: nil, views: ["formStackView": formStackView])
-        )
+        titleLbl.translatesAutoresizingMaskIntoConstraints = false
+        titleLbl.centerXAnchor.constraint(equalTo: titleView.centerXAnchor).isActive = true
+        titleLbl.centerYAnchor.constraint(equalTo: titleView.centerYAnchor).isActive = true
+        titleLbl.font = UIFont(name: "MyriadPro-BoldCond", size: 76)
+        titleLbl.adjustsFontSizeToFitWidth = true 
+        titleLbl.text = "SCRIMIT"
+        titleLbl.textColor = UIColor.white
+        titleLbl.setSpacing(space: -3.1)
+        titleLbl.shadowColor = UIColor.white
         
-        headerStackView.axis = .vertical
-        headerStackView.alignment = .fill
-        headerStackView.distribution = .fill
-        headerStackView.spacing = 8
-        headerStackView.translatesAutoresizingMaskIntoConstraints = false
+        let fadeView = UIImageView(image: fadePhoto)
+        fadeView.translatesAutoresizingMaskIntoConstraints = false
+        titleView.addSubview(fadeView)
         
-        logoStackView.axis = .vertical
-        logoStackView.alignment = .center
-        logoStackView.distribution = .fillProportionally
-        logoStackView.spacing = 8
-        logoStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let appLogoImageView = UIImageView(image: UIImage(named: "Icon")!)
-        appLogoImageView.translatesAutoresizingMaskIntoConstraints = false
-        appLogoImageView.makeRound()
-        appLogoImageView.addConstraint(
-            NSLayoutConstraint(item: appLogoImageView, attribute: .width, relatedBy: .equal, toItem: appLogoImageView, attribute: .height, multiplier: 1, constant: 0)
-        )
-        logoStackView.addArrangedSubview(appLogoImageView)
-        
-        let appNameLabel = UILabel()
-        appNameLabel.numberOfLines = 0
-        appNameLabel.textAlignment = .center
-        appNameLabel.font = UIFont(name: "HelviticaNeue-Medium", size: 20)
-        appNameLabel.text = "Welcome To Scrimit"
-        appNameLabel.setSpacing(space: 2.0)
-        logoStackView.addArrangedSubview(appNameLabel)
-        
-        headerStackView.addArrangedSubview(logoStackView)
-        
-        recoverLabel = UILabel()
-        recoverLabel.numberOfLines = 0
-        recoverLabel.textAlignment = .center
-        recoverLabel.text = "Please type your email below in order to recover your password"
-        headerStackView.addArrangedSubview(recoverLabel)
-        
-        formStackView.addArrangedSubview(headerStackView)
-        
-        emailField = UITextField()
-        emailField.translatesAutoresizingMaskIntoConstraints = false
-        emailField.borderStyle = .roundedRect
-        emailField.placeholder = "Email Address"
-        formStackView.addArrangedSubview(emailField)
-        
-        emailField.addConstraints(
-            NSLayoutConstraint.constraints(withVisualFormat: "V:[emailField(<=30)]", options: [.alignAllTop, .alignAllBottom], metrics: nil, views: ["emailField": emailField])
-        )
-        
-        passwordField = UITextField()
-        passwordField.translatesAutoresizingMaskIntoConstraints = false
-        passwordField.borderStyle = .roundedRect
-        passwordField.placeholder = "Password"
-        formStackView.addArrangedSubview(passwordField)
-        
-        passwordField.addConstraints(
-            NSLayoutConstraint.constraints(withVisualFormat: "V:[passwordField(<=30)]", options: .alignAllCenterY, metrics: nil, views: ["passwordField": passwordField])
-        )
-        
-        recoverButton = UIButton(type: .system)
-        recoverButton.translatesAutoresizingMaskIntoConstraints = false
-        recoverButton.backgroundColor = UIColor.purple
-        recoverButton.setTitleColor(UIColor.white, for: UIControlState())
-        recoverButton.setTitle("Recover password", for: UIControlState())
-        formStackView.addArrangedSubview(recoverButton)
-        recoverButton.addConstraints(
-            NSLayoutConstraint.constraints(withVisualFormat: "V:[recoverButton(<=44)]", options: .alignAllCenterY, metrics: nil, views: ["recoverButton": recoverButton])
-        )
-        
-        backToSignIn = UIButton(type: .system)
-        backToSignIn.translatesAutoresizingMaskIntoConstraints = false
-        backToSignIn.setTitleColor(UIColor.black, for: UIControlState())
-        backToSignIn.setTitle("Back to Sign In", for: UIControlState())
-        formStackView.addArrangedSubview(backToSignIn)
-        
-        backToSignIn.addConstraints(
-            NSLayoutConstraint.constraints(withVisualFormat: "V:[backToSignIn(<=44)]", options: .alignAllCenterY, metrics: nil, views: ["backToSignIn": backToSignIn])
-        )
-        
-        backToSignIn.addTarget(self, action: #selector(backToSignInTapped(_:)), for: UIControlEvents.touchUpInside)
-        
-        signInButton = UIButton(type: .system)
-        signInButton.translatesAutoresizingMaskIntoConstraints = false
-        signInButton.backgroundColor = UIColor.purple
-        signInButton.setTitleColor(UIColor.white, for: UIControlState())
-        signInButton.setTitle("Sign In", for: UIControlState())
-        formStackView.addArrangedSubview(signInButton)
-        
-        signInButton.addConstraints(
-            NSLayoutConstraint.constraints(withVisualFormat: "V:[signInButton(<=44)]", options: .alignAllCenterY, metrics: nil, views: ["signInButton": signInButton])
-        )
-        
-        signInButton.addTarget(self, action: #selector(signInPressed), for: .touchUpInside)
-        
-        forgotButton = UIButton(type: .system)
-        forgotButton.translatesAutoresizingMaskIntoConstraints = false
-        forgotButton.setTitleColor(UIColor.black, for: UIControlState())
-        forgotButton.setTitle("Forgot your password?", for: UIControlState())
-        formStackView.addArrangedSubview(forgotButton)
-        
-        forgotButton.addConstraints(
-            NSLayoutConstraint.constraints(withVisualFormat: "V:[forgotButton(<=44)]", options: .alignAllCenterY, metrics: nil, views: ["forgotButton": forgotButton])
-        )
-        
-        forgotButton.addTarget(self, action: #selector(forgotTapped(_:)), for: UIControlEvents.touchUpInside)
-        
-        hideRecoverControls()
-    }
-    
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        if newCollection.verticalSizeClass == .compact  {
-            headerStackView.axis = .horizontal
-        } else {
-            headerStackView.axis = .vertical
-        }
-    }
-    
-    func forgotTapped(_ sender: AnyObject) {
-        UIView.animate(withDuration: 0.2, animations: { [] () -> Void in
-            self.signInButton.isHidden = true
-            self.signInLabel.isHidden = true
-            self.forgotButton.isHidden = true
-            self.passwordField.isHidden = true
-            self.recoverButton.isHidden = false
-            self.recoverLabel.isHidden = false
-            self.backToSignIn.isHidden = false
-        })
-    }
-    
-    func backToSignInTapped(_ sender: AnyObject) {
-        UIView.animate(withDuration: 0.2, animations: { [] () -> Void in
-            self.signInButton.isHidden = false
-            self.signInLabel.isHidden = false
-            self.forgotButton.isHidden = false
-            self.passwordField.isHidden = false
-            self.recoverButton.isHidden = true
-            self.recoverLabel.isHidden = true
-            self.backToSignIn.isHidden = true
-        })
-    }
-    
-    func hideRecoverControls() {
-        signInButton.isHidden = false
-        forgotButton.isHidden = false
-        passwordField.isHidden = false
-        recoverButton.isHidden = true
-        recoverLabel.isHidden = true
-        backToSignIn.isHidden = true
-    }
-    
-    func signInPressed() {
-        if emailField.text == nil || emailField.text == "" || passwordField.text == nil || passwordField.text == "" {
-            self.displayEmptyField()
-        }
-        else {
-            AuthService.instance.login(email: emailField.text!, password: passwordField.text!, onComplete: nil)
-        }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        emailField.resignFirstResponder()
-        passwordField.resignFirstResponder()
-    }
-    
-    func displayEmptyField() {
-        let alert = UIAlertController(title: "Enter email and password", message: "", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(alertAction)
-        self.present(alert, animated: true, completion: nil)
-    }
-}
+        fadeView.topAnchor.constraint(equalTo: titleView.topAnchor).isActive = true
+        fadeView.trailingAnchor.constraint(equalTo: titleView.trailingAnchor).isActive = true
+        fadeView.leadingAnchor.constraint(equalTo: titleView.leadingAnchor).isActive = true
+        fadeView.heightAnchor.constraint(equalTo: titleView.heightAnchor, multiplier: 1.0).isActive = true
 
-extension SignUpLogInVC: SignedIn {
-    internal func displayAlert() {
-        let alert = UIAlertController(title: "Signed In", message: "Press the plus button in Home feed to add a challenge", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(alertAction)
-        self.present(alert, animated: true, completion: nil)
+        titleView.addSubview(joinBtn)
+        
+        joinBtn.layer.borderWidth = 4.0
+        joinBtn.layer.borderColor = UIColor.white.cgColor
+        joinBtn.backgroundColor = UIColor.clear
+        joinBtn.trailingAnchor.constraint(equalTo: titleView.trailingAnchor).isActive = true
+        joinBtn.leadingAnchor.constraint(equalTo: titleView.leadingAnchor).isActive = true
+        joinBtn.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.25).isActive = true
+        joinBtn.topAnchor.constraint(equalTo: titleView.bottomAnchor).isActive = true
+        
+        joinBtn.setTitle("join", for: .normal)
+        joinBtn.titleLabel?.font = UIFont(name: "MyriadPro-BoldCond", size: 76)
+        
+        let fadeView2 = UIImageView(image: fadePhoto)
+        fadeView2.translatesAutoresizingMaskIntoConstraints = false
+        joinBtn.addSubview(fadeView2)
+        
+        fadeView2.topAnchor.constraint(equalTo: joinBtn.topAnchor).isActive = true
+        fadeView2.trailingAnchor.constraint(equalTo: joinBtn.trailingAnchor).isActive = true
+        fadeView2.leadingAnchor.constraint(equalTo: joinBtn.leadingAnchor).isActive = true
+        fadeView2.heightAnchor.constraint(equalTo: joinBtn.heightAnchor, multiplier: 1.0).isActive = true
+        
+        joinBtn.addSubview(logInBtn)
+        
+        logInBtn.layer.borderWidth = 4.0
+        logInBtn.layer.borderColor = UIColor.white.cgColor
+        logInBtn.backgroundColor = UIColor.clear
+        logInBtn.trailingAnchor.constraint(equalTo: joinBtn.trailingAnchor).isActive = true
+        logInBtn.leadingAnchor.constraint(equalTo: joinBtn.leadingAnchor).isActive = true
+        logInBtn.topAnchor.constraint(equalTo: joinBtn.bottomAnchor).isActive = true
+        logInBtn.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor).isActive = true
+        
+        logInBtn.setTitle("login", for: .normal)
+        logInBtn.titleLabel?.font = UIFont(name: "MyriadPro-BoldCond", size: 76)
+        
+        let fadeView3 = UIImageView(image: fadePhoto)
+        fadeView3.translatesAutoresizingMaskIntoConstraints = false
+        logInBtn.addSubview(fadeView3)
+        
+        fadeView3.topAnchor.constraint(equalTo: logInBtn.topAnchor).isActive = true
+        fadeView3.trailingAnchor.constraint(equalTo: logInBtn.trailingAnchor).isActive = true
+        fadeView3.leadingAnchor.constraint(equalTo: logInBtn.leadingAnchor).isActive = true
+        fadeView3.heightAnchor.constraint(equalTo: logInBtn.heightAnchor, multiplier: 1.0).isActive = true
+        
     }
-
-    
 }

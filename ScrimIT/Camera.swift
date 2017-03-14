@@ -11,6 +11,7 @@ import UIKit
 import AVFoundation
 import Photos
 
+@available(iOS 10.0, *)
 class Camera: UIViewController, AVCaptureFileOutputRecordingDelegate {
     
     var videoDelegate: VideoUploadDelegate?
@@ -92,7 +93,11 @@ class Camera: UIViewController, AVCaptureFileOutputRecordingDelegate {
                     let alertController = UIAlertController(title: "Poplur", message: message, preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Alert OK button"), style: .cancel, handler: nil))
                     alertController.addAction(UIAlertAction(title: NSLocalizedString("Settings", comment: "Alert button to open Settings"), style: .`default`, handler: { action in
-                        UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
+                        if #available(iOS 10.0, *) {
+                            UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
+                        } else {
+                            // Fallback on earlier versions
+                        }
                     }))
                     
                     self.present(alertController, animated: true, completion: nil)
@@ -206,16 +211,20 @@ class Camera: UIViewController, AVCaptureFileOutputRecordingDelegate {
             var defaultVideoDevice: AVCaptureDevice?
             
             // Choose the back dual camera if available, otherwise default to a wide angle camera.
-            if let dualCameraDevice = AVCaptureDevice.defaultDevice(withDeviceType: .builtInDuoCamera, mediaType: AVMediaTypeVideo, position: .back) {
-                defaultVideoDevice = dualCameraDevice
-            }
-            else if let backCameraDevice = AVCaptureDevice.defaultDevice(withDeviceType: .builtInWideAngleCamera, mediaType: AVMediaTypeVideo, position: .back) {
-                // If the back dual camera is not available, default to the back wide angle camera.
-                defaultVideoDevice = backCameraDevice
-            }
-            else if let frontCameraDevice = AVCaptureDevice.defaultDevice(withDeviceType: .builtInWideAngleCamera, mediaType: AVMediaTypeVideo, position: .front) {
-                // In some cases where users break their phones, the back wide angle camera is not available. In this case, we should default to the front wide angle camera.
-                defaultVideoDevice = frontCameraDevice
+            if #available(iOS 10.0, *) {
+                if let dualCameraDevice = AVCaptureDevice.defaultDevice(withDeviceType: .builtInDuoCamera, mediaType: AVMediaTypeVideo, position: .back) {
+                    defaultVideoDevice = dualCameraDevice
+                }
+                else if let backCameraDevice = AVCaptureDevice.defaultDevice(withDeviceType: .builtInWideAngleCamera, mediaType: AVMediaTypeVideo, position: .back) {
+                    // If the back dual camera is not available, default to the back wide angle camera.
+                    defaultVideoDevice = backCameraDevice
+                }
+                else if let frontCameraDevice = AVCaptureDevice.defaultDevice(withDeviceType: .builtInWideAngleCamera, mediaType: AVMediaTypeVideo, position: .front) {
+                    // In some cases where users break their phones, the back wide angle camera is not available. In this case, we should default to the front wide angle camera.
+                    defaultVideoDevice = frontCameraDevice
+                }
+            } else {
+                // Fallback on earlier versions
             }
             
             let videoDeviceInput = try AVCaptureDeviceInput(device: defaultVideoDevice)
@@ -651,6 +660,7 @@ extension UIInterfaceOrientation {
     }
 }
 
+@available(iOS 10.0, *)
 extension AVCaptureDeviceDiscoverySession {
     func uniqueDevicePositionsCount() -> Int {
         var uniqueDevicePositions = [AVCaptureDevicePosition]()

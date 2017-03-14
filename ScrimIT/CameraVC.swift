@@ -20,6 +20,7 @@ enum VideoType {
     case response
 }
 
+@available(iOS 10.0, *)
 class CameraVC: Camera {
     
     var cameraFor: VideoType?
@@ -82,6 +83,7 @@ class CameraVC: Camera {
 
 }
 
+@available(iOS 10.0, *)
 extension CameraVC: VideoUploadDelegate {
     internal func recordingStarted() {
         redDot = UILabel(frame: CGRect(x: (self.navigationController?.navigationBar.bounds.maxX)! - 20 - (view.frame.width * 0.10), y: (self.navigationController?.navigationBar.bounds.minY)! + 20, width: view.frame.width * 0.10, height: (self.navigationController?.navigationBar.frame.height)! - 20))

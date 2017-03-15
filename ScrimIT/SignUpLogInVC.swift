@@ -15,14 +15,25 @@ protocol SignedIn {
 class SignUpLogInVC: TabsVC {
     
     let fadePhoto = #imageLiteral(resourceName: "fadePhotoBottom")
+    let titleView = UIView()
+    let titleLbl = UILabel()
+    
+    let joinBtn = UIButton()
+    let logInBtn = UIButton()
+
+    let fadeView = UIImageView()
+
+    func joinBtnPressed() {
+        self.navigationController?.pushViewController(SignUpVC(), animated: false)
+    }
+    
+    func loginBtnPressed() {
+        self.navigationController?.pushViewController(LogInVC(), animated: false)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let titleView = UIView()
-        let titleLbl = UILabel()
-        let joinBtn = UIButton()
-        let logInBtn = UIButton()
         
         self.view.addSubview(titleView)
         
@@ -37,7 +48,7 @@ class SignUpLogInVC: TabsVC {
         titleView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: -10).isActive = true
         titleView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
         titleView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.33).isActive = true
-        
+        titleView.isUserInteractionEnabled = true
         titleView.addSubview(titleLbl)
         
         titleLbl.translatesAutoresizingMaskIntoConstraints = false
@@ -50,7 +61,7 @@ class SignUpLogInVC: TabsVC {
         titleLbl.setSpacing(space: -3.1)
         titleLbl.shadowColor = UIColor.white
         
-        let fadeView = UIImageView(image: fadePhoto)
+        fadeView.image = fadePhoto
         fadeView.alpha = 0.5
         fadeView.translatesAutoresizingMaskIntoConstraints = false
         titleView.addSubview(fadeView)
@@ -60,7 +71,7 @@ class SignUpLogInVC: TabsVC {
         fadeView.leadingAnchor.constraint(equalTo: titleView.leadingAnchor).isActive = true
         fadeView.heightAnchor.constraint(equalTo: titleView.heightAnchor, multiplier: 1.0).isActive = true
 
-        titleView.addSubview(joinBtn)
+         self.view.addSubview(joinBtn)
         
         joinBtn.layer.borderWidth = 4.0
         joinBtn.layer.borderColor = UIColor.white.cgColor
@@ -72,7 +83,8 @@ class SignUpLogInVC: TabsVC {
         
         joinBtn.setTitle("join", for: .normal)
         joinBtn.titleLabel?.font = UIFont(name: "MyriadPro-BoldCond", size: 76)
-        
+        joinBtn.isUserInteractionEnabled = true
+        joinBtn.addTarget(self, action: #selector(self.joinBtnPressed), for: .touchUpInside)
         let fadeView2 = UIImageView(image: fadePhoto)
         fadeView2.alpha = 0.5
         fadeView2.translatesAutoresizingMaskIntoConstraints = false
@@ -83,7 +95,7 @@ class SignUpLogInVC: TabsVC {
         fadeView2.leadingAnchor.constraint(equalTo: joinBtn.leadingAnchor).isActive = true
         fadeView2.heightAnchor.constraint(equalTo: joinBtn.heightAnchor, multiplier: 1.0).isActive = true
         
-        joinBtn.addSubview(logInBtn)
+        self.view.addSubview(logInBtn)
         
         logInBtn.layer.borderWidth = 4.0
         logInBtn.layer.borderColor = UIColor.white.cgColor
@@ -95,6 +107,8 @@ class SignUpLogInVC: TabsVC {
         
         logInBtn.setTitle("login", for: .normal)
         logInBtn.titleLabel?.font = UIFont(name: "MyriadPro-BoldCond", size: 76)
+        logInBtn.isUserInteractionEnabled = true
+        logInBtn.addTarget(self, action: #selector(self.loginBtnPressed), for: .touchUpInside)
         
         let fadeView3 = UIImageView(image: fadePhoto)
         fadeView3.alpha = 0.5
@@ -107,4 +121,6 @@ class SignUpLogInVC: TabsVC {
         fadeView3.heightAnchor.constraint(equalTo: logInBtn.heightAnchor, multiplier: 1.0).isActive = true
         
     }
+    
+  
 }

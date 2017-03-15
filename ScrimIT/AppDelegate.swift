@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         trainingTab.tabBarItem = UITabBarItem(title: "Training", image: trainingIcon, tag: 1)
         
         let challengesTab = ChallengesVC()
-        challengesTab.tabBarItem = UITabBarItem(title: "Path", image: pathIcon, tag: 2)
+        challengesTab.tabBarItem = UITabBarItem(title: "Challenges", image: pathIcon, tag: 2)
         
         let profileTab = SignUpLogInVC()
         profileTab.tabBarItem = UITabBarItem(title: "Profile", image: userIcon, tag: 3)

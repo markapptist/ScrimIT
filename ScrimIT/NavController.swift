@@ -19,7 +19,7 @@ class NavController: UINavigationController, UINavigationControllerDelegate {
         super.viewDidLoad()
         
 
-        self.navigationBar.isHidden = false 
+        self.navigationBar.isHidden = false
 
         
         let titleImgWidth = self.navigationBar.frame.width/9

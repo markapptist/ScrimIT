@@ -20,30 +20,32 @@ enum VideoType {
     case response
 }
 
+@available(iOS 10.0, *)
 class CameraVC: Camera {
     
     var cameraFor: VideoType?
     
-    var reponseToName: String?
-    
-    var responseTo: String?
-    
+    // response video unique ID
+    var responseToVideoID: String?
     var challengeTitle: String?
+    var videoURL: URL?
     
-    var redDot: UILabel?
-    
+    // view variables 
     var cameraRecord: RecordButton!
     
-    var videoURL: URL?
+//    var timeBarView = UIView()
+    var activityView: UIActivityIndicatorView?
     
     var _previewView = PreviewView()
     
     override func viewDidLoad() {
         previewView = _previewView
         
+//        timeBarView.frame = (self.tabBarController?.tabBar.frame)!
+        
         self.tabBarController?.tabBar.isHidden = true
         
-        previewView.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.maxY)!, width: view.frame.width, height: view.frame.height)
+        previewView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         
         videoDelegate = self
         
@@ -51,8 +53,13 @@ class CameraVC: Camera {
         
         previewView.backgroundColor = UIColor.black
         
-        cameraRecord = RecordButton(frame: CGRect(x: view.center.x - ((view.frame.width*0.20)/2), y: view.frame.maxY - view.frame.width * 0.20, width: view.frame.width * 0.20, height: view.frame.width * 0.20))
+        cameraRecord = RecordButton(type: .system)
+        cameraRecord.frame = CGRect(x: view.center.x - ((view.frame.width*0.20)/2), y: view.frame.maxY - view.frame.width * 0.20, width: view.frame.width * 0.20, height: view.frame.width * 0.20)
         cameraRecord.backgroundColor = UIColor.white
+        cameraRecord.layer.cornerRadius = cameraRecord.frame.width/2
+        cameraRecord.backgroundColor = UIColor.clear
+        cameraRecord.layer.borderColor = UIColor.white.cgColor
+        cameraRecord.layer.borderWidth = 3.0
         cameraRecord.addTarget(self, action: #selector(self.recordFunction), for: .touchUpInside)
         
         self.view.addSubview(previewView)
@@ -79,39 +86,80 @@ class CameraVC: Camera {
         alert.addAction(alertAction)
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func displayPosted() {
+        let alert = UIAlertController(title: "Posted!", message: "", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(alertAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func displayErrorUploading(error: Error) {
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(alertAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+
+
+    
+    func showActivityIndicator() {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    
+    
+    func hideActivityIndicator() {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+
 
 }
 
+@available(iOS 10.0, *)
 extension CameraVC: VideoUploadDelegate {
     internal func recordingStarted() {
-        redDot = UILabel(frame: CGRect(x: (self.navigationController?.navigationBar.bounds.maxX)! - 20 - (view.frame.width * 0.10), y: (self.navigationController?.navigationBar.bounds.minY)! + 20, width: view.frame.width * 0.10, height: (self.navigationController?.navigationBar.frame.height)! - 20))
-        redDot?.backgroundColor = UIColor.red
-        self.navigationController?.navigationBar.addSubview(redDot!)
+        UIView.animate(withDuration: 0.5) { 
+            self.cameraRecord.backgroundColor = UIColor.white
+            self.cameraRecord.setTitle("STOP", for: .normal)
+            self.cameraRecord.titleLabel?.font = UIFont(name: "Avenir", size: self.cameraRecord.frame.height * 0.3)
+            
+        }
+        self.navigationController?.navigationBar.isHidden = true
     }
 
     internal func recordingStopped(video: URL) {
-        self.redDot?.removeFromSuperview()
+        
+        UIView.animate(withDuration: 0.5) { 
+            self.cameraRecord.setTitle("", for: .normal)
+            self.cameraRecord.backgroundColor = UIColor.clear
+        }
+        
         self.videoURL = video
+        self.navigationController?.navigationBar.isHidden = false
+        /*
         let player = AuthService.instance.getSignedInUser()
         if player.uid == nil {
             self.displayAlert()
         }
         else {
-            if cameraFor == .new {
-                let videoStorageName = "\(NSUUID().uuidString)\(self.videoURL)"
-                DataService.instance.saveChallengeVideo(file: video, title: self.challengeTitle!, user: player.uid!, userEmail: player.email!, videoName: videoStorageName)
-            }
-            if cameraFor == .response {
-                let videoStorageName = "\(NSUUID().uuidString)\(self.videoURL)"
-                DataService.instance.saveResponseToChallenge(name: self.challengeTitle!, userEmail: player.email!, videoName: videoStorageName, file: video)
-            }
+            
+         }
+        */
+        if cameraFor == .new {
+            let videoStorageName = "\(NSUUID().uuidString)\(self.videoURL)"
+            DataService.instance.uploadProgress = self
+            DataService.instance.saveChallengeVideo(file: video, name: self.challengeTitle!, videoName: videoStorageName)
+        }
+        if cameraFor == .response {
+            let videoStorageName = "\(NSUUID().uuidString)\(self.videoURL)"
+            DataService.instance.uploadProgress = self
+            DataService.instance.saveResponseToChallenge(name: self.challengeTitle!, videoName: videoStorageName, file: video, videoID: self.responseToVideoID!)
         }
     }
     
     internal func videoPosted() {
         
     }
-
     
 }
 

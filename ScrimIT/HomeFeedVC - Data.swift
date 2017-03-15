@@ -22,36 +22,36 @@ extension HomeFeedVC {
                 let challengeProfile = challenge as! FIRDataSnapshot
                 let challengeData = challengeProfile.value as? NSDictionary
                 
-                let challengeName = challengeProfile.key
+                let videoUniqueID = challengeProfile.key
+                let videoTitleName = challengeData?["title"] as? String
                 let videoURLString = challengeData?["URL"] as? String
 //                let postedBy = challengeData?["postedBy"] as? String
                 
-                let video = ChallengeVideo(url: videoURLString, title: challengeName)
+                let video = ChallengeVideo(url: videoURLString, title: videoTitleName, uniqueID: videoUniqueID)
                 
                 self.videos.append(video)
                 
-                if snapshot.childSnapshot(forPath: challengeName).hasChild("responses") {
+                if snapshot.childSnapshot(forPath: videoUniqueID).hasChild("responses") {
                     
                     var responsesArray: [ChallengeVideo] = []
                     
-                    for response in snapshot.childSnapshot(forPath: challengeName).childSnapshot(forPath: "responses").children.allObjects {
+                    for response in snapshot.childSnapshot(forPath: videoUniqueID).childSnapshot(forPath: "responses").children.allObjects {
                         
                         let responseProfile = response as! FIRDataSnapshot
                         let responseData = responseProfile.value as? NSDictionary
                         
+                        let responseUniqueID = responseProfile.key
                         let responseVideoURL = responseData?["URL"] as? String
-                        let responseUserEmail = responseData?["respondedBy"] as? String
+//                        let responseUserEmail = responseData?["respondedBy"] as? String
                         
-                        let responseVideo = ChallengeVideo(url: responseVideoURL, title: responseUserEmail)
+                        let responseVideo = ChallengeVideo(url: responseVideoURL, title: nil, uniqueID: responseUniqueID)
                         
                         responsesArray.append(responseVideo)
                     }
-                    
-                    self.responses.updateValue(responsesArray, forKey: challengeName)
+                    self.responses.updateValue(responsesArray, forKey: videoUniqueID)
                 }
                 else {
-                    
-                    self.responses.updateValue([], forKey: challengeName)
+                    self.responses.updateValue([], forKey: videoUniqueID)
                 }
             }
             

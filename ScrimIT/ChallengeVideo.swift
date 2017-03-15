@@ -12,9 +12,11 @@ class ChallengeVideo: NSObject {
     
     var url: String?
     var title: String?
+    var uniqueID: String?
     
-    init(url: String?, title: String?) {
+    init(url: String?, title: String?, uniqueID: String?) {
         self.url = url
         self.title = title
+        self.uniqueID = uniqueID
     }
 }

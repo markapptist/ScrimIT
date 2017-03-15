@@ -7,6 +7,60 @@
 //
 
 import UIKit
+import QuartzCore
+
+extension CALayer {
+    static let rotationKeyPath = "transform.rotation"
+    
+    var center: CGPoint {
+        return CGPoint(x: bounds.width/2, y: bounds.height/2)
+    }
+}
+
+extension UIColor {
+    func green() -> CGColor {
+        return UIColor(red: 158/255, green: 255/255, blue: 9/255, alpha: 1.0).cgColor
+    }
+    
+    func blue() -> CGColor {
+        return UIColor(red: 33/255, green: 253/255, blue: 197/255, alpha: 1.0).cgColor
+    }
+    
+    func pink() -> CGColor {
+        return UIColor(red: 251/255, green: 12/255, blue: 116/255, alpha: 1.0).cgColor
+    }
+    
+    var darkened: UIColor {
+        var hue = CGFloat()
+        var saturation = CGFloat()
+        var brightness = CGFloat()
+        var alpha = CGFloat()
+        
+        getHue(
+            &hue,
+            saturation: &saturation,
+            brightness: &brightness,
+            alpha: &alpha
+        )
+        
+        return UIColor(
+            hue: min(hue * 1.1, 1),
+            saturation: saturation,
+            brightness: brightness * 0.7,
+            alpha: alpha
+        )
+    }
+
+}
+
+extension CIColor {
+    convenience init(darkening cgColor: CGColor) {
+        self.init(
+            color: UIColor(cgColor: cgColor).darkened
+        )
+    }
+}
+
 
 extension UILabel {
     

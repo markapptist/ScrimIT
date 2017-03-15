@@ -10,10 +10,11 @@ import UIKit
 
 class TrainingVC: TabsVC {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(false)
         
     }
+    
+ 
 
 }

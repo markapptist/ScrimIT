@@ -14,25 +14,29 @@ class VideoCell: UITableViewCell {
     
     var player: AVPlayer?
     var playerLayer: AVPlayerLayer?
-    var video: ChallengeVideo?
+    var video: ChallengeVideo? {
+        didSet {
+            let urlString = video?.url
+            let videoURL = URL(string: urlString!)
+            
+            player = AVPlayer(url: videoURL!)
+            playerLayer = AVPlayerLayer()
+            playerLayer?.player = player
+            playerLayer?.frame = contentView.frame
+            print(contentView.frame.height)
+            playerLayer?.masksToBounds = true
+            playerLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+            
+            contentView.layer.addSublayer(playerLayer!)
+        }
+    }
     
     override func layoutSubviews() {
         
-        let urlString = video?.url
-        let videoURL = URL(string: urlString!)
-        
-        player = AVPlayer(url: videoURL!)
-        playerLayer = AVPlayerLayer()
-        playerLayer?.player = player
-        
-        playerLayer?.frame = contentView.bounds
-        playerLayer?.masksToBounds = true
-        
-        playerLayer?.videoGravity = AVLayerVideoGravityResizeAspect
-        
-        contentView.layer.addSublayer(playerLayer!)
-        
-//        self.player?.play()
-        
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.player?.play()
     }
 }

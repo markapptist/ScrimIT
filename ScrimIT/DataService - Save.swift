@@ -8,43 +8,99 @@
 
 import Foundation
 import FirebaseDatabase
+import FirebaseStorage
 
 extension DataService {
     
-    func saveChallengeVideo(file: URL, title: String, user: String, userEmail: String, videoName: String) {
+    func saveChallengeVideo(file: URL, name: String, videoName: String) {
+        let uniqueID = NSUUID().uuidString
+        
+        self.uploadProgress?.showActivityView()
         
         // Storage
-        self.challengeVideoStorageRef.child(videoName).putFile(file, metadata: nil) { (meta, error) in
+        self.challengeVideoStorageRef.child(uniqueID).putFile(file, metadata: nil) { (meta, error) in
             if error != nil {
-                print(error?.localizedDescription ?? "")
+                // print(error?.localizedDescription ?? "")
+                self.uploadProgress?.errorUploading(error: error!)
             }
             else {
-                let profile: [String:Any] = ["postedBy": userEmail, "URL": meta!.downloadURL()!.absoluteString]
-             
+                let profile: [String:Any] = ["title": name, "URL": meta!.downloadURL()!.absoluteString]
+                
                 // public list
-                self.challengesRef.child(title).setValue(profile)
+                self.challengesRef.child(uniqueID).setValue(profile)
                 
-                // user posted list
-                self.usersRef.child(user).child("PostedChallenges").child(title).setValue(profile)
-                
-                print("done")
+                self.uploadProgress?.removeActivityView()
             }
         }
+        
+        /*
+        let metadata = FIRStorageMetadata()
+        metadata.contentType = "mov/mp4"
+        
+        let uploadTask = self.challengeVideoStorageRef.child(uniqueID).putFile(file, metadata: metadata)
+        self.uploadProgress?.showActivityView()
+        
+        // failure case
+        uploadTask.observe(.failure) { (snapshot) in
+            self.uploadProgress?.errorUploading()
+        }
+        
+        // progress case
+        uploadTask.observe(.progress) { (snapshot) in
+            print(snapshot.progress) // do something with progress
+        }
+        
+        // success case
+        uploadTask.observe(.success) { (snapshot) in
+            self.uploadProgress?.removeActivityView()
+            let profile: [String:Any] = ["title": name, "fileURL": metadata.storageReference]
+            
+            self.challengesRef.child(uniqueID).setValue(profile)
+            uploadTask.removeAllObservers()
+        }
+        */
     }
     
-    func saveResponseToChallenge(name: String, userEmail: String, videoName: String, file: URL) {
-        self.challengeVideoStorageRef.child(videoName).putFile(file, metadata: nil) { (meta, error) in
+    func saveResponseToChallenge(name: String, videoName: String, file: URL, videoID: String) {
+        let uniqueID = NSUUID().uuidString
+
+        self.uploadProgress?.showActivityView()
+        
+        // Storage
+        self.challengeVideoStorageRef.child(uniqueID).putFile(file, metadata: nil) { (meta, error) in
             if error != nil {
-                print(error?.localizedDescription ?? "")
+                // print(error?.localizedDescription ?? "")
+                self.uploadProgress?.errorUploading(error: error!)
             }
             else {
-                let profile: [String:Any] = ["respondedBy": userEmail, "URL": meta!.downloadURL()!.absoluteString]
+                let profile: [String:Any] = ["title": name, "URL": meta!.downloadURL()!.absoluteString]
                 
-                self.challengesRef.child(name).child("responses").child("1").setValue(profile)
+                // public list
+                self.challengesRef.child(videoID).child("responses").child(uniqueID).setValue(profile)
                 
-                print("done")
+                self.uploadProgress?.removeActivityView()
             }
         }
+        
+        /*
+        let uploadTask = self.challengeVideoStorageRef.putFile(file, metadata: nil)
+        self.uploadProgress?.showActivityView()
+        
+        // failure case
+        uploadTask.observe(.failure) { (snapshot) in
+            self.uploadProgress?.errorUploading()
+        }
+        
+        uploadTask.observe(.progress) { (snapshot) in
+            print(snapshot.progress)
+        }
+        
+        uploadTask.observe(.success) { (snapshot) in
+            self.uploadProgress?.removeActivityView()
+            self.challengesRef.child(uniqueID).child(name).child("responses").child(uniqueID).setValue(file.absoluteString)
+            uploadTask.removeAllObservers()
+        }
+        */
     }
     
 }

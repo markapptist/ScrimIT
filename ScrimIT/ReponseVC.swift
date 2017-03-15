@@ -12,14 +12,16 @@ import AVFoundation
 
 class ResponseVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    // model
     var numberOfResponses: [ChallengeVideo]? = nil
     
+    // variables
     var currentChallengeURL: String?
+    var challengeTitle: String?
+    var videoUniqueID: String?
     
-    var nameOfChallenge: String?
-    
+    // view variables
     var respondButton: UIButton?
-    
     var player: AVPlayer?
     var playerLayer: AVPlayerLayer?
     
@@ -40,7 +42,7 @@ class ResponseVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         playerLayer?.player = player
         
         playerLayer?.masksToBounds = true
-        playerLayer?.videoGravity = AVLayerVideoGravityResizeAspect
+        playerLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
         playerLayer?.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.height)!, width: view.frame.width, height: videosContainer.frame.height/2)
         
         
@@ -67,7 +69,8 @@ class ResponseVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func respondButtonFunction() {
         let camera = CameraVC()
         camera.cameraFor = .response
-        camera.challengeTitle = self.nameOfChallenge
+        camera.responseToVideoID = self.videoUniqueID
+        camera.challengeTitle = self.challengeTitle
         self.navigationController?.pushViewController(camera, animated: true)
     }
     
@@ -85,7 +88,7 @@ class ResponseVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let video = self.numberOfResponses?[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = video?.title
+        cell.textLabel?.text = video?.url
         return cell
     }
     

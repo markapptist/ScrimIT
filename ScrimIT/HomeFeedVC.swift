@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseStorage
 
 class HomeFeedVC: TabsVC, UITableViewDataSource, UITableViewDelegate {
     
@@ -29,6 +30,7 @@ class HomeFeedVC: TabsVC, UITableViewDataSource, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // challenges database reference
         self.ref = DataService.instance.challengesRef
         
         addButton = UIButton(type: .system)
@@ -53,10 +55,21 @@ class HomeFeedVC: TabsVC, UITableViewDataSource, UITableViewDelegate {
         self.getPublicChallenges()
     }
     
+    func addButtonFunction() {
+        self.navigationController?.pushViewController(newChallenge, animated: true)
+    }
+    
+    func displayNoChallenges() {
+        let alert = UIAlertController(title: "No challenges", message: "", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(alertAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     // MARK: - TableView DataSource
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return view.frame.height * 0.30
+        return view.frame.height * 0.20
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -76,23 +89,18 @@ class HomeFeedVC: TabsVC, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - TableView Delegate
     
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let cell = cell as! VideoCell
+        cell.player?.pause()
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let video = self.videos[indexPath.row]
         respondView.currentChallengeURL = video.url
-        respondView.nameOfChallenge = video.title
-        respondView.numberOfResponses = self.responses[video.title!]
+        respondView.videoUniqueID = video.uniqueID
+        respondView.challengeTitle = video.title
+        respondView.numberOfResponses = self.responses[video.uniqueID!]
         self.navigationController?.pushViewController(respondView, animated: true)
-    }
-    
-    func addButtonFunction() {
-        self.navigationController?.pushViewController(newChallenge, animated: true)
-    }
-    
-    func displayNoChallenges() {
-        let alert = UIAlertController(title: "No challenges", message: "", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(alertAction)
-        self.present(alert, animated: true, completion: nil)
     }
 
 

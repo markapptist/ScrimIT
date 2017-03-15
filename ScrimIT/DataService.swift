@@ -45,6 +45,8 @@ class DataService {
         return mainRef.child("users")
     }
     
+    var uploadProgress: UploadProgressDelegate?
+    
     // Public Challenges
     
     // Challenges Ref

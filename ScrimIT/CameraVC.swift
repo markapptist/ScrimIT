@@ -31,50 +31,65 @@ class CameraVC: Camera {
     var videoURL: URL?
     
     // view variables 
-    var cameraRecord: RecordButton!
+    var cameraRecord: UIButton!
     
 //    var timeBarView = UIView()
     var activityView: UIActivityIndicatorView?
     
-    var _previewView = PreviewView()
+    var previewView = PreviewView()
+    
+    var videoLayer: AVCaptureVideoPreviewLayer!
     
     override func viewDidLoad() {
-        previewView = _previewView
-        
-//        timeBarView.frame = (self.tabBarController?.tabBar.frame)!
-        
         self.tabBarController?.tabBar.isHidden = true
         
-        previewView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        // camera variables
+        videoLayer = AVCaptureVideoPreviewLayer()
+        previewView.videoPreviewLayer = videoLayer
         
+        _previewView = previewView
         videoDelegate = self
         
         super.viewDidLoad()
         
-        previewView.backgroundColor = UIColor.black
+        previewView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         
-        cameraRecord = RecordButton(type: .system)
+        previewView.backgroundColor = UIColor.black
+        previewView.videoPreviewLayer.frame = CGRect(x: 0, y: 0, width: previewView.bounds.width, height: previewView.bounds.height/2)
+        print(_previewView.videoPreviewLayer.frame)
+        previewView.videoPreviewLayer.position = CGPoint(x: self.view.bounds.midX, y: self.view.bounds.midY)
+        previewView.videoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        
+        previewView.videoPreviewLayer.session = previewView.session
+        previewView.layer.addSublayer(videoLayer)
+        
+        cameraRecord = UIButton(type: .system)
         cameraRecord.frame = CGRect(x: view.center.x - ((view.frame.width*0.20)/2), y: view.frame.maxY - view.frame.width * 0.20, width: view.frame.width * 0.20, height: view.frame.width * 0.20)
         cameraRecord.backgroundColor = UIColor.white
         cameraRecord.layer.cornerRadius = cameraRecord.frame.width/2
         cameraRecord.backgroundColor = UIColor.clear
         cameraRecord.layer.borderColor = UIColor.white.cgColor
         cameraRecord.layer.borderWidth = 3.0
-        cameraRecord.addTarget(self, action: #selector(self.recordFunction), for: .touchUpInside)
+        cameraRecord.addTarget(self, action: #selector(recordFunction), for: .touchUpInside)
         
         self.view.addSubview(previewView)
+        
         self.view.addSubview(cameraRecord)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        
+        
+        self.view.bringSubview(toFront: cameraRecord)
+        
+        
         
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
     }
-    
-    override func viewWillLayoutSubviews() {
-        view.bringSubview(toFront: cameraRecord)
-    }
-    
+        
     // push button to record
     func recordFunction() {
         self.toggleMovieRecording()

@@ -10,12 +10,19 @@ import Foundation
 import UIKit
 import AVFoundation
 
+
 class VideoCell: UITableViewCell {
     
     var player: AVPlayer?
     var playerLayer: AVPlayerLayer?
     var video: ChallengeVideo? {
         didSet {
+            
+            let webView = UIWebView(frame: self.contentView.bounds)
+            
+            
+            
+            /*
             let urlString = video?.url
             let videoURL = URL(string: urlString!)
             
@@ -28,6 +35,7 @@ class VideoCell: UITableViewCell {
             playerLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
             
             contentView.layer.addSublayer(playerLayer!)
+ */
         }
     }
     

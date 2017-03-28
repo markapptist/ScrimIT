@@ -27,7 +27,7 @@ class Camera: UIViewController, AVCaptureFileOutputRecordingDelegate {
         recordButton.isEnabled = false
         
         // Set up the video preview view.
-        previewView.session = session
+        _previewView.session = session
         
         /*
          Check video authorization status. Video access is required and audio
@@ -138,7 +138,7 @@ class Camera: UIViewController, AVCaptureFileOutputRecordingDelegate {
     private let videoDeviceDiscoverySession = AVCaptureDeviceDiscoverySession(deviceTypes: [.builtInWideAngleCamera, .builtInDuoCamera], mediaType: AVMediaTypeVideo, position: .unspecified)!
     
     @IBAction private func focusAndExposeTap(_ gestureRecognizer: UITapGestureRecognizer) {
-        let devicePoint = self.previewView.videoPreviewLayer.captureDevicePointOfInterest(for: gestureRecognizer.location(in: gestureRecognizer.view))
+        let devicePoint = self._previewView.videoPreviewLayer.captureDevicePointOfInterest(for: gestureRecognizer.location(in: gestureRecognizer.view))
         focus(with: .autoFocus, exposureMode: .autoExpose, at: devicePoint, monitorSubjectAreaChange: true)
     }
     
@@ -190,7 +190,7 @@ class Camera: UIViewController, AVCaptureFileOutputRecordingDelegate {
     
     var videoDeviceInput: AVCaptureDeviceInput!
     
-    weak var previewView: PreviewView!
+    weak var _previewView: PreviewView!
     
     // Call this on the session queue.
     private func configureSession() {
@@ -252,7 +252,7 @@ class Camera: UIViewController, AVCaptureFileOutputRecordingDelegate {
                         }
                     }
                     
-                    self.previewView.videoPreviewLayer.connection.videoOrientation = initialVideoOrientation
+                    self._previewView.videoPreviewLayer.connection.videoOrientation = initialVideoOrientation
                 }
             }
             else {
@@ -289,18 +289,29 @@ class Camera: UIViewController, AVCaptureFileOutputRecordingDelegate {
         sessionQueue.async { [unowned self] in
             let movieFileOutput = AVCaptureMovieFileOutput()
             
-            if self.session.canAddOutput(movieFileOutput) {
+            let x = self._previewView.videoPreviewLayer.frame.origin.x/480
+            let y = self._previewView.videoPreviewLayer.frame.origin.y/640
+            let width = self._previewView.videoPreviewLayer.frame.width/480
+            let height = self._previewView.videoPreviewLayer.frame.height/640
+            let transformed = CGRect(x: x, y: y, width: width, height: height)
+            
+            movieFileOutput.rectForMetadataOutputRect(ofInterest: transformed)
+            
+            // set max duration of recording
+            movieFileOutput.maxRecordedDuration = CMTimeMake(10, 1)
+            
+            self.movieFileOutput = movieFileOutput
+            
+            if self.session.canAddOutput(self.movieFileOutput) {
                 self.session.beginConfiguration()
-                self.session.addOutput(movieFileOutput)
-                self.session.sessionPreset = AVCaptureSessionPresetHigh
+                self.session.addOutput(self.movieFileOutput)
+                //self.session.sessionPreset = AVCaptureSessionPresetHigh
                 if let connection = movieFileOutput.connection(withMediaType: AVMediaTypeVideo) {
                     if connection.isVideoStabilizationSupported {
                         connection.preferredVideoStabilizationMode = .auto
                     }
                 }
                 self.session.commitConfiguration()
-                
-                self.movieFileOutput = movieFileOutput
                 
                 DispatchQueue.main.async { [unowned self] in
                     self.recordButton.isEnabled = true
@@ -342,7 +353,7 @@ class Camera: UIViewController, AVCaptureFileOutputRecordingDelegate {
     
     // MARK: Recording Movies
     
-    private var movieFileOutput: AVCaptureMovieFileOutput? = nil
+    var movieFileOutput: AVCaptureMovieFileOutput? = nil
     
     private var backgroundRecordingID: UIBackgroundTaskIdentifier? = nil
     
@@ -374,7 +385,7 @@ class Camera: UIViewController, AVCaptureFileOutputRecordingDelegate {
          before entering the session queue. We do this to ensure UI elements are
          accessed on the main thread and session configuration is done on the session queue.
          */
-        let videoPreviewLayerOrientation = previewView.videoPreviewLayer.connection.videoOrientation
+        let videoPreviewLayerOrientation = _previewView.videoPreviewLayer.connection.videoOrientation
         
         sessionQueue.async { [unowned self] in
             if !movieFileOutput.isRecording {
@@ -391,15 +402,14 @@ class Camera: UIViewController, AVCaptureFileOutputRecordingDelegate {
                 }
                 
                 // Update the orientation on the movie file output video connection before starting recording.
-                let movieFileOutputConnection = self.movieFileOutput?.connection(withMediaType: AVMediaTypeVideo)
+                let movieFileOutputConnection = movieFileOutput.connection(withMediaType: AVMediaTypeVideo)
                 movieFileOutputConnection?.videoOrientation = videoPreviewLayerOrientation
+                
                 
                 // Start recording to a temporary file.
                 let outputFileName = NSUUID().uuidString
                 let outputFilePath = (NSTemporaryDirectory() as NSString).appendingPathComponent((outputFileName as NSString).appendingPathExtension("mov")!)
                 movieFileOutput.startRecording(toOutputFileURL: URL(fileURLWithPath: outputFilePath), recordingDelegate: self)
-                // set max duration of recording
-                movieFileOutput.maxRecordedDuration = CMTimeMake(10, 1)
             }
             else {
                 movieFileOutput.stopRecording()

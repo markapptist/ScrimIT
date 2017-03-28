@@ -49,7 +49,6 @@ class AuthService {
                                         }
                                         else {
                                             
-                                            self.tempDelegate?.displayAlert()
                                             /*
                                             if user?.isEmailVerified == false {
                                                 print("not verified")
@@ -64,10 +63,10 @@ class AuthService {
 
                                             }
                                             else {
-                                                print("signed in created user")
-                                                onComplete?(nil, user)
                                             }
                                              */
+                                            print("signed in created user")
+                                            onComplete?(nil, user)
                                         }
                                     })
                                     
@@ -85,7 +84,9 @@ class AuthService {
                 }
             }
             else {
-                self.tempDelegate?.displayAlert()
+                
+                
+                // email verification
                 /*
                 if user?.isEmailVerified == false {
                     print("not verified")

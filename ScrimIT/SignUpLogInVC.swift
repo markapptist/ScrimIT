@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol SignedIn {
-    func displayAlert()
-}
-
 class SignUpLogInVC: TabsVC {
     
     let fadePhoto = #imageLiteral(resourceName: "fadePhotoBottom")

@@ -18,6 +18,9 @@ import Firebase
 let screenWidth = UIScreen.main.bounds.width
 let screenHeight = UIScreen.main.bounds.width
 
+let userDefaults = UserDefaults.standard
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     

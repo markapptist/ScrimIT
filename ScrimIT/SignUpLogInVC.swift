@@ -24,12 +24,15 @@ class SignUpLogInVC: TabsVC {
     let fadeView = UIImageView()
 
     func joinBtnPressed() {
-        self.navigationController?.pushViewController(SignUpVC(), animated: false)
+        self.navigationController?.pushViewController(SignUpVCGender(), animated: false)
     }
     
     func loginBtnPressed() {
         self.navigationController?.pushViewController(LogInVC(), animated: false)
     }
+    
+    let nextButton = UIButton()
+    let questionLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,7 +123,39 @@ class SignUpLogInVC: TabsVC {
         fadeView3.leadingAnchor.constraint(equalTo: logInBtn.leadingAnchor).isActive = true
         fadeView3.heightAnchor.constraint(equalTo: logInBtn.heightAnchor, multiplier: 1.0).isActive = true
         
+        nextButton.setTitle("next", for: .normal)
+        nextButton.backgroundColor = UIColor.lightGray
+        nextButton.titleLabel?.font = UIFont(name: "MyriadPro-BoldCond", size: 26)
+        nextButton.alpha = 0.5
+        nextButton.isHidden = true
+        self.view.addSubview(nextButton)
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
+        nextButton.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor, constant: 0).isActive = true
+        nextButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
+        nextButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
+        nextButton.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.1).isActive = true
+        nextButton.addTarget(self, action: #selector(self.nextBtnPressed), for: .touchUpInside)
+        
+        questionLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(questionLabel)
+        questionLabel.isHidden = true 
+        questionLabel.textAlignment = .center
+        
+        questionLabel.font = UIFont(name: "MyriadPro-BoldCond", size: 26)
+        questionLabel.textColor = UIColor.white
+        questionLabel.topAnchor.constraint(equalTo: self.titleView.bottomAnchor, constant: 5).isActive = true
+        questionLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0).isActive = true
+        questionLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
+        questionLabel.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1.0).isActive = true
+        questionLabel.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.1).isActive = true
+        
     }
+    
+    func nextBtnPressed() {
+        
+    }
+    
+  
     
   
 }

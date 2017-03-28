@@ -104,6 +104,7 @@
 		66B063481E8AC488000CC23D /* SignUpVCName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B063471E8AC488000CC23D /* SignUpVCName.swift */; };
 		66B0634A1E8AC51A000CC23D /* SignUpVCCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B063491E8AC51A000CC23D /* SignUpVCCity.swift */; };
 		66B0634C1E8AC8D1000CC23D /* SignUpVCPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B0634B1E8AC8D1000CC23D /* SignUpVCPassword.swift */; };
+		66B0634E1E8AD4A1000CC23D /* SignUpVCEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B0634D1E8AD4A1000CC23D /* SignUpVCEmail.swift */; };
 		66D1B4A91E78A00A00DB338E /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D1B4A81E78A00A00DB338E /* Tile.swift */; };
 		66D1B4AB1E78A14100DB338E /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D1B4AA1E78A14100DB338E /* LogInVC.swift */; };
 		66D1B4AD1E78AD5100DB338E /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D1B4AC1E78AD5100DB338E /* CircleButton.swift */; };
@@ -228,6 +229,7 @@
 		66B063471E8AC488000CC23D /* SignUpVCName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVCName.swift; sourceTree = "<group>"; };
 		66B063491E8AC51A000CC23D /* SignUpVCCity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVCCity.swift; sourceTree = "<group>"; };
 		66B0634B1E8AC8D1000CC23D /* SignUpVCPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVCPassword.swift; sourceTree = "<group>"; };
+		66B0634D1E8AD4A1000CC23D /* SignUpVCEmail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVCEmail.swift; sourceTree = "<group>"; };
 		66D1B4A81E78A00A00DB338E /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		66D1B4AA1E78A14100DB338E /* LogInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInVC.swift; sourceTree = "<group>"; };
 		66D1B4AC1E78AD5100DB338E /* CircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 				66B063451E8ABD7E000CC23D /* SignUpVCAge.swift */,
 				66B063471E8AC488000CC23D /* SignUpVCName.swift */,
 				66B063491E8AC51A000CC23D /* SignUpVCCity.swift */,
+				66B0634D1E8AD4A1000CC23D /* SignUpVCEmail.swift */,
 				66B0634B1E8AC8D1000CC23D /* SignUpVCPassword.swift */,
 			);
 			name = SignUpVCs;
@@ -730,6 +733,7 @@
 				6617ED441E5E56060063A7C4 /* UIExtensions.swift in Sources */,
 				6643D1A71E60A43F000C3501 /* TabsVC.swift in Sources */,
 				92EB58341E68BAF9004E4C83 /* DataService - Save.swift in Sources */,
+				66B0634E1E8AD4A1000CC23D /* SignUpVCEmail.swift in Sources */,
 				662D48611E88E9A500140914 /* Validator.swift in Sources */,
 				662D48651E88E9F700140914 /* MessageView.swift in Sources */,
 				6617ED401E5E52790063A7C4 /* SignUpLogInVC.swift in Sources */,

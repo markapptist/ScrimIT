@@ -1,5 +1,5 @@
 //
-//  SignUpVCCity.swift
+//  SignUpVCEmail.swift
 //  ScrimIT
 //
 //  Created by Mark Meritt on 2017-03-28.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class SignUpVCCity: SignUpLogInVC {
-    
+class SignUpVCEmail: SignUpLogInVC {
+
     let displayTextField = UITextField()
     
     override func viewDidLoad() {
@@ -23,17 +23,18 @@ class SignUpVCCity: SignUpLogInVC {
         nextButton.isHidden = false
         nextButton.alpha = 1.0
         questionLabel.isHidden = false
-        questionLabel.text = "Enter your city"
+        questionLabel.text = "Enter your email"
         
         displayTextField.textAlignment = .center
         displayTextField.borderStyle = .roundedRect
+        displayTextField.keyboardType = .emailAddress
         displayTextField.font = UIFont(name: "MyriadPro-BoldCond", size: 20)
-
+        
         
         self.view.addSubview(displayTextField)
         
         displayTextField.translatesAutoresizingMaskIntoConstraints = false
-        displayTextField.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 20).isActive = true 
+        displayTextField.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 20).isActive = true
         displayTextField.centerXAnchor.constraint(equalTo: questionLabel.centerXAnchor).isActive = true
         displayTextField.widthAnchor.constraint(equalTo: questionLabel.widthAnchor, multiplier: 0.9).isActive = true
         displayTextField.heightAnchor.constraint(equalTo: questionLabel.heightAnchor, multiplier: 1.0).isActive = true
@@ -46,11 +47,9 @@ class SignUpVCCity: SignUpLogInVC {
     
     override func nextBtnPressed() {
         if(!(displayTextField.text?.isEmpty)!) {
-            userDefaults.setValue(displayTextField.text, forKey: "city")
-            self.navigationController?.pushViewController(SignUpVCEmail(), animated: false)
+            userDefaults.setValue(displayTextField.text, forKey: "email")
+            self.navigationController?.pushViewController(SignUpVCPassword(), animated: false)
         }
     }
     
 }
-
-

@@ -14,7 +14,7 @@ typealias Completion = (_ errorMessage: String?, _ data: AnyObject?) -> Void
 
 class AuthService {
     
-    var tempDelegate: SignedIn?
+  //  var tempDelegate: SignedIn?
     
     private static let _instance = AuthService()
     

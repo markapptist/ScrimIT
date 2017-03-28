@@ -65,12 +65,17 @@
 		6617EDBC1E5E57580063A7C4 /* thumb-volleyball-1280x720.png in Resources */ = {isa = PBXBuildFile; fileRef = 6617ED801E5E57580063A7C4 /* thumb-volleyball-1280x720.png */; };
 		6617EDBD1E5E57580063A7C4 /* thumb-watterbottlechallenge-1280x720.png in Resources */ = {isa = PBXBuildFile; fileRef = 6617ED811E5E57580063A7C4 /* thumb-watterbottlechallenge-1280x720.png */; };
 		6617EDBE1E5E57580063A7C4 /* ToggleCameraButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6617ED821E5E57580063A7C4 /* ToggleCameraButton.png */; };
+		662D485F1E88E85900140914 /* CustomTextFieldContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662D485E1E88E85900140914 /* CustomTextFieldContainer.swift */; };
+		662D48611E88E9A500140914 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662D48601E88E9A500140914 /* Validator.swift */; };
+		662D48631E88E9D200140914 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662D48621E88E9D200140914 /* ErrorHandler.swift */; };
+		662D48651E88E9F700140914 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662D48641E88E9F700140914 /* MessageView.swift */; };
 		6643D1A51E5F55E6000C3501 /* MyDashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6643D1A41E5F55E6000C3501 /* MyDashboardVC.swift */; };
 		6643D1A71E60A43F000C3501 /* TabsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6643D1A61E60A43F000C3501 /* TabsVC.swift */; };
 		6643D1A91E60A46B000C3501 /* HomeFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6643D1A81E60A46B000C3501 /* HomeFeedVC.swift */; };
 		6643D1AB1E60AA3E000C3501 /* TrainingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6643D1AA1E60AA3E000C3501 /* TrainingVC.swift */; };
 		6643D1AD1E60AA49000C3501 /* ChallengesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6643D1AC1E60AA49000C3501 /* ChallengesVC.swift */; };
 		6643D1AF1E60AA57000C3501 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6643D1AE1E60AA57000C3501 /* ProfileVC.swift */; };
+		6672AA411E87DE920002DA25 /* facebookIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6672AA401E87DE920002DA25 /* facebookIcon.png */; };
 		668C88E11E6DE42B00031827 /* Icon-App-20x20@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 668C88CB1E6DE42B00031827 /* Icon-App-20x20@1x.png */; };
 		668C88E21E6DE42B00031827 /* Icon-App-20x20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 668C88CC1E6DE42B00031827 /* Icon-App-20x20@2x.png */; };
 		668C88E31E6DE42B00031827 /* Icon-App-20x20@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 668C88CD1E6DE42B00031827 /* Icon-App-20x20@3x.png */; };
@@ -93,10 +98,16 @@
 		668C88F41E6DE42B00031827 /* Icon-App-83.5x83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 668C88DE1E6DE42B00031827 /* Icon-App-83.5x83.5@2x.png */; };
 		668C88F51E6DE42B00031827 /* Icon-Small-50x50@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 668C88DF1E6DE42B00031827 /* Icon-Small-50x50@1x.png */; };
 		668C88F61E6DE42B00031827 /* Icon-Small-50x50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 668C88E01E6DE42B00031827 /* Icon-Small-50x50@2x.png */; };
+		66B063421E8A8694000CC23D /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B063411E8A8694000CC23D /* Path.swift */; };
+		66B063441E8A8A82000CC23D /* ChallengeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B063431E8A8A82000CC23D /* ChallengeBox.swift */; };
+		66B063461E8ABD7E000CC23D /* SignUpVCAge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B063451E8ABD7E000CC23D /* SignUpVCAge.swift */; };
+		66B063481E8AC488000CC23D /* SignUpVCName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B063471E8AC488000CC23D /* SignUpVCName.swift */; };
+		66B0634A1E8AC51A000CC23D /* SignUpVCCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B063491E8AC51A000CC23D /* SignUpVCCity.swift */; };
+		66B0634C1E8AC8D1000CC23D /* SignUpVCPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B0634B1E8AC8D1000CC23D /* SignUpVCPassword.swift */; };
 		66D1B4A91E78A00A00DB338E /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D1B4A81E78A00A00DB338E /* Tile.swift */; };
 		66D1B4AB1E78A14100DB338E /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D1B4AA1E78A14100DB338E /* LogInVC.swift */; };
 		66D1B4AD1E78AD5100DB338E /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D1B4AC1E78AD5100DB338E /* CircleButton.swift */; };
-		66D1B4AF1E78C7F100DB338E /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D1B4AE1E78C7F100DB338E /* SignUpVC.swift */; };
+		66D1B4AF1E78C7F100DB338E /* SignUpVCGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D1B4AE1E78C7F100DB338E /* SignUpVCGender.swift */; };
 		8FAC81F0B2C0FBEF2F8426C7 /* Pods_ScrimIT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB31DA83197192239AC1F40 /* Pods_ScrimIT.framework */; };
 		92056B7D1E5CED86007C8AD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92056B7C1E5CED86007C8AD0 /* AppDelegate.swift */; };
 		92056B821E5CED86007C8AD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92056B801E5CED86007C8AD0 /* Main.storyboard */; };
@@ -178,12 +189,17 @@
 		6617ED801E5E57580063A7C4 /* thumb-volleyball-1280x720.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb-volleyball-1280x720.png"; sourceTree = "<group>"; };
 		6617ED811E5E57580063A7C4 /* thumb-watterbottlechallenge-1280x720.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb-watterbottlechallenge-1280x720.png"; sourceTree = "<group>"; };
 		6617ED821E5E57580063A7C4 /* ToggleCameraButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToggleCameraButton.png; sourceTree = "<group>"; };
+		662D485E1E88E85900140914 /* CustomTextFieldContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextFieldContainer.swift; sourceTree = "<group>"; };
+		662D48601E88E9A500140914 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		662D48621E88E9D200140914 /* ErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
+		662D48641E88E9F700140914 /* MessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		6643D1A41E5F55E6000C3501 /* MyDashboardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDashboardVC.swift; sourceTree = "<group>"; };
 		6643D1A61E60A43F000C3501 /* TabsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabsVC.swift; sourceTree = "<group>"; };
 		6643D1A81E60A46B000C3501 /* HomeFeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeFeedVC.swift; sourceTree = "<group>"; };
 		6643D1AA1E60AA3E000C3501 /* TrainingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingVC.swift; sourceTree = "<group>"; };
 		6643D1AC1E60AA49000C3501 /* ChallengesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesVC.swift; sourceTree = "<group>"; };
 		6643D1AE1E60AA57000C3501 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		6672AA401E87DE920002DA25 /* facebookIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebookIcon.png; sourceTree = "<group>"; };
 		668C88CB1E6DE42B00031827 /* Icon-App-20x20@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@1x.png"; sourceTree = "<group>"; };
 		668C88CC1E6DE42B00031827 /* Icon-App-20x20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@2x.png"; sourceTree = "<group>"; };
 		668C88CD1E6DE42B00031827 /* Icon-App-20x20@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@3x.png"; sourceTree = "<group>"; };
@@ -206,10 +222,16 @@
 		668C88DE1E6DE42B00031827 /* Icon-App-83.5x83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-83.5x83.5@2x.png"; sourceTree = "<group>"; };
 		668C88DF1E6DE42B00031827 /* Icon-Small-50x50@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50x50@1x.png"; sourceTree = "<group>"; };
 		668C88E01E6DE42B00031827 /* Icon-Small-50x50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50x50@2x.png"; sourceTree = "<group>"; };
+		66B063411E8A8694000CC23D /* Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Path.swift; path = ../Path.swift; sourceTree = "<group>"; };
+		66B063431E8A8A82000CC23D /* ChallengeBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeBox.swift; sourceTree = "<group>"; };
+		66B063451E8ABD7E000CC23D /* SignUpVCAge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVCAge.swift; sourceTree = "<group>"; };
+		66B063471E8AC488000CC23D /* SignUpVCName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVCName.swift; sourceTree = "<group>"; };
+		66B063491E8AC51A000CC23D /* SignUpVCCity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVCCity.swift; sourceTree = "<group>"; };
+		66B0634B1E8AC8D1000CC23D /* SignUpVCPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVCPassword.swift; sourceTree = "<group>"; };
 		66D1B4A81E78A00A00DB338E /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		66D1B4AA1E78A14100DB338E /* LogInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInVC.swift; sourceTree = "<group>"; };
 		66D1B4AC1E78AD5100DB338E /* CircleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
-		66D1B4AE1E78C7F100DB338E /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		66D1B4AE1E78C7F100DB338E /* SignUpVCGender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVCGender.swift; sourceTree = "<group>"; };
 		92056B791E5CED86007C8AD0 /* ScrimIT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScrimIT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92056B7C1E5CED86007C8AD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92056B811E5CED86007C8AD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -252,6 +274,7 @@
 		6617ED461E5E574E0063A7C4 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				6672AA401E87DE920002DA25 /* facebookIcon.png */,
 				668C88CB1E6DE42B00031827 /* Icon-App-20x20@1x.png */,
 				668C88CC1E6DE42B00031827 /* Icon-App-20x20@2x.png */,
 				668C88CD1E6DE42B00031827 /* Icon-App-20x20@3x.png */,
@@ -326,6 +349,17 @@
 			name = images;
 			sourceTree = "<group>";
 		};
+		662D485D1E88E83700140914 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				662D485E1E88E85900140914 /* CustomTextFieldContainer.swift */,
+				662D48601E88E9A500140914 /* Validator.swift */,
+				662D48621E88E9D200140914 /* ErrorHandler.swift */,
+				662D48641E88E9F700140914 /* MessageView.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		66D1B4A71E78995300DB338E /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -341,7 +375,11 @@
 			children = (
 				6617ED3F1E5E52790063A7C4 /* SignUpLogInVC.swift */,
 				66D1B4AA1E78A14100DB338E /* LogInVC.swift */,
-				66D1B4AE1E78C7F100DB338E /* SignUpVC.swift */,
+				66D1B4AE1E78C7F100DB338E /* SignUpVCGender.swift */,
+				66B063451E8ABD7E000CC23D /* SignUpVCAge.swift */,
+				66B063471E8AC488000CC23D /* SignUpVCName.swift */,
+				66B063491E8AC51A000CC23D /* SignUpVCCity.swift */,
+				66B0634B1E8AC8D1000CC23D /* SignUpVCPassword.swift */,
 			);
 			name = SignUpVCs;
 			sourceTree = "<group>";
@@ -391,9 +429,12 @@
 				921943771E68F67E00F5A551 /* Camera */,
 				92F6C2421E68769B00DC29DA /* TabBarVCs */,
 				92F6C2411E68768C00DC29DA /* Model */,
+				662D485D1E88E83700140914 /* Extensions */,
 				92973F8D1E67CF7900E51567 /* GoogleService-Info.plist */,
 				6613EB7A1E675146004AB944 /* NavController.swift */,
+				66B063411E8A8694000CC23D /* Path.swift */,
 				66D1B4A81E78A00A00DB338E /* Tile.swift */,
+				66B063431E8A8A82000CC23D /* ChallengeBox.swift */,
 			);
 			path = ScrimIT;
 			sourceTree = "<group>";
@@ -545,6 +586,7 @@
 				6617ED931E5E57580063A7C4 /* ico-heart.png in Resources */,
 				6601F8151E775F92001D8021 /* MyriadPro-BoldCond.otf in Resources */,
 				6617ED8C1E5E57580063A7C4 /* ico-add-user.png in Resources */,
+				6672AA411E87DE920002DA25 /* facebookIcon.png in Resources */,
 				6617ED891E5E57580063A7C4 /* Default-568h@2x.png in Resources */,
 				668C88E61E6DE42B00031827 /* Icon-App-29x29@3x.png in Resources */,
 				6617ED8F1E5E57580063A7C4 /* ico-check.png in Resources */,
@@ -657,12 +699,16 @@
 				6601F8161E775F9D001D8021 /* MyriadPro-BoldCond.otf in Sources */,
 				6601F8121E775E03001D8021 /* Myriad-Pro-Condensed_31633.ttf in Sources */,
 				6601F8131E775E03001D8021 /* Myriad-Pro-Semibold_31650.ttf in Sources */,
+				66B0634A1E8AC51A000CC23D /* SignUpVCCity.swift in Sources */,
 				92F6C23E1E67D3A100DC29DA /* Player.swift in Sources */,
 				921943761E68F4DF00F5A551 /* PreviewView.swift in Sources */,
+				662D48631E88E9D200140914 /* ErrorHandler.swift in Sources */,
 				92EB582C1E68AED7004E4C83 /* VideoCell.swift in Sources */,
 				66D1B4AD1E78AD5100DB338E /* CircleButton.swift in Sources */,
 				6643D1AF1E60AA57000C3501 /* ProfileVC.swift in Sources */,
+				66B063441E8A8A82000CC23D /* ChallengeBox.swift in Sources */,
 				9219437B1E68F79900F5A551 /* RecordButton.swift in Sources */,
+				66B063421E8A8694000CC23D /* Path.swift in Sources */,
 				6643D1AB1E60AA3E000C3501 /* TrainingVC.swift in Sources */,
 				927DE5D81E78B912008F92BD /* UploadProgress.swift in Sources */,
 				6617ED421E5E536C0063A7C4 /* LabelCustomSpacing.swift in Sources */,
@@ -671,22 +717,28 @@
 				921943831E69C1A200F5A551 /* AfterPostView.swift in Sources */,
 				92EB58321E68B236004E4C83 /* DataService - CreatePlayer.swift in Sources */,
 				92F6C2401E68768300DC29DA /* ChallengeVideo.swift in Sources */,
-				66D1B4AF1E78C7F100DB338E /* SignUpVC.swift in Sources */,
+				66D1B4AF1E78C7F100DB338E /* SignUpVCGender.swift in Sources */,
 				66D1B4A91E78A00A00DB338E /* Tile.swift in Sources */,
 				6643D1A51E5F55E6000C3501 /* MyDashboardVC.swift in Sources */,
 				92EB58361E68BCCE004E4C83 /* HomeFeedVC - Data.swift in Sources */,
 				6613EB7B1E675146004AB944 /* NavController.swift in Sources */,
+				66B063481E8AC488000CC23D /* SignUpVCName.swift in Sources */,
+				66B0634C1E8AC8D1000CC23D /* SignUpVCPassword.swift in Sources */,
 				92EB58301E68B140004E4C83 /* DataService.swift in Sources */,
 				6643D1A91E60A46B000C3501 /* HomeFeedVC.swift in Sources */,
+				662D485F1E88E85900140914 /* CustomTextFieldContainer.swift in Sources */,
 				6617ED441E5E56060063A7C4 /* UIExtensions.swift in Sources */,
 				6643D1A71E60A43F000C3501 /* TabsVC.swift in Sources */,
 				92EB58341E68BAF9004E4C83 /* DataService - Save.swift in Sources */,
+				662D48611E88E9A500140914 /* Validator.swift in Sources */,
+				662D48651E88E9F700140914 /* MessageView.swift in Sources */,
 				6617ED401E5E52790063A7C4 /* SignUpLogInVC.swift in Sources */,
 				66D1B4AB1E78A14100DB338E /* LogInVC.swift in Sources */,
 				6643D1AD1E60AA49000C3501 /* ChallengesVC.swift in Sources */,
 				92EB582E1E68B11A004E4C83 /* AuthService.swift in Sources */,
 				92F6C2441E687D3C00DC29DA /* NewChallengeVC.swift in Sources */,
 				921943811E69BD9900F5A551 /* ReponseVC.swift in Sources */,
+				66B063461E8ABD7E000CC23D /* SignUpVCAge.swift in Sources */,
 				921943741E68F4B900F5A551 /* Camera.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -33,16 +33,21 @@ class HomeFeedVC: TabsVC, UITableViewDataSource, UITableViewDelegate {
         // challenges database reference
         self.ref = DataService.instance.challengesRef
         
-        addButton = UIButton(type: .system)
-        addButton?.frame = CGRect(x: view.frame.width - (view.frame.width * 0.15) - 20, y: (self.navigationController?.navigationBar.frame.maxY)!, width: view.frame.width * 0.15, height: 80)
-        addButton?.setTitle("+", for: .normal)
-        addButton?.titleLabel?.font = UIFont(name: "Avenir", size: 60)
+        addButton = UIButton()
+        addButton?.frame = CGRect(x: view.frame.width - (view.frame.width * 0.92), y: (self.navigationController?.navigationBar.frame.maxY)! + 10, width: view.frame.width * 0.85, height: 50)
+        addButton?.setTitle("post new challenge", for: .normal)
+        addButton?.layer.borderColor = UIColor.clear.cgColor
+        addButton?.layer.cornerRadius = 8
+        addButton?.titleLabel?.textColor = UIColor.white
+        addButton?.layer.borderWidth = 2
+        addButton?.backgroundColor = UIColor.lightGray
+        addButton?.titleLabel?.font = UIFont(name: "MyriadPro-BoldCond", size: 20)
         addButton?.addTarget(self, action: #selector(addButtonFunction), for: .touchUpInside)
         
-        tableView = UITableView(frame: CGRect(x: 0, y: (addButton?.frame.maxY)!, width: view.frame.width, height: view.frame.height - (self.tabBarController?.tabBar.frame.height)! - (self.navigationController?.navigationBar.frame.height)! - 20 - 80))
+        tableView = UITableView(frame: CGRect(x: 0, y: (addButton?.frame.maxY)! * 1.1, width: view.frame.width, height: view.frame.height - (self.tabBarController?.tabBar.frame.height)! - (self.navigationController?.navigationBar.frame.height)! - 20 - 80))
         tableView?.register(VideoCell.self, forCellReuseIdentifier: "videoCell")
         tableView?.isUserInteractionEnabled = false
-        
+        tableView?.backgroundColor = UIColor.lightGray
         tableView?.dataSource = self
         tableView?.delegate = self
         

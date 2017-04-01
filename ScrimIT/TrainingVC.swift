@@ -100,16 +100,22 @@ class TrainingVC: TabsVC {
             scrollView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.2).isActive = true
         
         let challenge1 = ChallengeBox()
+        challenge1.setColorRed()
         scrollView.addSubview(challenge1)
         challenge1.translatesAutoresizingMaskIntoConstraints = false
         challenge1.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 10).isActive = true
         challenge1.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10).isActive = true
         challenge1.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 0.7).isActive = true
         challenge1.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.3).isActive = true
-        challenge1.label.text = "Challenge 1"
-            
+        challenge1.label.text = "Physical"
+        challenge1.completedLbl.text = "0/10"
+        challenge1.addTarget(self, action: #selector(challengeBtnPressed), for: .touchUpInside)
         
-        
+    }
+    
+    func challengeBtnPressed() {
+        let vc = ChallengesVC()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

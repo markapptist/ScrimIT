@@ -73,7 +73,7 @@
 		6643D1A71E60A43F000C3501 /* TabsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6643D1A61E60A43F000C3501 /* TabsVC.swift */; };
 		6643D1A91E60A46B000C3501 /* HomeFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6643D1A81E60A46B000C3501 /* HomeFeedVC.swift */; };
 		6643D1AB1E60AA3E000C3501 /* TrainingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6643D1AA1E60AA3E000C3501 /* TrainingVC.swift */; };
-		6643D1AD1E60AA49000C3501 /* ChallengesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6643D1AC1E60AA49000C3501 /* ChallengesVC.swift */; };
+		6643D1AD1E60AA49000C3501 /* ExploreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6643D1AC1E60AA49000C3501 /* ExploreVC.swift */; };
 		6643D1AF1E60AA57000C3501 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6643D1AE1E60AA57000C3501 /* ProfileVC.swift */; };
 		6672AA411E87DE920002DA25 /* facebookIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6672AA401E87DE920002DA25 /* facebookIcon.png */; };
 		668C88E11E6DE42B00031827 /* Icon-App-20x20@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 668C88CB1E6DE42B00031827 /* Icon-App-20x20@1x.png */; };
@@ -98,6 +98,8 @@
 		668C88F41E6DE42B00031827 /* Icon-App-83.5x83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 668C88DE1E6DE42B00031827 /* Icon-App-83.5x83.5@2x.png */; };
 		668C88F51E6DE42B00031827 /* Icon-Small-50x50@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 668C88DF1E6DE42B00031827 /* Icon-Small-50x50@1x.png */; };
 		668C88F61E6DE42B00031827 /* Icon-Small-50x50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 668C88E01E6DE42B00031827 /* Icon-Small-50x50@2x.png */; };
+		6690F51D1E905C19001C4588 /* scrimit.png in Resources */ = {isa = PBXBuildFile; fileRef = 6690F51C1E905C19001C4588 /* scrimit.png */; };
+		6690F51F1E9066BF001C4588 /* ChallengesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6690F51E1E9066BF001C4588 /* ChallengesVC.swift */; };
 		66B063421E8A8694000CC23D /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B063411E8A8694000CC23D /* Path.swift */; };
 		66B063441E8A8A82000CC23D /* ChallengeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B063431E8A8A82000CC23D /* ChallengeBox.swift */; };
 		66B063461E8ABD7E000CC23D /* SignUpVCAge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B063451E8ABD7E000CC23D /* SignUpVCAge.swift */; };
@@ -200,7 +202,7 @@
 		6643D1A61E60A43F000C3501 /* TabsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabsVC.swift; sourceTree = "<group>"; };
 		6643D1A81E60A46B000C3501 /* HomeFeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeFeedVC.swift; sourceTree = "<group>"; };
 		6643D1AA1E60AA3E000C3501 /* TrainingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingVC.swift; sourceTree = "<group>"; };
-		6643D1AC1E60AA49000C3501 /* ChallengesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesVC.swift; sourceTree = "<group>"; };
+		6643D1AC1E60AA49000C3501 /* ExploreVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreVC.swift; sourceTree = "<group>"; };
 		6643D1AE1E60AA57000C3501 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		6672AA401E87DE920002DA25 /* facebookIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebookIcon.png; sourceTree = "<group>"; };
 		668C88CB1E6DE42B00031827 /* Icon-App-20x20@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@1x.png"; sourceTree = "<group>"; };
@@ -225,6 +227,8 @@
 		668C88DE1E6DE42B00031827 /* Icon-App-83.5x83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-83.5x83.5@2x.png"; sourceTree = "<group>"; };
 		668C88DF1E6DE42B00031827 /* Icon-Small-50x50@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50x50@1x.png"; sourceTree = "<group>"; };
 		668C88E01E6DE42B00031827 /* Icon-Small-50x50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50x50@2x.png"; sourceTree = "<group>"; };
+		6690F51C1E905C19001C4588 /* scrimit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scrimit.png; sourceTree = "<group>"; };
+		6690F51E1E9066BF001C4588 /* ChallengesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesVC.swift; sourceTree = "<group>"; };
 		66B063411E8A8694000CC23D /* Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Path.swift; path = ../Path.swift; sourceTree = "<group>"; };
 		66B063431E8A8A82000CC23D /* ChallengeBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeBox.swift; sourceTree = "<group>"; };
 		66B063451E8ABD7E000CC23D /* SignUpVCAge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVCAge.swift; sourceTree = "<group>"; };
@@ -280,6 +284,7 @@
 		6617ED461E5E574E0063A7C4 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				6690F51C1E905C19001C4588 /* scrimit.png */,
 				6672AA401E87DE920002DA25 /* facebookIcon.png */,
 				668C88CB1E6DE42B00031827 /* Icon-App-20x20@1x.png */,
 				668C88CC1E6DE42B00031827 /* Icon-App-20x20@2x.png */,
@@ -492,8 +497,9 @@
 				6643D1A81E60A46B000C3501 /* HomeFeedVC.swift */,
 				92EB58351E68BCCE004E4C83 /* HomeFeedVC - Data.swift */,
 				6643D1AA1E60AA3E000C3501 /* TrainingVC.swift */,
-				6643D1AC1E60AA49000C3501 /* ChallengesVC.swift */,
+				6643D1AC1E60AA49000C3501 /* ExploreVC.swift */,
 				6643D1AE1E60AA57000C3501 /* ProfileVC.swift */,
+				6690F51E1E9066BF001C4588 /* ChallengesVC.swift */,
 			);
 			name = TabBarVCs;
 			sourceTree = "<group>";
@@ -591,6 +597,7 @@
 				6617EDB01E5E57580063A7C4 /* on.png in Resources */,
 				6617EDB21E5E57580063A7C4 /* Splash-640.png in Resources */,
 				6617ED9C1E5E57580063A7C4 /* ico-teams.png in Resources */,
+				6690F51D1E905C19001C4588 /* scrimit.png in Resources */,
 				668C88E31E6DE42B00031827 /* Icon-App-20x20@3x.png in Resources */,
 				6617ED931E5E57580063A7C4 /* ico-heart.png in Resources */,
 				6601F8151E775F92001D8021 /* MyriadPro-BoldCond.otf in Resources */,
@@ -724,6 +731,7 @@
 				920A01481E8C10D9005FD379 /* ScrimITCamera - Extension.swift in Sources */,
 				921943791E68F73C00F5A551 /* CameraVC.swift in Sources */,
 				92056B7D1E5CED86007C8AD0 /* AppDelegate.swift in Sources */,
+				6690F51F1E9066BF001C4588 /* ChallengesVC.swift in Sources */,
 				921943831E69C1A200F5A551 /* AfterPostView.swift in Sources */,
 				92EB58321E68B236004E4C83 /* DataService - CreatePlayer.swift in Sources */,
 				92F6C2401E68768300DC29DA /* ChallengeVideo.swift in Sources */,
@@ -746,7 +754,7 @@
 				662D48651E88E9F700140914 /* MessageView.swift in Sources */,
 				6617ED401E5E52790063A7C4 /* SignUpLogInVC.swift in Sources */,
 				66D1B4AB1E78A14100DB338E /* LogInVC.swift in Sources */,
-				6643D1AD1E60AA49000C3501 /* ChallengesVC.swift in Sources */,
+				6643D1AD1E60AA49000C3501 /* ExploreVC.swift in Sources */,
 				92EB582E1E68B11A004E4C83 /* AuthService.swift in Sources */,
 				92F6C2441E687D3C00DC29DA /* NewChallengeVC.swift in Sources */,
 				921943811E69BD9900F5A551 /* ReponseVC.swift in Sources */,

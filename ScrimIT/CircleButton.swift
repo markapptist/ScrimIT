@@ -78,36 +78,36 @@ class CircleButton: UIButton {
         
     }
     
-    func setColorRed() {
+    override func setColorRed() {
         self.backgroundColor = UIColor.init(red: 212/255, green: 107/255, blue: 107/255, alpha: 1.0)
     }
     
-    func setColorBlue() {
+    override func setColorBlue() {
         self.backgroundColor = UIColor.init(red: 58/255, green: 93/255, blue: 131/255, alpha: 1.0)
     }
     
-    func setColorGreen() {
+    override func setColorGreen() {
         self.backgroundColor = UIColor.init(red: 58/255, green: 131/255, blue: 108/255, alpha: 1.0)
     }
     
-    func setColorOrange() {
+    override func setColorOrange() {
         self.backgroundColor = UIColor.init(red: 211/255, green: 115/255, blue: 76/255, alpha: 1.0)
     }
     
-    func setColorClear() {
+    override func setColorClear() {
         self.backgroundColor = UIColor.init(red: 216/255, green: 216/255, blue: 216/255, alpha: 0.80)
     }
     
-    func setColourWhite() {
+    override func setColourWhite() {
         self.backgroundColor = UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
     }
     
-    func setColourVerifiedGreen() {
+    override func setColourVerifiedGreen() {
         self.backgroundColor = UIColor.init(red: 0/255, green: 203/255, blue: 9/255, alpha: 1.0)
     }
     
     func addText(string: String, color: Int) {
-        self.titleLabel?.font = UIFont(name: "MyriadPro-Semibold", size: 20.5)
+        self.titleLabel?.font = UIFont(name: "MyriadPro-BoldCond", size: 20.5)
         self.setTitle(string, for: UIControlState.normal)
         if(color == 0) {
                 self.setTitleColor(UIColor.black, for: UIControlState.normal)

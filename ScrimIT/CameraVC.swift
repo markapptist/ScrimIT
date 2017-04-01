@@ -13,6 +13,7 @@ protocol VideoUploadDelegate {
     func videoPosted()
     func recordingStopped(video: URL)
     func recordingStarted()
+    func setPreviewFrame(width: CGFloat, height: CGFloat)
 }
 
 enum VideoType {
@@ -43,45 +44,60 @@ class CameraVC: Camera {
     override func viewDidLoad() {
         self.tabBarController?.tabBar.isHidden = true
         
+        _previewView = previewView
+        videoDelegate = self
+        
         // camera variables
         videoLayer = AVCaptureVideoPreviewLayer()
         previewView.videoPreviewLayer = videoLayer
         
-        _previewView = previewView
-        videoDelegate = self
-        
         super.viewDidLoad()
         
-        previewView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+//        (self.navigationController?.navigationBar.frame.maxY)!
+        
+//        let orientation = UIInterfaceOrientation.landscapeLeft.rawValue
+//        UIDevice.current.setValue(orientation, forKey: "orientation")
+        
+        self.previewView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: (3*self.view.frame.size.width)/4)
         
         previewView.backgroundColor = UIColor.black
-        previewView.videoPreviewLayer.frame = CGRect(x: 0, y: 0, width: previewView.bounds.width, height: previewView.bounds.height/2)
-        print(_previewView.videoPreviewLayer.frame)
-        previewView.videoPreviewLayer.position = CGPoint(x: self.view.bounds.midX, y: self.view.bounds.midY)
+        previewView.videoPreviewLayer.frame = previewView.frame
+//            CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.maxY)!, width: previewView.frame.width, height: previewView.frame.height)
+        print(previewView.videoPreviewLayer.frame)
+//        previewView.videoPreviewLayer.position = CGPoint(x: 0, y: 0)
         previewView.videoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
         
         previewView.videoPreviewLayer.session = previewView.session
         previewView.layer.addSublayer(videoLayer)
         
+        /*
+        let remainingView = UIView(frame: CGRect(x: 0, y: self.previewView.frame.maxY, width: self.view.frame.width, height: self.view.frame.height - (self.navigationController?.navigationBar.frame.height)! - self.previewView.frame.height - 20))
+        remainingView.backgroundColor = UIColor.green
+ 
         cameraRecord = UIButton(type: .system)
-        cameraRecord.frame = CGRect(x: view.center.x - ((view.frame.width*0.20)/2), y: view.frame.maxY - view.frame.width * 0.20, width: view.frame.width * 0.20, height: view.frame.width * 0.20)
+        cameraRecord.frame = CGRect(x: self.view.frame.midX - ((view.frame.width*0.20)/2), y: self.view.frame.maxY - view.frame.width * 0.20, width: self.view.frame.width * 0.20, height: self.view.frame.width * 0.20)
+//        cameraRecord.frame = CGRect(x: remainingView.bounds.midX - ((view.frame.width*0.20)/2), y: remainingView.bounds.maxY - view.frame.width * 0.20, width: remainingView.frame.width * 0.20, height: remainingView.frame.width * 0.20)
         cameraRecord.backgroundColor = UIColor.white
         cameraRecord.layer.cornerRadius = cameraRecord.frame.width/2
         cameraRecord.backgroundColor = UIColor.clear
         cameraRecord.layer.borderColor = UIColor.white.cgColor
         cameraRecord.layer.borderWidth = 3.0
         cameraRecord.addTarget(self, action: #selector(recordFunction), for: .touchUpInside)
-        
+        */
+//        self.view.addSubview(cameraRecord)
+ 
+        /*
+         self.view.addSubview(remainingView)
+         remainingView.addSubview(cameraRecord)
+ 
+        print(cameraRecord.frame)
+ 
+        remainingView.bringSubview(toFront: cameraRecord)
+        */
         self.view.addSubview(previewView)
-        
-        self.view.addSubview(cameraRecord)
     }
     
     override func viewWillLayoutSubviews() {
-        
-        
-        self.view.bringSubview(toFront: cameraRecord)
-        
         
         
     }
@@ -126,8 +142,7 @@ class CameraVC: Camera {
     func hideActivityIndicator() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
-
-
+    
 }
 
 @available(iOS 10.0, *)
@@ -174,6 +189,12 @@ extension CameraVC: VideoUploadDelegate {
     
     internal func videoPosted() {
         
+    }
+    
+    internal func setPreviewFrame(width: CGFloat, height: CGFloat) {
+        let newHeight = (9 * width)/16
+        
+        self.previewView.frame = CGRect(x: 0, y: 0, width: width, height: newHeight)
     }
     
 }

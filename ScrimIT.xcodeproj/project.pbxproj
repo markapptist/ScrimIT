@@ -114,6 +114,8 @@
 		92056B821E5CED86007C8AD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92056B801E5CED86007C8AD0 /* Main.storyboard */; };
 		92056B841E5CED86007C8AD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92056B831E5CED86007C8AD0 /* Assets.xcassets */; };
 		92056B871E5CED86007C8AD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92056B851E5CED86007C8AD0 /* LaunchScreen.storyboard */; };
+		920A01461E8C0C4F005FD379 /* ScrimITCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920A01451E8C0C4F005FD379 /* ScrimITCamera.swift */; };
+		920A01481E8C10D9005FD379 /* ScrimITCamera - Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920A01471E8C10D9005FD379 /* ScrimITCamera - Extension.swift */; };
 		921943741E68F4B900F5A551 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921943731E68F4B900F5A551 /* Camera.swift */; };
 		921943761E68F4DF00F5A551 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921943751E68F4DF00F5A551 /* PreviewView.swift */; };
 		921943791E68F73C00F5A551 /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921943781E68F73C00F5A551 /* CameraVC.swift */; };
@@ -240,6 +242,8 @@
 		92056B831E5CED86007C8AD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92056B861E5CED86007C8AD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92056B881E5CED86007C8AD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		920A01451E8C0C4F005FD379 /* ScrimITCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrimITCamera.swift; sourceTree = SOURCE_ROOT; };
+		920A01471E8C10D9005FD379 /* ScrimITCamera - Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrimITCamera - Extension.swift"; sourceTree = "<group>"; };
 		921943731E68F4B900F5A551 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		921943751E68F4DF00F5A551 /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		921943781E68F73C00F5A551 /* CameraVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
@@ -461,6 +465,8 @@
 				92F6C2431E687D3C00DC29DA /* NewChallengeVC.swift */,
 				921943801E69BD9900F5A551 /* ReponseVC.swift */,
 				921943821E69C1A200F5A551 /* AfterPostView.swift */,
+				920A01451E8C0C4F005FD379 /* ScrimITCamera.swift */,
+				920A01471E8C10D9005FD379 /* ScrimITCamera - Extension.swift */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -715,6 +721,7 @@
 				6643D1AB1E60AA3E000C3501 /* TrainingVC.swift in Sources */,
 				927DE5D81E78B912008F92BD /* UploadProgress.swift in Sources */,
 				6617ED421E5E536C0063A7C4 /* LabelCustomSpacing.swift in Sources */,
+				920A01481E8C10D9005FD379 /* ScrimITCamera - Extension.swift in Sources */,
 				921943791E68F73C00F5A551 /* CameraVC.swift in Sources */,
 				92056B7D1E5CED86007C8AD0 /* AppDelegate.swift in Sources */,
 				921943831E69C1A200F5A551 /* AfterPostView.swift in Sources */,
@@ -735,6 +742,7 @@
 				92EB58341E68BAF9004E4C83 /* DataService - Save.swift in Sources */,
 				66B0634E1E8AD4A1000CC23D /* SignUpVCEmail.swift in Sources */,
 				662D48611E88E9A500140914 /* Validator.swift in Sources */,
+				920A01461E8C0C4F005FD379 /* ScrimITCamera.swift in Sources */,
 				662D48651E88E9F700140914 /* MessageView.swift in Sources */,
 				6617ED401E5E52790063A7C4 /* SignUpLogInVC.swift in Sources */,
 				66D1B4AB1E78A14100DB338E /* LogInVC.swift in Sources */,

@@ -19,6 +19,8 @@ extension DataService {
         
         // Storage
         self.challengeVideoStorageRef.child(uniqueID).putFile(file, metadata: nil) { (meta, error) in
+            
+            print("started")
             if error != nil {
                 // print(error?.localizedDescription ?? "")
                 self.uploadProgress?.errorUploading(error: error!)
@@ -31,6 +33,8 @@ extension DataService {
                 
                 self.uploadProgress?.removeActivityView()
             }
+            
+            print("done")
         }
         
         /*

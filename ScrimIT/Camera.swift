@@ -11,6 +11,11 @@ import UIKit
 import AVFoundation
 import Photos
 
+protocol setRectForInterest {
+    
+}
+
+
 @available(iOS 10.0, *)
 class Camera: UIViewController, AVCaptureFileOutputRecordingDelegate {
     
@@ -89,8 +94,8 @@ class Camera: UIViewController, AVCaptureFileOutputRecordingDelegate {
                 
             case .notAuthorized:
                 DispatchQueue.main.async { [unowned self] in
-                    let message = NSLocalizedString("Poplur doesn't have permission to use your camera, please change privacy settings", comment: "Alert message when the user has denied access to the camera")
-                    let alertController = UIAlertController(title: "Poplur", message: message, preferredStyle: .alert)
+                    let message = NSLocalizedString("ScrimIT doesn't have permission to use your camera, please change privacy settings", comment: "Alert message when the user has denied access to the camera")
+                    let alertController = UIAlertController(title: "ScrimIT", message: message, preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Alert OK button"), style: .cancel, handler: nil))
                     alertController.addAction(UIAlertAction(title: NSLocalizedString("Settings", comment: "Alert button to open Settings"), style: .`default`, handler: { action in
                         if #available(iOS 10.0, *) {
@@ -106,7 +111,7 @@ class Camera: UIViewController, AVCaptureFileOutputRecordingDelegate {
             case .configurationFailed:
                 DispatchQueue.main.async { [unowned self] in
                     let message = NSLocalizedString("Unable to capture media", comment: "Alert message when something goes wrong during capture session configuration")
-                    let alertController = UIAlertController(title: "Poplur", message: message, preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "ScrimIT", message: message, preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Alert OK button"), style: .cancel, handler: nil))
                     
                     self.present(alertController, animated: true, completion: nil)
@@ -244,14 +249,15 @@ class Camera: UIViewController, AVCaptureFileOutputRecordingDelegate {
                      Use the status bar orientation as the initial video orientation. Subsequent orientation changes are
                      handled by CameraViewController.viewWillTransition(to:with:).
                      */
-                    let statusBarOrientation = UIApplication.shared.statusBarOrientation
-                    var initialVideoOrientation: AVCaptureVideoOrientation = .portrait
+//                    let statusBarOrientation = UIApplication.shared.statusBarOrientation
+                    let initialVideoOrientation: AVCaptureVideoOrientation = .portrait
+                    /*
                     if statusBarOrientation != .unknown {
                         if let videoOrientation = statusBarOrientation.videoOrientation {
-                            initialVideoOrientation = videoOrientation
+//                            initialVideoOrientation = videoOrientation
                         }
                     }
-                    
+                    */
                     self._previewView.videoPreviewLayer.connection.videoOrientation = initialVideoOrientation
                 }
             }
@@ -289,22 +295,31 @@ class Camera: UIViewController, AVCaptureFileOutputRecordingDelegate {
         sessionQueue.async { [unowned self] in
             let movieFileOutput = AVCaptureMovieFileOutput()
             
-            let x = self._previewView.videoPreviewLayer.frame.origin.x/480
-            let y = self._previewView.videoPreviewLayer.frame.origin.y/640
-            let width = self._previewView.videoPreviewLayer.frame.width/480
-            let height = self._previewView.videoPreviewLayer.frame.height/640
+            print(self._previewView.frame)
+            print(self._previewView.videoPreviewLayer.frame.width)
+            print(self._previewView.videoPreviewLayer.frame.height)
+            
+            let x = self._previewView.videoPreviewLayer.bounds.origin.x/640
+            let y = self._previewView.videoPreviewLayer.bounds.origin.y/480
+            let width = self._previewView.videoPreviewLayer.bounds.width/640
+            let height = self._previewView.videoPreviewLayer.bounds.height/480
+            
             let transformed = CGRect(x: x, y: y, width: width, height: height)
             
             movieFileOutput.rectForMetadataOutputRect(ofInterest: transformed)
+            
+//            movieFileOutput.rectForMetadataOutputRect(ofInterest: transformed)
+            
+//            print(transformed)
             
             // set max duration of recording
             movieFileOutput.maxRecordedDuration = CMTimeMake(10, 1)
             
             self.movieFileOutput = movieFileOutput
             
-            if self.session.canAddOutput(self.movieFileOutput) {
+            if self.session.canAddOutput(movieFileOutput) {
                 self.session.beginConfiguration()
-                self.session.addOutput(self.movieFileOutput)
+                self.session.addOutput(movieFileOutput)
                 //self.session.sessionPreset = AVCaptureSessionPresetHigh
                 if let connection = movieFileOutput.connection(withMediaType: AVMediaTypeVideo) {
                     if connection.isVideoStabilizationSupported {
@@ -337,7 +352,7 @@ class Camera: UIViewController, AVCaptureFileOutputRecordingDelegate {
             if !self.session.isRunning {
                 DispatchQueue.main.async { [unowned self] in
                     let message = NSLocalizedString("Unable to resume", comment: "Alert message when unable to resume the session running")
-                    let alertController = UIAlertController(title: "AVCam", message: message, preferredStyle: .alert)
+                    let alertController = UIAlertController(title: "ScrimIT", message: message, preferredStyle: .alert)
                     let cancelAction = UIAlertAction(title: NSLocalizedString("OK", comment: "Alert OK button"), style: .cancel, handler: nil)
                     alertController.addAction(cancelAction)
                     self.present(alertController, animated: true, completion: nil)
@@ -386,6 +401,8 @@ class Camera: UIViewController, AVCaptureFileOutputRecordingDelegate {
          accessed on the main thread and session configuration is done on the session queue.
          */
         let videoPreviewLayerOrientation = _previewView.videoPreviewLayer.connection.videoOrientation
+        
+        print(videoPreviewLayerOrientation)
         
         sessionQueue.async { [unowned self] in
             if !movieFileOutput.isRecording {

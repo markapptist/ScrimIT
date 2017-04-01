@@ -106,14 +106,14 @@ extension UIView {
         
     }
     
-    func rotateView(duration: CFTimeInterval) {
-        let rotateAnim = CABasicAnimation(keyPath: "transform.rotation")
-        rotateAnim.fromValue = 0.0
-        rotateAnim.toValue = CGFloat(M_PI * 2.0)
-        rotateAnim.duration = duration
-        rotateAnim.repeatCount = Float.infinity
-        self.layer.add(rotateAnim, forKey: nil)
-        
+    func rotate360Degrees(duration: CFTimeInterval = 8) {
+        let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        rotateAnimation.fromValue = 0.0
+        rotateAnimation.toValue = CGFloat(M_PI * 2)
+        rotateAnimation.isRemovedOnCompletion = false
+        rotateAnimation.duration = duration
+        rotateAnimation.repeatCount=Float.infinity
+        self.layer.add(rotateAnimation, forKey: nil)
     }
     
     func stopAnimations() {
@@ -121,4 +121,35 @@ extension UIView {
     }
     
     
+}
+
+extension UIButton {
+    func setColorRed() {
+        self.backgroundColor = UIColor.init(red: 212/255, green: 107/255, blue: 107/255, alpha: 1.0)
+    }
+    
+    func setColorBlue() {
+        self.backgroundColor = UIColor.init(red: 58/255, green: 93/255, blue: 131/255, alpha: 1.0)
+    }
+    
+    func setColorGreen() {
+        self.backgroundColor = UIColor.init(red: 58/255, green: 131/255, blue: 108/255, alpha: 1.0)
+    }
+    
+    func setColorOrange() {
+        self.backgroundColor = UIColor.init(red: 211/255, green: 115/255, blue: 76/255, alpha: 1.0)
+    }
+    
+    func setColorClear() {
+        self.backgroundColor = UIColor.init(red: 216/255, green: 216/255, blue: 216/255, alpha: 0.80)
+    }
+    
+    func setColourWhite() {
+        self.backgroundColor = UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
+    }
+    
+    func setColourVerifiedGreen() {
+        self.backgroundColor = UIColor.init(red: 0/255, green: 203/255, blue: 9/255, alpha: 1.0)
+    }
+
 }

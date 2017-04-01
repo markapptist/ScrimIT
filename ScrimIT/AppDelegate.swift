@@ -43,8 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let trainingTab = TrainingVC()
         trainingTab.tabBarItem = UITabBarItem(title: "Training", image: trainingIcon, tag: 1)
         
-        let challengesTab = ChallengesVC()
-        challengesTab.tabBarItem = UITabBarItem(title: "Challenges", image: pathIcon, tag: 2)
+        let exploreTab = ExploreVC()
+        exploreTab.tabBarItem = UITabBarItem(title: "Find", image: pathIcon, tag: 2)
         
         let profileTab = SignUpLogInVC()
         profileTab.tabBarItem = UITabBarItem(title: "Profile", image: userIcon, tag: 3)
@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let homeFeedNavController = NavController(rootViewController: homeFeed)
 
         let trainingNavController = NavController(rootViewController: trainingTab)
-        let pathNavController = NavController(rootViewController: challengesTab)
+        let pathNavController = NavController(rootViewController: exploreTab)
         let profileNavController = NavController(rootViewController: profileTab)
         
         let dashboard = MyDashboardVC()

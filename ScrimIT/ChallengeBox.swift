@@ -12,19 +12,31 @@ class ChallengeBox: UIButton {
     
     var label: UILabel!
     
+    var completedLbl = UILabel()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = UIColor.white
         self.label = UILabel()
+        self.label.textAlignment = .center
         self.label.font = UIFont(name: "MyriadPro-BoldCond", size: 20.0)
         self.addSubview(label)
         self.layer.cornerRadius = 5.0
         self.label.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15).isActive = true
+        self.label.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         self.label.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 5).isActive = true
         self.label.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.0).isActive = true
+        
+        self.addSubview(completedLbl)
+        self.completedLbl.font = UIFont(name: "MyriadPro-BoldCond", size: 20.0)
+        self.completedLbl.adjustsFontSizeToFitWidth = true
+        self.completedLbl.textAlignment = .center
+        self.completedLbl.translatesAutoresizingMaskIntoConstraints = false
+        self.completedLbl.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        self.completedLbl.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        self.completedLbl.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5).isActive = true
+        self.completedLbl.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5).isActive = true 
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

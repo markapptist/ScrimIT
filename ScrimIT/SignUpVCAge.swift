@@ -65,7 +65,7 @@ class SignUpVCAge: SignUpLogInVC, UIPickerViewDelegate, UIPickerViewDataSource {
     override func nextBtnPressed() {
         if(nextButton.alpha == 1.0) {
             userDefaults.setValue(pickerData[index], forKey: "ageGroup")
-            self.navigationController?.pushViewController(SignUpVCCity(), animated: false)
+            self.navigationController?.pushViewController(SignUpVCName(), animated: false)
         }
     }
     

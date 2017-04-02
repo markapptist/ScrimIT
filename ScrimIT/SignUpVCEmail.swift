@@ -29,7 +29,8 @@ class SignUpVCEmail: SignUpLogInVC {
         displayTextField.borderStyle = .roundedRect
         displayTextField.keyboardType = .emailAddress
         displayTextField.font = UIFont(name: "MyriadPro-BoldCond", size: 20)
-        
+        displayTextField.delegate = self
+
         
         self.view.addSubview(displayTextField)
         
@@ -39,6 +40,14 @@ class SignUpVCEmail: SignUpLogInVC {
         displayTextField.widthAnchor.constraint(equalTo: questionLabel.widthAnchor, multiplier: 0.9).isActive = true
         displayTextField.heightAnchor.constraint(equalTo: questionLabel.heightAnchor, multiplier: 1.0).isActive = true
         
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        displayTextField.offset()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        displayTextField.reset()
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -51,5 +60,7 @@ class SignUpVCEmail: SignUpLogInVC {
             self.navigationController?.pushViewController(SignUpVCPassword(), animated: false)
         }
     }
+    
+    
     
 }

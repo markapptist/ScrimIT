@@ -61,6 +61,48 @@ extension CIColor {
     }
 }
 
+extension UITextField {
+    
+    func offset() {
+        CATransaction.begin()
+        
+        let moveUp = CABasicAnimation(keyPath: "position.y")
+        
+        
+        moveUp.fromValue = self.layer.position.y
+        moveUp.toValue = self.layer.position.y - 30
+        moveUp.duration = 0.1
+        moveUp.beginTime = 0.0
+        moveUp.fillMode = kCAFillModeForwards
+        moveUp.isRemovedOnCompletion = false
+        
+        self.layer.add(moveUp, forKey: "basic")
+        
+        CATransaction.commit()
+    }
+    
+    func reset() {
+        CATransaction.begin()
+    
+        let moveUp = CABasicAnimation(keyPath: "position.y")
+        
+        
+        moveUp.fromValue = self.layer.position.y - 30
+        moveUp.toValue = self.layer.position.y
+        moveUp.duration = 0.1
+        moveUp.beginTime = 0.0
+        moveUp.fillMode = kCAFillModeForwards
+        moveUp.isRemovedOnCompletion = false
+        
+        self.layer.add(moveUp, forKey: "basic")
+        
+        CATransaction.commit()
+    }
+    
+    
+    
+    
+}
 
 extension UILabel {
     

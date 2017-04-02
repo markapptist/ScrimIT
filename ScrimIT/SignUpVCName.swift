@@ -28,7 +28,7 @@ class SignUpVCName: SignUpLogInVC {
         displayTextField.textAlignment = .center
         displayTextField.borderStyle = .roundedRect
         displayTextField.font = UIFont(name: "MyriadPro-BoldCond", size: 20)
-        
+        displayTextField.delegate = self 
         self.view.addSubview(displayTextField)
         
         displayTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -39,6 +39,13 @@ class SignUpVCName: SignUpLogInVC {
 
 
     }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        displayTextField.offset()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        displayTextField.reset()
+    }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         displayTextField.resignFirstResponder()
@@ -47,8 +54,12 @@ class SignUpVCName: SignUpLogInVC {
     override func nextBtnPressed() {
         if(!(displayTextField.text?.isEmpty)!) {
             userDefaults.setValue(displayTextField.text, forKey: "name")
-            self.navigationController?.pushViewController(SignUpVCPassword(), animated: false)
+            self.navigationController?.pushViewController(SignUpVCCity(), animated: false)
         }
     }
+    
+    
+    
+    
 
 }

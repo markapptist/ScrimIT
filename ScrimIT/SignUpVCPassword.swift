@@ -29,6 +29,7 @@ class SignUpVCPassword: SignUpLogInVC {
         displayTextField.borderStyle = .roundedRect
         displayTextField.isSecureTextEntry = true
         displayTextField.font = UIFont(name: "MyriadPro-BoldCond", size: 20)
+        displayTextField.delegate = self
 
         
         self.view.addSubview(displayTextField)
@@ -41,6 +42,14 @@ class SignUpVCPassword: SignUpLogInVC {
         
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        displayTextField.offset()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        displayTextField.reset()
+    }
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         displayTextField.resignFirstResponder()
     }
@@ -51,6 +60,7 @@ class SignUpVCPassword: SignUpLogInVC {
             self.navigationController?.pushViewController(ProfileVC(), animated: false)
         }
     }
+    
     
 }
 

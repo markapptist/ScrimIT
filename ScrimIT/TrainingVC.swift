@@ -93,7 +93,9 @@ class TrainingVC: TabsVC {
             scrollView.backgroundColor = UIColor.lightGray
             scrollView.alpha = 0.7
             scrollView.translatesAutoresizingMaskIntoConstraints = false
-            
+            scrollView.isScrollEnabled = true
+            scrollView.showsHorizontalScrollIndicator = false
+            scrollView.contentSize = CGSize(width: self.view.frame.width * 3.0, height: self.view.frame.height * 0.2)
             scrollView.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor, constant: 0).isActive = true
             scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
             scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
@@ -107,14 +109,110 @@ class TrainingVC: TabsVC {
         challenge1.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10).isActive = true
         challenge1.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 0.7).isActive = true
         challenge1.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.3).isActive = true
-        challenge1.label.text = "Physical"
+        challenge1.label.text = "Ball Control"
         challenge1.completedLbl.text = "0/10"
         challenge1.addTarget(self, action: #selector(challengeBtnPressed), for: .touchUpInside)
+        
+        let challenge2 = ChallengeBox()
+        challenge2.setColorRed()
+        scrollView.addSubview(challenge2)
+        challenge2.translatesAutoresizingMaskIntoConstraints = false
+        challenge2.leadingAnchor.constraint(equalTo: challenge1.trailingAnchor, constant: 10).isActive = true
+        challenge2.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10).isActive = true
+        challenge2.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 0.7).isActive = true
+        challenge2.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.3).isActive = true
+        challenge2.label.text = "Juggling"
+        challenge2.completedLbl.text = "0/10"
+        challenge2.addTarget(self, action: #selector(challengeBtnPressed), for: .touchUpInside)
+        
+        let challenge3 = ChallengeBox()
+        challenge3.setColorRed()
+        scrollView.addSubview(challenge3)
+        challenge3.translatesAutoresizingMaskIntoConstraints = false
+        challenge3.leadingAnchor.constraint(equalTo: challenge2.trailingAnchor, constant: 10).isActive = true
+        challenge3.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10).isActive = true
+        challenge3.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 0.7).isActive = true
+        challenge3.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.3).isActive = true
+        challenge3.label.text = "Passing"
+        challenge3.completedLbl.text = "0/10"
+        challenge3.addTarget(self, action: #selector(challengeBtnPressed), for: .touchUpInside)
+        
+        let challenge4 = ChallengeBox()
+        challenge4.setColorRed()
+        scrollView.addSubview(challenge4)
+        challenge4.translatesAutoresizingMaskIntoConstraints = false
+        challenge4.leadingAnchor.constraint(equalTo: challenge3.trailingAnchor, constant: 10).isActive = true
+        challenge4.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10).isActive = true
+        challenge4.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 0.7).isActive = true
+        challenge4.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.3).isActive = true
+        challenge4.label.text = "Set Pieces"
+        challenge4.completedLbl.text = "0/10"
+        challenge4.addTarget(self, action: #selector(challengeBtnPressed), for: .touchUpInside)
+        
+        let challenge5 = ChallengeBox()
+        challenge5.setColorRed()
+        scrollView.addSubview(challenge5)
+        challenge5.translatesAutoresizingMaskIntoConstraints = false
+        challenge5.leadingAnchor.constraint(equalTo: challenge4.trailingAnchor, constant: 10).isActive = true
+        challenge5.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10).isActive = true
+        challenge5.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 0.7).isActive = true
+        challenge5.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.3).isActive = true
+        challenge5.label.text = "Shooting"
+        challenge5.completedLbl.text = "0/10"
+        challenge5.addTarget(self, action: #selector(challengeBtnPressed), for: .touchUpInside)
+        
+        let challenge6 = ChallengeBox()
+        challenge6.setColorRed()
+        scrollView.addSubview(challenge6)
+        challenge6.translatesAutoresizingMaskIntoConstraints = false
+        challenge6.leadingAnchor.constraint(equalTo: challenge5.trailingAnchor, constant: 10).isActive = true
+        challenge6.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10).isActive = true
+        challenge6.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 0.7).isActive = true
+        challenge6.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.3).isActive = true
+        challenge6.label.text = "Agility"
+        challenge6.completedLbl.text = "0/10"
+        challenge6.addTarget(self, action: #selector(challengeBtnPressed), for: .touchUpInside)
+        
+        let challenge7 = ChallengeBox()
+        challenge7.setColorRed()
+        scrollView.addSubview(challenge7)
+        challenge7.translatesAutoresizingMaskIntoConstraints = false
+        challenge7.leadingAnchor.constraint(equalTo: challenge6.trailingAnchor, constant: 10).isActive = true
+        challenge7.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10).isActive = true
+        challenge7.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 0.7).isActive = true
+        challenge7.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.3).isActive = true
+        challenge7.label.text = "Jumping"
+        challenge7.completedLbl.text = "0/10"
+        challenge7.addTarget(self, action: #selector(challengeBtnPressed), for: .touchUpInside)
+        
+        let challenge8 = ChallengeBox()
+        challenge8.setColorRed()
+        scrollView.addSubview(challenge8)
+        challenge8.translatesAutoresizingMaskIntoConstraints = false
+        challenge8.leadingAnchor.constraint(equalTo: challenge7.trailingAnchor, constant: 10).isActive = true
+        challenge8.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10).isActive = true
+        challenge8.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 0.7).isActive = true
+        challenge8.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.3).isActive = true
+        challenge8.label.text = "Social Videos"
+        challenge8.completedLbl.text = "0/10"
+        challenge8.addTarget(self, action: #selector(challengeBtnPressed), for: .touchUpInside)
+        
+        let challenge9 = ChallengeBox()
+        challenge9.setColorRed()
+        scrollView.addSubview(challenge9)
+        challenge9.translatesAutoresizingMaskIntoConstraints = false
+        challenge9.leadingAnchor.constraint(equalTo: challenge8.trailingAnchor, constant: 10).isActive = true
+        challenge9.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10).isActive = true
+        challenge9.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 0.7).isActive = true
+        challenge9.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.3).isActive = true
+        challenge9.label.text = "Volleys"
+        challenge9.completedLbl.text = "0/10"
+        challenge9.addTarget(self, action: #selector(challengeBtnPressed), for: .touchUpInside)
         
     }
     
     func challengeBtnPressed() {
-        let vc = ChallengesVC()
+        let vc = ChallengesVC(type: 0)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 

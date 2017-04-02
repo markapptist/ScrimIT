@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignUpLogInVC: TabsVC {
+class SignUpLogInVC: TabsVC, UITextFieldDelegate {
     
     let fadePhoto = #imageLiteral(resourceName: "fadePhotoBottom")
     let titleView = UIView()

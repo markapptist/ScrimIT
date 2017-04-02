@@ -8,9 +8,11 @@
 
 import UIKit
 
-class ExploreVC: TabsVC {
+class ExploreVC: TabsVC, UISearchBarDelegate {
     
     let fieldView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+    let searchBar = UISearchBar()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +31,10 @@ class ExploreVC: TabsVC {
         fieldView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
         fieldView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
 
-        
-        var searchBar = UISearchBar()
         searchBar.searchBarStyle = .minimal
         searchBar.isTranslucent = true
+        searchBar.delegate = self
+    
         self.view.addSubview(searchBar)
         
         searchBar.translatesAutoresizingMaskIntoConstraints = false
@@ -42,5 +44,14 @@ class ExploreVC: TabsVC {
         searchBar.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true 
         
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        searchBar.resignFirstResponder()
+    }
+    
 
 }

@@ -38,7 +38,8 @@ class SignUpVCAge: SignUpLogInVC, UIPickerViewDelegate, UIPickerViewDataSource {
         pickerView.widthAnchor.constraint(equalTo: self.questionLabel.widthAnchor, multiplier: 0.8).isActive = true
         pickerView.bottomAnchor.constraint(equalTo: self.nextButton.topAnchor, constant: 10).isActive = true
         
-        
+        self.navigationItem.setHidesBackButton(false, animated: true)
+
         
     }
     

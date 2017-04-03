@@ -38,6 +38,9 @@ class SignUpVCCity: SignUpLogInVC {
         displayTextField.widthAnchor.constraint(equalTo: questionLabel.widthAnchor, multiplier: 0.9).isActive = true
         displayTextField.heightAnchor.constraint(equalTo: questionLabel.heightAnchor, multiplier: 1.0).isActive = true
         
+        self.navigationItem.setHidesBackButton(false, animated: true)
+
+        
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {

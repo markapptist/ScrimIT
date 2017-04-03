@@ -23,7 +23,6 @@ class NavController: UINavigationController, UINavigationControllerDelegate {
 
         self.navigationBar.isHidden = false
 
-        
         self.fadeImgView = UIImageView()
         self.navigationBar.addSubview(self.fadeImgView!)
         fadeImgView?.image = #imageLiteral(resourceName: "fadePhotoBottom")

@@ -7,15 +7,16 @@
 //
 
 import UIKit
-
+import FBSDKLoginKit
+import Firebase
 
 let states = ["LoggingIn", "SigningUp"]
 
 var currentLogInState = " "
 
-class LogInVC: SignUpLogInVC {
-    
-    let faceBookBtn = CircleButton(frame: CGRect(x: 100, y: 100, width: 50, height: 50))
+let faceBookBtn = FBSDKLoginButton()
+
+class LogInVC: SignUpLogInVC, FBSDKLoginButtonDelegate {
     
      var emailField = CustomTextFieldContainer()
     
@@ -26,10 +27,9 @@ class LogInVC: SignUpLogInVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         joinBtn.removeFromSuperview()
         logInBtn.removeFromSuperview()
-        
-        faceBookBtn.animateRadius(scale: 1.2, soundOn: false)
         
         self.view.addSubview(faceBookBtn)
         
@@ -41,26 +41,14 @@ class LogInVC: SignUpLogInVC {
             faceBookBtn.isHidden = true 
         }
         
-        faceBookBtn.setImage(UIImage(named: "facebookIcon"), for: .normal)
-        faceBookBtn.contentMode = .scaleAspectFit
-        faceBookBtn.translatesAutoresizingMaskIntoConstraints = false
-        faceBookBtn.setColorBlue()
-        faceBookBtn.layer.borderWidth = 2.0
-        faceBookBtn.layer.borderColor = UIColor.white.cgColor
-        faceBookBtn.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 20).isActive = true
-        faceBookBtn.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        faceBookBtn.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        faceBookBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        self.emailField.setup(placeholder: "Email", validator: "email", type: "email")
-        self.passwordField.setup(placeholder: "Password", validator: "required", type: "password")
         
         emailField.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(emailField)
         emailField.backgroundColor = UIColor.white
         emailField.textField.font = UIFont(name: "MyriadPro-BoldCond", size: 20)
         emailField.textField.textColor = UIColor.black
-        emailField.topAnchor.constraint(equalTo: faceBookBtn.bottomAnchor, constant: 20).isActive = true
+        emailField.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 20).isActive = true
         emailField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
         emailField.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.7).isActive = true
         emailField.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.1).isActive = true
@@ -75,7 +63,67 @@ class LogInVC: SignUpLogInVC {
         passwordField.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.7).isActive = true
         passwordField.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.1).isActive = true
         
+        self.emailField.setup(placeholder: "Email", validator: "email", type: "email")
+        self.passwordField.setup(placeholder: "Password", validator: "required", type: "password")
+
+        
+        faceBookBtn.translatesAutoresizingMaskIntoConstraints = false
+        faceBookBtn.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 20).isActive = true
+        faceBookBtn.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        faceBookBtn.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.7).isActive = true
+        faceBookBtn.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.05).isActive = true
+  
+        faceBookBtn.delegate = self
+        
         nextButton.isHidden = false
+        
+        self.navigationItem.setHidesBackButton(false, animated: true)
+
+        
+    }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if error != nil {
+            print(error)
+            return
+        }
+        
+        if((result.grantedPermissions) != nil){
+            self.navigationController?.pushViewController(ProfileVC(), animated: false)
+            print("Successfully logged in with facebook....")
+            userDefaults.set(true, forKey: "userLoggedIn")
+            self.showEmailAddress()
+        }
+        
+        
+    }
+    
+    func showEmailAddress() {
+        let accessToken = FBSDKAccessToken.current()
+        guard let accessTokenString = accessToken?.tokenString else {
+            return
+        }
+        let credentials = FIRFacebookAuthProvider.credential(withAccessToken: accessTokenString)
+        FIRAuth.auth()?.signIn(with: credentials, completion: { (user, error) in
+            
+            if error != nil {
+                print("Something went wrong with our facebook user: ", error)
+            }
+            print("Successfully logged in with our user: ", user)
+        })
+        
+        FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start { (connection, result, err) in
+            if err != nil {
+                print("Failed to start graph request:", err)
+                return
+            }
+            print(result)
+        }
+    }
+ 
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("Did log out of facebook")
     }
     
     override func nextBtnPressed() {
@@ -90,6 +138,7 @@ class LogInVC: SignUpLogInVC {
                 
                 if(Completion.0 == nil) {
                     self.navigationController?.pushViewController(ProfileVC(), animated: false)
+                    userDefaults.set(true, forKey: "userLoggedIn")
                 } else {
                     ErrorHandler.sharedInstance.show(message: Completion.0!, container: self)
                     

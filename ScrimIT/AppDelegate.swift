@@ -14,6 +14,8 @@
 
 import UIKit
 import Firebase
+import FBSDKCoreKit
+import FacebookCore
 
 let screenWidth = UIScreen.main.bounds.width
 let screenHeight = UIScreen.main.bounds.width
@@ -32,6 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         window = UIWindow.init(frame: UIScreen.main.bounds)
         
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         let homeFeedIcon = UIImage(named: "ico-teams")
         let trainingIcon = UIImage(named: "ico-training")
         let pathIcon = UIImage(named: "ico-share")
@@ -46,7 +50,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let exploreTab = ExploreVC()
         exploreTab.tabBarItem = UITabBarItem(title: "Find", image: pathIcon, tag: 2)
         
-        let profileTab = SignUpLogInVC()
+        let signedOutTab = SignUpLogInVC()
+         signedOutTab.tabBarItem = UITabBarItem(title: "Profile", image: userIcon, tag: 3)
+        
+        let profileTab = ProfileVC()
         profileTab.tabBarItem = UITabBarItem(title: "Profile", image: userIcon, tag: 3)
         
         let homeFeedNavController = NavController(rootViewController: homeFeed)
@@ -54,10 +61,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let trainingNavController = NavController(rootViewController: trainingTab)
         let pathNavController = NavController(rootViewController: exploreTab)
         let profileNavController = NavController(rootViewController: profileTab)
+        let signedOutNavController = NavController(rootViewController: signedOutTab)
         
         let dashboard = MyDashboardVC()
         
-        let viewControllers = [homeFeedNavController, trainingNavController, pathNavController, profileNavController]
+        var viewControllers = [UIViewController]()
+        
+        if(userDefaults.bool(forKey: "userLoggedIn")) {
+         viewControllers = [homeFeedNavController, trainingNavController, pathNavController, profileNavController]
+        }
+        
+        if(!userDefaults.bool(forKey: "userLoggedIn")) {
+             viewControllers = [homeFeedNavController, trainingNavController, pathNavController, signedOutNavController]
+        }
         
         dashboard.viewControllers = viewControllers
         dashboard.tabBar.barTintColor = barTint
@@ -66,6 +82,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
 
         return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+       let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options [UIApplicationOpenURLOptionsKey.sourceApplication] as! String!, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        
+        return handled 
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -84,6 +108,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        AppEventsLogger.activate(application)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

@@ -17,6 +17,7 @@ class ExploreVC: TabsVC, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         fieldView.makeRound()
         
         self.view.addSubview(fieldView)

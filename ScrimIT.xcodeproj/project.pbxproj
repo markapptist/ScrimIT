@@ -100,6 +100,14 @@
 		668C88F61E6DE42B00031827 /* Icon-Small-50x50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 668C88E01E6DE42B00031827 /* Icon-Small-50x50@2x.png */; };
 		6690F51D1E905C19001C4588 /* scrimit.png in Resources */ = {isa = PBXBuildFile; fileRef = 6690F51C1E905C19001C4588 /* scrimit.png */; };
 		6690F51F1E9066BF001C4588 /* ChallengesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6690F51E1E9066BF001C4588 /* ChallengesVC.swift */; };
+		6690F5261E92ACC6001C4588 /* FacebookCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6690F5201E92ACC6001C4588 /* FacebookCore.framework */; };
+		6690F5271E92ACC6001C4588 /* FacebookLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6690F5211E92ACC6001C4588 /* FacebookLogin.framework */; };
+		6690F5281E92ACC6001C4588 /* FacebookShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6690F5221E92ACC6001C4588 /* FacebookShare.framework */; };
+		6690F5291E92ACC6001C4588 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6690F5231E92ACC6001C4588 /* FBSDKCoreKit.framework */; };
+		6690F52A1E92ACC6001C4588 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6690F5241E92ACC6001C4588 /* FBSDKLoginKit.framework */; };
+		6690F52B1E92ACC6001C4588 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6690F5251E92ACC6001C4588 /* FBSDKShareKit.framework */; };
+		6690F52E1E92D19B001C4588 /* logoBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = 6690F52D1E92D19B001C4588 /* logoBlack.png */; };
+		6690F5301E92ECD9001C4588 /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 6690F52F1E92ECD9001C4588 /* logout.png */; };
 		66B063421E8A8694000CC23D /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B063411E8A8694000CC23D /* Path.swift */; };
 		66B063441E8A8A82000CC23D /* ChallengeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B063431E8A8A82000CC23D /* ChallengeBox.swift */; };
 		66B063461E8ABD7E000CC23D /* SignUpVCAge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B063451E8ABD7E000CC23D /* SignUpVCAge.swift */; };
@@ -227,6 +235,15 @@
 		668C88E01E6DE42B00031827 /* Icon-Small-50x50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50x50@2x.png"; sourceTree = "<group>"; };
 		6690F51C1E905C19001C4588 /* scrimit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scrimit.png; sourceTree = "<group>"; };
 		6690F51E1E9066BF001C4588 /* ChallengesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesVC.swift; sourceTree = "<group>"; };
+		6690F5201E92ACC6001C4588 /* FacebookCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookCore.framework; path = "../../../Library/Developer/Xcode/DerivedData/ScrimIT-bcfhcdowebpodpbhgwhseajyqpnp/Build/Products/Debug-iphoneos/FacebookCore/FacebookCore.framework"; sourceTree = "<group>"; };
+		6690F5211E92ACC6001C4588 /* FacebookLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookLogin.framework; path = "../../../Library/Developer/Xcode/DerivedData/ScrimIT-bcfhcdowebpodpbhgwhseajyqpnp/Build/Products/Debug-iphoneos/FacebookLogin/FacebookLogin.framework"; sourceTree = "<group>"; };
+		6690F5221E92ACC6001C4588 /* FacebookShare.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookShare.framework; path = "../../../Library/Developer/Xcode/DerivedData/ScrimIT-bcfhcdowebpodpbhgwhseajyqpnp/Build/Products/Debug-iphoneos/FacebookShare/FacebookShare.framework"; sourceTree = "<group>"; };
+		6690F5231E92ACC6001C4588 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "Pods/../build/Debug-iphoneos/FBSDKCoreKit/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
+		6690F5241E92ACC6001C4588 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "Pods/../build/Debug-iphoneos/FBSDKLoginKit/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
+		6690F5251E92ACC6001C4588 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "Pods/../build/Debug-iphoneos/FBSDKShareKit/FBSDKShareKit.framework"; sourceTree = "<group>"; };
+		6690F52C1E92CA0F001C4588 /* ScrimIT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScrimIT.entitlements; sourceTree = "<group>"; };
+		6690F52D1E92D19B001C4588 /* logoBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logoBlack.png; path = "../../../VirtualTrainer-repo/VirtualTrainr/VirtualTrainr/logoBlack.png"; sourceTree = "<group>"; };
+		6690F52F1E92ECD9001C4588 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
 		66B063411E8A8694000CC23D /* Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Path.swift; path = ../Path.swift; sourceTree = "<group>"; };
 		66B063431E8A8A82000CC23D /* ChallengeBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeBox.swift; sourceTree = "<group>"; };
 		66B063451E8ABD7E000CC23D /* SignUpVCAge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVCAge.swift; sourceTree = "<group>"; };
@@ -270,6 +287,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6690F5261E92ACC6001C4588 /* FacebookCore.framework in Frameworks */,
+				6690F5271E92ACC6001C4588 /* FacebookLogin.framework in Frameworks */,
+				6690F5281E92ACC6001C4588 /* FacebookShare.framework in Frameworks */,
+				6690F5291E92ACC6001C4588 /* FBSDKCoreKit.framework in Frameworks */,
+				6690F52A1E92ACC6001C4588 /* FBSDKLoginKit.framework in Frameworks */,
+				6690F52B1E92ACC6001C4588 /* FBSDKShareKit.framework in Frameworks */,
 				8FAC81F0B2C0FBEF2F8426C7 /* Pods_ScrimIT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +303,8 @@
 		6617ED461E5E574E0063A7C4 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				6690F52F1E92ECD9001C4588 /* logout.png */,
+				6690F52D1E92D19B001C4588 /* logoBlack.png */,
 				6690F51C1E905C19001C4588 /* scrimit.png */,
 				6672AA401E87DE920002DA25 /* facebookIcon.png */,
 				668C88CB1E6DE42B00031827 /* Icon-App-20x20@1x.png */,
@@ -422,6 +447,7 @@
 		92056B7B1E5CED86007C8AD0 /* ScrimIT */ = {
 			isa = PBXGroup;
 			children = (
+				6690F52C1E92CA0F001C4588 /* ScrimIT.entitlements */,
 				66D1B4A71E78995300DB338E /* fonts */,
 				6617ED461E5E574E0063A7C4 /* images */,
 				92056B7C1E5CED86007C8AD0 /* AppDelegate.swift */,
@@ -501,6 +527,12 @@
 		DD674EBBFB7211634EB92355 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6690F5201E92ACC6001C4588 /* FacebookCore.framework */,
+				6690F5211E92ACC6001C4588 /* FacebookLogin.framework */,
+				6690F5221E92ACC6001C4588 /* FacebookShare.framework */,
+				6690F5231E92ACC6001C4588 /* FBSDKCoreKit.framework */,
+				6690F5241E92ACC6001C4588 /* FBSDKLoginKit.framework */,
+				6690F5251E92ACC6001C4588 /* FBSDKShareKit.framework */,
 				2DB31DA83197192239AC1F40 /* Pods_ScrimIT.framework */,
 			);
 			name = Frameworks;
@@ -543,6 +575,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = VDQS4882Z8;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -599,6 +636,7 @@
 				6672AA411E87DE920002DA25 /* facebookIcon.png in Resources */,
 				6617ED891E5E57580063A7C4 /* Default-568h@2x.png in Resources */,
 				668C88E61E6DE42B00031827 /* Icon-App-29x29@3x.png in Resources */,
+				6690F52E1E92D19B001C4588 /* logoBlack.png in Resources */,
 				6617ED8F1E5E57580063A7C4 /* ico-check.png in Resources */,
 				668C88F51E6DE42B00031827 /* Icon-Small-50x50@1x.png in Resources */,
 				6617ED901E5E57580063A7C4 /* ico-comment.png in Resources */,
@@ -612,6 +650,7 @@
 				6617ED8D1E5E57580063A7C4 /* ico-camera.png in Resources */,
 				6617ED8E1E5E57580063A7C4 /* ico-challenge.png in Resources */,
 				6617EDB51E5E57580063A7C4 /* Spotlight-40.png in Resources */,
+				6690F5301E92ECD9001C4588 /* logout.png in Resources */,
 				6617EDBB1E5E57580063A7C4 /* TakePhotoButton.png in Resources */,
 				6617ED991E5E57580063A7C4 /* ico-play2.png in Resources */,
 				668C88F61E6DE42B00031827 /* Icon-Small-50x50@2x.png in Resources */,
@@ -875,7 +914,14 @@
 			baseConfigurationReference = CFD22F30907383F99AF589FD /* Pods-ScrimIT.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ScrimIT/ScrimIT.entitlements;
 				DEVELOPMENT_TEAM = VDQS4882Z8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/FBSDKCoreKit",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/FBSDKLoginKit",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/FBSDKShareKit",
+				);
 				INFOPLIST_FILE = ScrimIT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -891,7 +937,14 @@
 			baseConfigurationReference = DE5B91F023FFBEF809AE6579 /* Pods-ScrimIT.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ScrimIT/ScrimIT.entitlements;
 				DEVELOPMENT_TEAM = VDQS4882Z8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/FBSDKCoreKit",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/FBSDKLoginKit",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/FBSDKShareKit",
+				);
 				INFOPLIST_FILE = ScrimIT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

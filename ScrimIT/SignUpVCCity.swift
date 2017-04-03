@@ -55,7 +55,7 @@ class SignUpVCCity: SignUpLogInVC {
     override func nextBtnPressed() {
         if(!(displayTextField.text?.isEmpty)!) {
             userDefaults.setValue(displayTextField.text, forKey: "city")
-            self.navigationController?.pushViewController(SignUpVCEmail(), animated: false)
+            self.navigationController?.pushViewController(LogInVC(), animated: false)
         }
     }
     

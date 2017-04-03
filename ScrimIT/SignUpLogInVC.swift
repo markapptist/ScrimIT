@@ -10,6 +10,7 @@ import UIKit
 
 class SignUpLogInVC: TabsVC, UITextFieldDelegate {
     
+    
     let fadePhoto = #imageLiteral(resourceName: "fadePhotoBottom")
     let titleView = UIView()
     let titleLbl = UILabel()
@@ -33,6 +34,7 @@ class SignUpLogInVC: TabsVC, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(userDefaults.bool(forKey: "userLoggedIn"))
         
         self.view.addSubview(titleView)
         
@@ -144,6 +146,9 @@ class SignUpLogInVC: TabsVC, UITextFieldDelegate {
         questionLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
         questionLabel.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1.0).isActive = true
         questionLabel.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.1).isActive = true
+        
+        self.navigationItem.setHidesBackButton(true, animated: true)
+
         
     }
     

@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F215471EF86CF1349EA4FCDE12E2B9E008965A05",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "EC5C2DEE1CF5A4F296FBC638B224CD35C5F3C1FB" : 9223372036854775807,
+    "F215471EF86CF1349EA4FCDE12E2B9E008965A05" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "84E50675-C357-45F2-B25C-E4A7F3310D97",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "EC5C2DEE1CF5A4F296FBC638B224CD35C5F3C1FB" : "..\/VirtualTrainer-repo\/VirtualTrainr",
+    "F215471EF86CF1349EA4FCDE12E2B9E008965A05" : "ScrimIT\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ScrimIT",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ScrimIT.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/markapptist\/VirtualTrainr.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EC5C2DEE1CF5A4F296FBC638B224CD35C5F3C1FB"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/markapptist\/ScrimIT.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F215471EF86CF1349EA4FCDE12E2B9E008965A05"
+    }
+  ]
+}

@@ -57,7 +57,8 @@ class SignUpVCGender: SignUpLogInVC {
         femaleBtn.layer.cornerRadius = 4
         femaleBtn.addTarget(self, action: #selector(self.femaleBtnPressed), for: .touchUpInside)
         
-        
+        self.navigationItem.setHidesBackButton(false, animated: true)
+
     }
     
     func maleBtnPressed() {

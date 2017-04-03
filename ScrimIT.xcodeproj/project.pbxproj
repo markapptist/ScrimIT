@@ -106,7 +106,6 @@
 		6690F5291E92ACC6001C4588 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6690F5231E92ACC6001C4588 /* FBSDKCoreKit.framework */; };
 		6690F52A1E92ACC6001C4588 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6690F5241E92ACC6001C4588 /* FBSDKLoginKit.framework */; };
 		6690F52B1E92ACC6001C4588 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6690F5251E92ACC6001C4588 /* FBSDKShareKit.framework */; };
-		6690F52E1E92D19B001C4588 /* logoBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = 6690F52D1E92D19B001C4588 /* logoBlack.png */; };
 		6690F5301E92ECD9001C4588 /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 6690F52F1E92ECD9001C4588 /* logout.png */; };
 		66B063421E8A8694000CC23D /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B063411E8A8694000CC23D /* Path.swift */; };
 		66B063441E8A8A82000CC23D /* ChallengeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B063431E8A8A82000CC23D /* ChallengeBox.swift */; };
@@ -244,7 +243,6 @@
 		6690F5241E92ACC6001C4588 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "Pods/../build/Debug-iphoneos/FBSDKLoginKit/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		6690F5251E92ACC6001C4588 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "Pods/../build/Debug-iphoneos/FBSDKShareKit/FBSDKShareKit.framework"; sourceTree = "<group>"; };
 		6690F52C1E92CA0F001C4588 /* ScrimIT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScrimIT.entitlements; sourceTree = "<group>"; };
-		6690F52D1E92D19B001C4588 /* logoBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logoBlack.png; path = "../../../VirtualTrainer-repo/VirtualTrainr/VirtualTrainr/logoBlack.png"; sourceTree = "<group>"; };
 		6690F52F1E92ECD9001C4588 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
 		66B063411E8A8694000CC23D /* Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Path.swift; path = ../Path.swift; sourceTree = "<group>"; };
 		66B063431E8A8A82000CC23D /* ChallengeBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeBox.swift; sourceTree = "<group>"; };
@@ -308,7 +306,6 @@
 			isa = PBXGroup;
 			children = (
 				6690F52F1E92ECD9001C4588 /* logout.png */,
-				6690F52D1E92D19B001C4588 /* logoBlack.png */,
 				6690F51C1E905C19001C4588 /* scrimit.png */,
 				6672AA401E87DE920002DA25 /* facebookIcon.png */,
 				668C88CB1E6DE42B00031827 /* Icon-App-20x20@1x.png */,
@@ -642,7 +639,6 @@
 				6672AA411E87DE920002DA25 /* facebookIcon.png in Resources */,
 				6617ED891E5E57580063A7C4 /* Default-568h@2x.png in Resources */,
 				668C88E61E6DE42B00031827 /* Icon-App-29x29@3x.png in Resources */,
-				6690F52E1E92D19B001C4588 /* logoBlack.png in Resources */,
 				6617ED8F1E5E57580063A7C4 /* ico-check.png in Resources */,
 				668C88F51E6DE42B00031827 /* Icon-Small-50x50@1x.png in Resources */,
 				6617ED901E5E57580063A7C4 /* ico-comment.png in Resources */,

@@ -85,32 +85,32 @@ class AuthService {
             }
             else {
                 
-                
                 // email verification
                 /*
-                if user?.isEmailVerified == false {
-                    print("not verified")
-                    FIRAuth.auth()?.currentUser?.sendEmailVerification(completion: { (error) in
-                        if error != nil {
-                            print(error?.localizedDescription)
-                        }
-                        else {
-                            // do something now that it is sent
-                        }
-                    })
-                }
-                else if (user?.displayName != nil) {
-                    
-                }
-                    
-                else {
-                    
-                }
-            
-                print("signed in")
-                onComplete?(nil, user)
-                */
+                 if user?.isEmailVerified == false {
+                 print("not verified")
+                 FIRAuth.auth()?.currentUser?.sendEmailVerification(completion: { (error) in
+                 if error != nil {
+                 print(error?.localizedDescription)
+                 }
+                 else {
+                 // do something now that it is sent
+                 }
+                 })
+                 }
+                 else if (user?.displayName != nil) {
+                 
+                 }
+                 
+                 else {
+                 
+                 }
+                 
+                 print("signed in")
+                 onComplete?(nil, user)
+                 */
             }
+            onComplete?(nil, user)
         })
     }
     

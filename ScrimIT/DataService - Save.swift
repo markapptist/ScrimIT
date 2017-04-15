@@ -32,9 +32,9 @@ extension DataService {
                 self.challengesRef.child(uniqueID).setValue(profile)
                 
                 self.uploadProgress?.removeActivityView()
+                print("done")
             }
-            
-            print("done")
+            self.uploadProgress?.removeActivityView()
         }
         
         /*

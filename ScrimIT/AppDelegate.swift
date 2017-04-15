@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let pathIcon = UIImage(named: "ico-share")
         let userIcon = UIImage(named: "ico-user")
         
-        let homeFeed = HomeFeedVC()
+        let homeFeed = HomeFeedCollectionVC()
         homeFeed.tabBarItem = UITabBarItem(title: "Home", image: homeFeedIcon, tag: 0)
         
         let trainingTab = TrainingVC()

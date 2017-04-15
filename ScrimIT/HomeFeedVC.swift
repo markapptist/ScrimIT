@@ -25,7 +25,7 @@ class HomeFeedVC: TabsVC, UITableViewDataSource, UITableViewDelegate {
     
     let respondView = ResponseVC()
     
-    let newChallenge = ScrimITCamera()
+    let newChallenge = ImagePicker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,16 +57,15 @@ class HomeFeedVC: TabsVC, UITableViewDataSource, UITableViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         self.videos = []
-        self.getPublicChallenges()
+//        self.getPublicChallenges()
+        self.tabBarController?.tabBar.isHidden = false  
     }
     
     func addButtonFunction() {
 //        newChallenge.cameraFor = .new
 //        newChallenge.challengeTitle = "test"
-//        self.navigationController?.pushViewController(newChallenge, animated: true)
-        self.present(newChallenge, animated: true) { 
-            
-        }
+        self.navigationController?.pushViewController(newChallenge, animated: true)
+//        self.present(newChallenge, animated: true)
     }
     
     func displayNoChallenges() {

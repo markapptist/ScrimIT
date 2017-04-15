@@ -9,13 +9,15 @@
 import Foundation
 import FirebaseDatabase
 
-extension HomeFeedVC {
+extension HomeFeedCollectionVC {
     
     // get challenges from public list
     func getPublicChallenges() {
         self.showActivityIndicator()
         
-        self.ref?.observe(.value, with: { (snapshot) in
+        self.ref.observe(.value, with: { (snapshot) in
+            
+            self.videos = []
             
             for challenge in snapshot.children.allObjects {
                 
@@ -48,20 +50,20 @@ extension HomeFeedVC {
                         
                         responsesArray.append(responseVideo)
                     }
-                    self.responses.updateValue(responsesArray, forKey: videoUniqueID)
+//                    self.responses.updateValue(responsesArray, forKey: videoUniqueID)
                 }
                 else {
-                    self.responses.updateValue([], forKey: videoUniqueID)
+//                    self.responses.updateValue([], forKey: videoUniqueID)
                 }
             }
             
-            self.tableView?.reloadData()
-            self.tableView?.isUserInteractionEnabled = true
+            self.collectionView?.reloadData()
+            self.collectionView?.isUserInteractionEnabled = true
             self.hideActivityIndicator()
             
         }, withCancel: { (error) in
-            self.displayNoChallenges()
-            self.hideActivityIndicator()    
+//            self.displayNoChallenges()
+            self.hideActivityIndicator()
         })
     }
     

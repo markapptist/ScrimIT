@@ -15,26 +15,4 @@ protocol UploadProgressDelegate {
     func errorUploading(error: Error)
 }
 
-extension CameraVC: UploadProgressDelegate {
-    
-    func showActivityView() {
-        self.activityView = UIActivityIndicatorView()
-        self.activityView?.frame = self.view.frame
-        self.activityView?.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
-        self.view.addSubview(self.activityView!)
-        self.activityView?.startAnimating()
-        self.navigationController?.navigationBar.isHidden = true
-    }
-    
-    func removeActivityView() {
-        self.activityView?.stopAnimating()
-        self.activityView?.removeFromSuperview()
-        self.navigationController?.navigationBar.isHidden = false
-        self.displayPosted()
-    }
-    
-    func errorUploading(error: Error) {
-        self.errorUploading(error: error)
-    }
-    
-}
+

@@ -67,11 +67,13 @@ class ResponseVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func respondButtonFunction() {
+        /*
         let camera = CameraVC()
         camera.cameraFor = .response
         camera.responseToVideoID = self.videoUniqueID
         camera.challengeTitle = self.challengeTitle
         self.navigationController?.pushViewController(camera, animated: true)
+        */
     }
     
     // MARK: - TableView DataSource

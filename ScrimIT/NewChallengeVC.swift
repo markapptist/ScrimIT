@@ -46,10 +46,12 @@ class NewChallengeVC: UIViewController {
             self.displayAlert()
         }
         else {
+            /*
             let camera = CameraVC()
             camera.challengeTitle = titleTextfield?.text
             camera.cameraFor = .new
             self.navigationController?.pushViewController(camera, animated: true)
+            */
         }
     }
     

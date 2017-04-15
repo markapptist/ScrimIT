@@ -55,7 +55,7 @@ class HomeFeedCollectionVC: TabsVC, UICollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // check whether video is taken in portrait
-        return CGSize(width: view.frame.width, height: 320)
+        return CGSize(width: view.frame.width, height: 380)
     }
     
     
@@ -78,20 +78,8 @@ class HomeFeedCollectionVC: TabsVC, UICollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "videoCell", for: indexPath) as! VideoCollectionViewCell
-        cell.video = self.videos[indexPath.row]
-        
-//        let embededHTML = "<html><body><iframe src=\"\(self.videos[indexPath.row])?playsinline=1\" width=\"'\(cell.frame.width)'\" height=\"'\(cell.frame.height)'\" frameborder=\"10\" allowfullscreen></iframe></body></html>"
-//        
-//        cell.webView?.loadHTMLString(embededHTML, baseURL: Bundle.main.bundleURL)
-//        cell.webView?.scrollView.isScrollEnabled = false
-
         let video = self.videos[indexPath.row]
-//        cell.webView?.loadHTMLString(video.url!, baseURL: nil)
-        let url = URL(string: video.url!)
-        let data = NSData(contentsOf: url!)
-        cell.webView?.load(data as! Data, mimeType: "mov", textEncodingName: String(), baseURL: NSURL() as URL)
-//        cell.webView.
-        
+        cell.video = video
         
         return cell
     }

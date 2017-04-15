@@ -12,57 +12,59 @@ import AVFoundation
 
 class VideoCollectionViewCell: UICollectionViewCell {
     
+    var tapGesture: UITapGestureRecognizer?
+    var playing: Bool = false
+    
+    var outerView: VideoBackgroundView?
     
     var video: ChallengeVideo?
-    var webView: UIWebView?
     
     var player: AVPlayer?
     var playerLayer: AVPlayerLayer?
     
-    override func prepareForReuse() {
-    }
-    
     override func layoutSubviews() {
-        contentView.backgroundColor = UIColor.clear
-        webView = UIWebView()
-        webView?.frame = contentView.bounds
+        tapGesture = UITapGestureRecognizer()
+        tapGesture?.addTarget(self, action: #selector(self.videoTapped))
+        tapGesture?.numberOfTapsRequired = 1
         
-        print(contentView.frame)
+        outerView = VideoBackgroundView(frame: contentView.bounds)
+        
+        contentView.backgroundColor = UIColor.clear
+        
+        contentView.addSubview(outerView!)
         
         if video != nil {
-            
-            /*
             let urlString = video?.url
             let videoURL = URL(string: urlString!)
             
             player = AVPlayer(url: videoURL!)
             playerLayer = AVPlayerLayer()
+            
             playerLayer?.player = player
-//            playerLayer?.frame = contentView.bounds
-            playerLayer?.frame = CGRect(x: contentView.bounds.minX + 5, y: contentView.bounds.minY + 50, width: contentView.bounds.width - 10, height: contentView.bounds.height - 10)
-            print(contentView.frame.height)
+            playerLayer?.frame = outerView!.videoBox!.frame
             playerLayer?.masksToBounds = true
             playerLayer?.videoGravity = AVLayerVideoGravityResizeAspect
             
             contentView.layer.addSublayer(playerLayer!)
-             print(playerLayer?.frame)
-             print(contentView.layer.sublayers)
-             print(contentView.layer.sublayers?[0].frame)
-            */
             
-            webView?.allowsInlineMediaPlayback = true
-//            webView?.allowsPictureInPictureMediaPlayback = true
-            let url = URL(string: (video?.url)!)
-            let request = URLRequest(url: url!)
-            webView?.loadRequest(request)
-//            webView?.backgroundColor = UIColor.blue
-//            let url = URL(string: (video?.url!)!)
-//            let data = NSData(contentsOf: url!)
-//            webView?.load(data as! Data, mimeType: "mov", textEncodingName: String(), baseURL: NSURL() as URL)
-
-        
+            contentView.addGestureRecognizer(tapGesture!)
         }
-        contentView.addSubview(webView!)
+    }
+    
+    func videoTapped() {
+        if (playing) {
+            self.player?.pause()
+            playing = false
+            return
+        }
+        if (player?.currentTime() == player?.currentItem?.duration) {
+            self.player?.seek(to: kCMTimeZero)
+            self.player?.play()
+            playing = true
+            return
+        }
+        self.player?.play()
+        playing = true
     }
     
 }

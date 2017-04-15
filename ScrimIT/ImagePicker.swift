@@ -29,7 +29,7 @@ class ImagePicker: UIViewController, UIImagePickerControllerDelegate, UINavigati
         self.removeImage(itemName: "Test", fileExtension: "mov")
         
         videoBtn = UIButton(type: .system)
-        videoBtn.frame = CGRect(x: view.center.x - 25, y: view.center.y - 25, width: 50, height: 50)
+        videoBtn.frame = CGRect(x: view.center.x - 50, y: view.center.y - 25, width: 100, height: 50)
         videoBtn.setTitle("Take Video", for: .normal)
         videoBtn.setTitleColor(UIColor.white, for: .normal)
         videoBtn.addTarget(self, action: #selector(self.takeVideo), for: .touchUpInside)
@@ -229,7 +229,7 @@ class ImagePicker: UIViewController, UIImagePickerControllerDelegate, UINavigati
         firstAssesScaleToFitRatio = 640 / videoAssetTrack.naturalSize.height
         let scaleFactor = CGAffineTransform(scaleX: firstAssesScaleToFitRatio, y: firstAssesScaleToFitRatio)
         
-        assetLayerInstructions.setTransform(videoTransform.concatenating(scaleFactor).concatenating(translate), at: kCMTimeZero)
+        assetLayerInstructions.setTransform(videoTransform.concatenating(scaleFactor), at: kCMTimeZero)
         
 //        assetLayerInstructions.setTransform(transform, at: kCMTimeZero)
         

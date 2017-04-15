@@ -49,10 +49,9 @@ class VideoCollectionViewCell: UICollectionViewCell {
              print(contentView.layer.sublayers)
              print(contentView.layer.sublayers?[0].frame)
             */
- 
             
             webView?.allowsInlineMediaPlayback = true
-            webView?.allowsPictureInPictureMediaPlayback = true
+//            webView?.allowsPictureInPictureMediaPlayback = true
             let url = URL(string: (video?.url)!)
             let request = URLRequest(url: url!)
             webView?.loadRequest(request)

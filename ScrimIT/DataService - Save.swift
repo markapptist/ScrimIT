@@ -12,7 +12,7 @@ import FirebaseStorage
 
 extension DataService {
     
-    func saveChallengeVideo(file: URL, name: String, videoName: String) {
+    func saveChallengeVideo(file: URL, name: String) {
         let uniqueID = NSUUID().uuidString
         
         self.uploadProgress?.showActivityView()

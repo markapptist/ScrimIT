@@ -64,8 +64,11 @@ class HomeFeedVC: TabsVC, UITableViewDataSource, UITableViewDelegate {
     func addButtonFunction() {
 //        newChallenge.cameraFor = .new
 //        newChallenge.challengeTitle = "test"
-        self.navigationController?.pushViewController(newChallenge, animated: true)
+//        self.navigationController?.pushViewController(newChallenge, animated: true)
 //        self.present(newChallenge, animated: true)
+        self.navigationController?.present(newChallenge, animated: true, completion: nil)
+        
+        self.navigationController?.show(newChallenge, sender: nil)
     }
     
     func displayNoChallenges() {

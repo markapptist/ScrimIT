@@ -27,7 +27,8 @@ class VideoCollectionViewCell: UICollectionViewCell {
         tapGesture?.addTarget(self, action: #selector(self.videoTapped))
         tapGesture?.numberOfTapsRequired = 1
         
-        outerView = VideoBackgroundView(frame: contentView.bounds)
+        let backgroundViewFrame = CGRect(x: 20, y: 20, width: contentView.bounds.width - 40, height: contentView.bounds.height - 40)
+        outerView = VideoBackgroundView(frame: backgroundViewFrame)
         
         contentView.backgroundColor = UIColor.clear
         
@@ -45,9 +46,11 @@ class VideoCollectionViewCell: UICollectionViewCell {
             playerLayer?.masksToBounds = true
             playerLayer?.videoGravity = AVLayerVideoGravityResizeAspect
             
-            contentView.layer.addSublayer(playerLayer!)
+            outerView?.layer.addSublayer(playerLayer!)
             
             contentView.addGestureRecognizer(tapGesture!)
+            
+            outerView?.challengeNameLabel.text = video?.title
         }
     }
     
@@ -58,10 +61,11 @@ class VideoCollectionViewCell: UICollectionViewCell {
             return
         }
         if (player?.currentTime() == player?.currentItem?.duration) {
-            self.player?.seek(to: kCMTimeZero)
-            self.player?.play()
-            playing = true
-            return
+            self.player?.seek(to: kCMTimeZero, completionHandler: { (true) in
+                self.player?.play()
+                self.playing = true
+                return
+            })
         }
         self.player?.play()
         playing = true

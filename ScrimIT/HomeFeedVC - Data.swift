@@ -16,7 +16,6 @@ extension HomeFeedCollectionVC {
         self.showActivityIndicator()
         
         self.ref.observe(.value, with: { (snapshot) in
-            
             self.videos = []
             
             for challenge in snapshot.children.allObjects {

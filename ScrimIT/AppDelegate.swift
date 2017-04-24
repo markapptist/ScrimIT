@@ -36,47 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        let homeFeedIcon = UIImage(named: "ico-teams")
-        let trainingIcon = UIImage(named: "ico-training")
-        let pathIcon = UIImage(named: "ico-share")
-        let userIcon = UIImage(named: "ico-user")
-        
-        let homeFeed = HomeFeedCollectionVC()
-        homeFeed.tabBarItem = UITabBarItem(title: "Home", image: homeFeedIcon, tag: 0)
-        
-        let trainingTab = TrainingVC()
-        trainingTab.tabBarItem = UITabBarItem(title: "Training", image: trainingIcon, tag: 1)
-        
-        let exploreTab = ExploreVC()
-        exploreTab.tabBarItem = UITabBarItem(title: "Find", image: pathIcon, tag: 2)
-        
-        let signedOutTab = SignUpLogInVC()
-         signedOutTab.tabBarItem = UITabBarItem(title: "Profile", image: userIcon, tag: 3)
-        
-        let profileTab = ProfileVC()
-        profileTab.tabBarItem = UITabBarItem(title: "Profile", image: userIcon, tag: 3)
-        
-        let homeFeedNavController = NavController(rootViewController: homeFeed)
 
-        let trainingNavController = NavController(rootViewController: trainingTab)
-        let pathNavController = NavController(rootViewController: exploreTab)
-        let profileNavController = NavController(rootViewController: profileTab)
-        let signedOutNavController = NavController(rootViewController: signedOutTab)
-        
         let dashboard = MyDashboardVC()
-        
-        var viewControllers = [UIViewController]()
-        
-        if(userDefaults.bool(forKey: "userLoggedIn")) {
-         viewControllers = [homeFeedNavController, trainingNavController, pathNavController, profileNavController]
-        }
-        
-        if(!userDefaults.bool(forKey: "userLoggedIn")) {
-             viewControllers = [homeFeedNavController, trainingNavController, pathNavController, signedOutNavController]
-        }
-        
-        dashboard.viewControllers = viewControllers
-        dashboard.tabBar.barTintColor = barTint
         
         window?.rootViewController = dashboard
         window?.makeKeyAndVisible()

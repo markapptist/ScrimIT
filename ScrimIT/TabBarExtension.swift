@@ -1,5 +1,5 @@
 //
-//  ImagePicker.swift
+//  TabBarExtension.swift
 //  ScrimIT
 //
 //  Created by Anthony Ma on 11/4/2017.
@@ -11,43 +11,36 @@ import MobileCoreServices
 import AVFoundation
 import CoreMedia
 
-class ImagePicker: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension MyDashboardVC: SetVideoDetails, UploadProgressDelegate {
     
-    var imagePicker: UIImagePickerController?
-    var takenVideoURL: URL?
-
-//    var videoBtn: UIButton!
-//    var uploadBtn: UIButton!
+    // upload progress delegate
     
-//    var currentDevice = UIDevice.current
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func showActivityView() {
         
-        self.tabBarController?.tabBar.isHidden = false
-        
-        self.removeImage(itemName: "Test", fileExtension: "mov")
-        
-        /*
-        videoBtn = UIButton(type: .system)
-        videoBtn.frame = CGRect(x: view.center.x - 50, y: view.center.y - 25, width: 100, height: 50)
-        videoBtn.setTitle("Take Video", for: .normal)
-        videoBtn.setTitleColor(UIColor.white, for: .normal)
-        videoBtn.addTarget(self, action: #selector(self.takeVideo), for: .touchUpInside)
-        
-        view.addSubview(videoBtn)
-        
-        uploadBtn = UIButton(type: .system)
-        uploadBtn.frame = CGRect(x: 50, y: 150, width: 50, height: 50)
-        uploadBtn.setTitle("Video", for: .normal)
-        uploadBtn.setTitleColor(UIColor.white, for: .normal)
-        uploadBtn.addTarget(self, action: #selector(self.uploadVideo), for: .touchUpInside)
-        
-//        view.addSubview(uploadBtn)
-        */
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    func removeActivityView() {
+        // remove saved video
+        self.removeImage(itemName: self.newChallengeName!, fileExtension: "mov")
+    }
+    
+    func errorUploading(error: Error) {
+        
+    }
+    
+    // set video details
+    func didPressWithDetails(name: String) {
+        imagePicker?.cameraOverlayView?.removeFromSuperview()
+        self.newChallengeName = name
+    }
+    
+    func noDetails() {
+        
+    }
+    
+    func bringUpCamera() {
+        
+        // image Picker create
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             
             imagePicker = UIImagePickerController()
@@ -57,6 +50,11 @@ class ImagePicker: UIViewController, UIImagePickerControllerDelegate, UINavigati
             imagePicker?.mediaTypes = [kUTTypeMovie as String]
             imagePicker?.allowsEditing = true
             imagePicker?.videoQuality = .type640x480
+            
+            let newChallengeView = NewChallengeView(frame: self.view.frame)
+            newChallengeView.detailsDelegate = self
+            imagePicker?.cameraOverlayView = newChallengeView
+            imagePicker?.view.bringSubview(toFront: newChallengeView)
             
             print(imagePicker?.videoQuality)
             
@@ -78,29 +76,10 @@ class ImagePicker: UIViewController, UIImagePickerControllerDelegate, UINavigati
         else {
             
         }
-    }
-    
-    func uploadVideo() {
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            imagePicker = UIImagePickerController(rootViewController: self)
-            
-            imagePicker?.delegate = self
-            imagePicker?.sourceType = .savedPhotosAlbum
-            imagePicker?.mediaTypes = [kUTTypeMovie as String]
-            imagePicker?.allowsEditing = true
-            self.present(imagePicker!, animated: true, completion: nil)
-        }
-        else {
-            
-        }
-    }
-    
-    func takeVideo() {
-
+        
     }
     
     // Remove Saved File
-    
     func removeImage(itemName:String, fileExtension: String) {
         let fileManager = FileManager.default
         let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
@@ -156,9 +135,9 @@ class ImagePicker: UIViewController, UIImagePickerControllerDelegate, UINavigati
              assetLayerInstructions.setTransform(transform1, at: kCMTimeZero)
              */
             
-//            var t = CGAffineTransform.identity
-//            t = t.translatedBy(x: 0, y: 50)
-//            t = t.rotated(by: CGFloat.pi/2)
+            //            var t = CGAffineTransform.identity
+            //            t = t.translatedBy(x: 0, y: 50)
+            //            t = t.rotated(by: CGFloat.pi/2)
             /*
              t.a = 0
              t.c = 1.0
@@ -168,7 +147,7 @@ class ImagePicker: UIViewController, UIImagePickerControllerDelegate, UINavigati
             
             //        assetLayerInstructions.setTransform(finalTransform, at: kCMTimeZero)
             
-//            assetLayerInstructions.setTransform(t, at: kCMTimeZero)
+            //            assetLayerInstructions.setTransform(t, at: kCMTimeZero)
             
             /*
              print(self.imagePicker?.view.frame)
@@ -179,11 +158,11 @@ class ImagePicker: UIViewController, UIImagePickerControllerDelegate, UINavigati
              if !asset.isComposable {
              
              }
-            guard let path = (info[UIImagePickerControllerMediaURL] as! NSURL).path else { return }
-            if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(path) {
-                UISaveVideoAtPathToSavedPhotosAlbum(path, self, #selector(self.video(videoPath:didFinishSavingWithError:contextInfo:)), nil)
-            }
-            */
+             guard let path = (info[UIImagePickerControllerMediaURL] as! NSURL).path else { return }
+             if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(path) {
+             UISaveVideoAtPathToSavedPhotosAlbum(path, self, #selector(self.video(videoPath:didFinishSavingWithError:contextInfo:)), nil)
+             }
+             */
         }
     }
     
@@ -244,7 +223,7 @@ class ImagePicker: UIViewController, UIImagePickerControllerDelegate, UINavigati
         
         assetLayerInstructions.setTransform(videoTransform.concatenating(scaleFactor).concatenating(translate), at: kCMTimeZero)
         
-//        assetLayerInstructions.setTransform(transform, at: kCMTimeZero)
+        //        assetLayerInstructions.setTransform(transform, at: kCMTimeZero)
         
         assetVideoInstructions.layerInstructions = [assetLayerInstructions]
         
@@ -265,7 +244,7 @@ class ImagePicker: UIViewController, UIImagePickerControllerDelegate, UINavigati
             
             print(documentDirectory)
             
-            let finalURL: URL = documentDirectory.appendingPathComponent("Test")
+            let finalURL: URL = documentDirectory.appendingPathComponent(self.newChallengeName!)
             let finalOutputURL: URL = finalURL.appendingPathExtension("mov")
             
             let export = AVAssetExportSession(asset: videoAsset, presetName: AVAssetExportPreset640x480)
@@ -287,9 +266,7 @@ class ImagePicker: UIViewController, UIImagePickerControllerDelegate, UINavigati
                         print(export?.outputURL)
                         let videoURL = export?.outputURL
                         
-                        print()
-                        
-                        DataService.instance.saveChallengeVideo(file: videoURL!, name: "Test")
+                        DataService.instance.saveChallengeVideo(file: videoURL!, name: self.newChallengeName!)
                         
                         self.tabBarController?.tabBar.isHidden = false
                     }
@@ -300,30 +277,19 @@ class ImagePicker: UIViewController, UIImagePickerControllerDelegate, UINavigati
         catch {
             
         }
-        
+
     }
     
-    // cancel button
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let newChallengeView = self.imagePicker?.cameraOverlayView as! NewChallengeView
+        newChallengeView.titleTextfield?.resignFirstResponder()
+    }
+    
+    // image picker cancel button
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    
-//    ImagePicker saveVideo
-    /*
-    func video(videoPath: NSString, didFinishSavingWithError error: NSError?, contextInfo info: AnyObject) {
-        var title = "Success"
-        var message = "Video was saved"
-        if let _ = error {
-            title = "Error"
-            message = "Video failed to save"
-        }
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
-    */
     
 }
 

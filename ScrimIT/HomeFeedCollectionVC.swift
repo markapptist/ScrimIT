@@ -25,8 +25,6 @@ class HomeFeedCollectionVC: TabsVC, UICollectionViewDataSource, UICollectionView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.getPublicChallenges()
-        
         addButton = UIButton()
         addButton?.frame = CGRect(x: view.frame.width - (view.frame.width * 0.92), y: (self.navigationController?.navigationBar.frame.maxY)! + 10, width: view.frame.width * 0.85, height: 50)
         addButton?.setTitle("post new challenge", for: .normal)
@@ -53,9 +51,13 @@ class HomeFeedCollectionVC: TabsVC, UICollectionViewDataSource, UICollectionView
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.getPublicChallenges()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // check whether video is taken in portrait
-        return CGSize(width: view.frame.width, height: 380)
+        return CGSize(width: view.frame.width, height: 400)
     }
     
     

@@ -11,7 +11,7 @@ import UIKit
 
 class HomeFeedCollectionVC: TabsVC, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    var collectionView: UICollectionView!
+    var collectionView: UICollectionView?
     
     let ref = DataService.instance.challengesRef
     
@@ -20,11 +20,10 @@ class HomeFeedCollectionVC: TabsVC, UICollectionViewDataSource, UICollectionView
     // model
     var videos = [ChallengeVideo]()
     
-    let newChallenge = ImagePicker()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /*
         addButton = UIButton()
         addButton?.frame = CGRect(x: view.frame.width - (view.frame.width * 0.92), y: (self.navigationController?.navigationBar.frame.maxY)! + 10, width: view.frame.width * 0.85, height: 50)
         addButton?.setTitle("post new challenge", for: .normal)
@@ -35,19 +34,20 @@ class HomeFeedCollectionVC: TabsVC, UICollectionViewDataSource, UICollectionView
         addButton?.backgroundColor = UIColor.lightGray
         addButton?.titleLabel?.font = UIFont(name: "MyriadPro-BoldCond", size: 20)
         addButton?.addTarget(self, action: #selector(addButtonFunction), for: .touchUpInside)
-        
-        collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
-        collectionView.backgroundColor = UIColor.clear
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(VideoCollectionViewCell.self, forCellWithReuseIdentifier: "videoCell")
-        collectionView.frame = CGRect(x: 0, y: (addButton?.frame.maxY)! * 1.1, width: view.frame.width, height: view.frame.height - (self.tabBarController?.tabBar.frame.height)! - (self.navigationController?.navigationBar.frame.height)! - 20 - 80)
-        collectionView.contentSize = CGSize(width: view.frame.width, height: 480.0)
-        
-//        collectionView.allowsSelection = true
-        
-        view.addSubview(addButton!)
-        view.addSubview(collectionView)
+        */
+ 
+        collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: UICollectionViewFlowLayout())
+        collectionView?.register(VideoCollectionViewCell.self, forCellWithReuseIdentifier: "videoCell")
+        self.view.addSubview(collectionView!)
+        collectionView?.translatesAutoresizingMaskIntoConstraints = false
+        collectionView?.backgroundColor = UIColor.clear
+        collectionView?.delegate = self
+        collectionView?.dataSource = self
+        collectionView?.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0).isActive = true
+        collectionView?.topAnchor.constraint(equalTo: self.view.topAnchor, constant: (self.navigationController?.navigationBar.frame.height)! + 20).isActive = true
+        collectionView?.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        collectionView?.heightAnchor.constraint(equalToConstant: self.view.frame.height - (self.navigationController?.navigationBar.frame.height)! - 20).isActive = true
+        collectionView?.showsVerticalScrollIndicator = false
         
     }
     
@@ -60,14 +60,10 @@ class HomeFeedCollectionVC: TabsVC, UICollectionViewDataSource, UICollectionView
         return CGSize(width: view.frame.width, height: 400)
     }
     
-    
-    func addButtonFunction() {
-        //        newChallenge.cameraFor = .new
-        //        newChallenge.challengeTitle = "test"
-        self.navigationController?.pushViewController(newChallenge, animated: true)
-        //        self.present(newChallenge, animated: true)
+    // MARK: - Collection View Delegate
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
     }
-    
     
     // MARK: - Collection View DataSource
     func numberOfSections(in collectionView: UICollectionView) -> Int {

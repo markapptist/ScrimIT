@@ -14,12 +14,16 @@ import CoreMedia
 extension MyDashboardVC: SetVideoDetails, UploadProgressDelegate {
     
     // upload progress delegate
-    
     func showActivityView() {
-        
+        self.activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        self.activityView?.frame = self.view.frame
+        self.view.addSubview(activityView!)
+        self.activityView?.hidesWhenStopped = true
+        self.activityView?.startAnimating()
     }
     
     func removeActivityView() {
+        self.activityView?.stopAnimating()
         // remove saved video
         self.removeImage(itemName: self.newChallengeName!, fileExtension: "mov")
     }
@@ -48,8 +52,9 @@ extension MyDashboardVC: SetVideoDetails, UploadProgressDelegate {
             imagePicker?.sourceType = .camera
             imagePicker?.cameraDevice = .rear
             imagePicker?.mediaTypes = [kUTTypeMovie as String]
-            imagePicker?.allowsEditing = true
+//            imagePicker?.allowsEditing = true
             imagePicker?.videoQuality = .type640x480
+            imagePicker?.videoMaximumDuration = 3
             
             let newChallengeView = NewChallengeView(frame: self.view.frame)
             newChallengeView.detailsDelegate = self
@@ -281,8 +286,8 @@ extension MyDashboardVC: SetVideoDetails, UploadProgressDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let newChallengeView = self.imagePicker?.cameraOverlayView as! NewChallengeView
-        newChallengeView.titleTextfield?.resignFirstResponder()
+        let newChallengeView = self.imagePicker?.cameraOverlayView as? NewChallengeView
+        newChallengeView?.titleTextfield?.resignFirstResponder()
     }
     
     // image picker cancel button

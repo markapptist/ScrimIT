@@ -17,6 +17,9 @@ class MyDashboardVC: UITabBarController, UITabBarControllerDelegate, UIImagePick
     var imagePicker: UIImagePickerController?
     var takenVideoURL: URL?
     
+    // activity view
+    var activityView: UIActivityIndicatorView?
+    
     // challenge video variables
     var newChallengeName: String?
 //    var challengeDuration: Int?

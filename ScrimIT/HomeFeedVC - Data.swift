@@ -49,10 +49,10 @@ extension HomeFeedCollectionVC {
                         
                         responsesArray.append(responseVideo)
                     }
-//                    self.responses.updateValue(responsesArray, forKey: videoUniqueID)
+                    self.responses.updateValue(responsesArray, forKey: videoUniqueID)
                 }
                 else {
-//                    self.responses.updateValue([], forKey: videoUniqueID)
+                    self.responses.updateValue([], forKey: videoUniqueID)
                 }
             }
             

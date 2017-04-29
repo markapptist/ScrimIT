@@ -42,6 +42,10 @@ extension MyDashboardVC: SetVideoDetails, UploadProgressDelegate {
         
     }
     
+    func response(videoID: String) {
+        
+    }
+    
     func bringUpCamera() {
         
         // image Picker create
@@ -56,10 +60,7 @@ extension MyDashboardVC: SetVideoDetails, UploadProgressDelegate {
             imagePicker?.videoQuality = .type640x480
             imagePicker?.videoMaximumDuration = 3
             
-            let newChallengeView = NewChallengeView(frame: self.view.frame)
-            newChallengeView.detailsDelegate = self
-            imagePicker?.cameraOverlayView = newChallengeView
-            imagePicker?.view.bringSubview(toFront: newChallengeView)
+            self.addImagePickerOverlay(type: self.currentOverlay!)
             
             print(imagePicker?.videoQuality)
             
@@ -283,6 +284,22 @@ extension MyDashboardVC: SetVideoDetails, UploadProgressDelegate {
             
         }
 
+    }
+    
+    func addImagePickerOverlay(type: CameraOverlayType) {
+        if type == .newChallenge {
+            let newChallengeView = NewChallengeView(frame: self.view.frame)
+            newChallengeView.detailsDelegate = self
+            imagePicker?.cameraOverlayView = newChallengeView
+            imagePicker?.view.bringSubview(toFront: newChallengeView)
+        }
+        if type == .response {
+            let responseView = NewChallengeView(frame: self.view.frame)
+            responseView.challengeTitle = "TBR"
+            responseView.setViewFor(type: .response)
+            imagePicker?.cameraOverlayView = responseView
+            imagePicker?.view.bringSubview(toFront: responseView)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -12,4 +12,5 @@ protocol SetVideoDetails {
     func didPressWithDetails(name: String)
 //    func didPressWithDetails(name: String, duration: Int)
     func noDetails()
+    func response(videoID: String)
 }

@@ -11,10 +11,17 @@ import UIKit
 
 class NewChallengeView: UIView {
     
+    enum ViewFor {
+        case newChallenge
+        case response
+    }
+    
     var titleLabel: UILabel?
     var titleTextfield: UITextField?
-    
     var nextButton: UIButton?
+    
+    var challengeID: String?
+    var challengeTitle: String?
     
     // video details delegate
     var detailsDelegate: SetVideoDetails?
@@ -31,8 +38,6 @@ class NewChallengeView: UIView {
         titleTextfield?.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         titleTextfield?.widthAnchor.constraint(equalToConstant: self.frame.width * 0.50).isActive = true
         titleTextfield?.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        titleTextfield?.placeholder = "Type name of challenge"
-        titleTextfield?.backgroundColor = UIColor.white
         
         titleLabel = UILabel()
         self.addSubview(titleLabel!)
@@ -41,8 +46,6 @@ class NewChallengeView: UIView {
         titleLabel?.topAnchor.constraint(equalTo: self.topAnchor, constant: 50)
         titleLabel?.widthAnchor.constraint(equalToConstant: self.frame.width * 0.50).isActive = true
         titleLabel?.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        titleLabel?.text = "Name your challenge!"
-        titleLabel?.textColor = UIColor.white
         
         nextButton = UIButton(type: .system)
         self.addSubview(nextButton!)
@@ -51,10 +54,32 @@ class NewChallengeView: UIView {
         nextButton?.topAnchor.constraint(equalTo: (self.titleLabel?.bottomAnchor)!, constant: 50).isActive = true
         nextButton?.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         nextButton?.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        nextButton?.setTitle("Next", for: .normal)
-        nextButton?.titleLabel?.textColor = UIColor.white
-        nextButton?.addTarget(self, action: #selector(self.nextButtonPressed), for: .touchUpInside)
-        
+    
+    }
+    
+    func setViewFor(type: ViewFor) {
+        if type == .newChallenge {
+            titleTextfield?.placeholder = "Type name of challenge"
+            titleTextfield?.backgroundColor = UIColor.white
+            
+            titleLabel?.text = "Name your challenge!"
+            titleLabel?.textColor = UIColor.white
+            
+            nextButton?.setTitle("Next", for: .normal)
+            nextButton?.titleLabel?.textColor = UIColor.white
+            nextButton?.addTarget(self, action: #selector(self.nextButtonPressed), for: .touchUpInside)
+        }
+        if type == .response {
+            nextButton?.setTitle(challengeTitle!, for: .normal)
+            nextButton?.titleLabel?.textColor = UIColor.white
+            nextButton?.addTarget(self, action: #selector(self.nextButtonPressed), for: .touchUpInside)
+            
+            titleLabel?.text = "Responding to:"
+            titleLabel?.textColor = UIColor.white
+
+            
+            titleTextfield?.isHidden = true
+        }
     }
     
     func nextButtonPressed() {
@@ -62,9 +87,12 @@ class NewChallengeView: UIView {
             if !(challengeName.isEmpty) {
                 detailsDelegate?.didPressWithDetails(name: challengeName)
             }
+            else {
+                detailsDelegate?.noDetails()
+            }
         }
         else {
-            detailsDelegate?.noDetails()
+            
         }
     }
     

@@ -10,6 +10,16 @@ import UIKit
 
 class MyDashboardVC: UITabBarController, UITabBarControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    enum CameraOverlayType {
+        case newChallenge
+        case response
+    }
+    
+    var currentOverlay: CameraOverlayType?
+    
+    var challengeID: String?
+    var challengeTitle: String?
+    
     var cameraButton: UIButton?
     let cameraIcon = UIImage(named: "ico-camera")
     

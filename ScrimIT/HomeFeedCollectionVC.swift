@@ -20,45 +20,35 @@ class HomeFeedCollectionVC: TabsVC, UICollectionViewDataSource, UICollectionView
     // model
     var videos = [ChallengeVideo]()
     
+    var responses = [String:[ChallengeVideo]]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        /*
-        addButton = UIButton()
-        addButton?.frame = CGRect(x: view.frame.width - (view.frame.width * 0.92), y: (self.navigationController?.navigationBar.frame.maxY)! + 10, width: view.frame.width * 0.85, height: 50)
-        addButton?.setTitle("post new challenge", for: .normal)
-        addButton?.layer.borderColor = UIColor.clear.cgColor
-        addButton?.layer.cornerRadius = 8
-        addButton?.titleLabel?.textColor = UIColor.white
-        addButton?.layer.borderWidth = 2
-        addButton?.backgroundColor = UIColor.lightGray
-        addButton?.titleLabel?.font = UIFont(name: "MyriadPro-BoldCond", size: 20)
-        addButton?.addTarget(self, action: #selector(addButtonFunction), for: .touchUpInside)
-        */
  
         collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: UICollectionViewFlowLayout())
         collectionView?.register(VideoCollectionViewCell.self, forCellWithReuseIdentifier: "videoCell")
+        collectionView?.showsVerticalScrollIndicator = false
         self.view.addSubview(collectionView!)
         collectionView?.translatesAutoresizingMaskIntoConstraints = false
         collectionView?.backgroundColor = UIColor.clear
         collectionView?.delegate = self
         collectionView?.dataSource = self
-        collectionView?.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0).isActive = true
+        collectionView?.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
         collectionView?.topAnchor.constraint(equalTo: self.view.topAnchor, constant: (self.navigationController?.navigationBar.frame.height)! + 20).isActive = true
         collectionView?.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
-        collectionView?.heightAnchor.constraint(equalToConstant: self.view.frame.height - (self.navigationController?.navigationBar.frame.height)! - 20).isActive = true
-        collectionView?.showsVerticalScrollIndicator = false
+        collectionView?.heightAnchor.constraint(equalToConstant: self.view.frame.height - (self.navigationController?.navigationBar.frame.height)!).isActive = true
         
+        // flow layout configure
+        let flowLayout = collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
+        flowLayout.itemSize = CGSize(width: view.frame.width, height: 400)
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.minimumLineSpacing = 0
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.getPublicChallenges()
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // check whether video is taken in portrait
-        return CGSize(width: view.frame.width, height: 400)
-    }
     
     // MARK: - Collection View Delegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -75,13 +65,26 @@ class HomeFeedCollectionVC: TabsVC, UICollectionViewDataSource, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "videoCell", for: indexPath) as! VideoCollectionViewCell
+        let cell: VideoCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "videoCell", for: indexPath) as! VideoCollectionViewCell
+        cell.cellVideoDelegate = self
         let video = self.videos[indexPath.row]
-        cell.video = video
-        
+        cell.setVideoToPlayer(video: video)
+        cell.cellVideo = video
         return cell
     }
+}
+
+extension HomeFeedCollectionVC: VideoCellDelegate {
+    func showSubmissions(videoID: String) {
+        let submissionsVC = SubmissionsVC()
+        submissionsVC.submissions = self.responses[videoID]!
+        submissionsVC.videoID = videoID
+        self.navigationController?.pushViewController(submissionsVC, animated: true)
+    }
     
-    
-    
+    func scrimITNow() {
+        let tabBarController = self.tabBarController as! MyDashboardVC
+        tabBarController.currentOverlay = .response
+        tabBarController.bringUpCamera()
+    }
 }

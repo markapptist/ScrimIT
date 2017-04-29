@@ -15,43 +15,64 @@ class VideoCollectionViewCell: UICollectionViewCell {
     var tapGesture: UITapGestureRecognizer?
     var playing: Bool = false
     
-    var outerView: VideoBackgroundView?
-    
-    var video: ChallengeVideo?
-    
     var player: AVPlayer?
     var playerLayer: AVPlayerLayer?
     
-    override func layoutSubviews() {
+    var cellVideo: ChallengeVideo?
+    
+    var cellVideoDelegate: VideoCellDelegate?
+    
+    // view layout
+    var customViewFrame: VideoBackgroundView?
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
         tapGesture = UITapGestureRecognizer()
         tapGesture?.addTarget(self, action: #selector(self.videoTapped))
         tapGesture?.numberOfTapsRequired = 1
         
-        let backgroundViewFrame = CGRect(x: 20, y: 20, width: contentView.bounds.width - 40, height: contentView.bounds.height - 40)
-        outerView = VideoBackgroundView(frame: backgroundViewFrame)
+        customViewFrame = VideoBackgroundView()
+        customViewFrame?.submissionFooter?.submissionsButton?.addTarget(self, action: #selector(self.submissionsPressed), for: .touchUpInside)
+        customViewFrame?.videoCellFooter?.scrimITButton?.addTarget(self, action: #selector(self.scrimITPressed), for: .touchUpInside)
+        contentView.addSubview(customViewFrame!)
+        customViewFrame?.translatesAutoresizingMaskIntoConstraints = false
+        customViewFrame?.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0).isActive = true
+        customViewFrame?.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0).isActive = true
+        customViewFrame?.widthAnchor.constraint(equalTo: contentView.widthAnchor).isActive = true
+        customViewFrame?.heightAnchor.constraint(equalTo: contentView.heightAnchor).isActive = true
+    }
+    
+    func setVideoToPlayer(video: ChallengeVideo) {
+        customViewFrame?.videoBox?.addGestureRecognizer(tapGesture!)
         
-        contentView.backgroundColor = UIColor.clear
+        let urlString = video.url
+        print(urlString)
+        let videoURL = URL(string: urlString!)
         
-        contentView.addSubview(outerView!)
+        let challengeVideoAsset = AVAsset(url: videoURL!)
+        let playerItem = AVPlayerItem(asset: challengeVideoAsset)
         
-        if video != nil {
-            let urlString = video?.url
-            let videoURL = URL(string: urlString!)
-            
-            player = AVPlayer(url: videoURL!)
-            playerLayer = AVPlayerLayer()
-            
-            playerLayer?.player = player
-            playerLayer?.frame = outerView!.videoBox!.frame
-            playerLayer?.masksToBounds = true
-            playerLayer?.videoGravity = AVLayerVideoGravityResizeAspect
-            
-            outerView?.layer.addSublayer(playerLayer!)
-            
-            contentView.addGestureRecognizer(tapGesture!)
-            
-            outerView?.challengeNameLabel.text = video?.title
-        }
+        player = AVPlayer(playerItem: playerItem)
+        playerLayer = AVPlayerLayer(player: player)
+        playerLayer?.videoGravity = AVLayerVideoGravityResize
+        
+        customViewFrame?.videoBox?.videoBoxView?.layer.addSublayer(playerLayer!)
+        playerLayer?.frame = (customViewFrame?.videoBox?.videoBoxView?.bounds)!
+        
+        customViewFrame?.videoCellTitle?.nameLabel?.text = video.title
+    }
+    
+    func submissionsPressed() {
+        cellVideoDelegate?.showSubmissions(videoID: (self.cellVideo?.uniqueID)!)
+    }
+    
+    func scrimITPressed() {
+        cellVideoDelegate?.scrimITNow()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func videoTapped() {
